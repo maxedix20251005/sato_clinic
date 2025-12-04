@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>佐藤医院 | トップページ</title>
+  <style>
+    :root {
+      --green: #a5d99e;
+      --dark-green: #4f9d69;
+      --light-gray: #f5f5f5;
+      --text: #333;
+      --accent: #48a868;
+      --border: #d9d9d9;
+      --yellow: #fff7d6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: #fff;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: #e2f4de;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      gap: 16px;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-area img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 18px;
+    }
+    .online-btn {
+      background: var(--dark-green);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 10px;
+    }
+    nav a {
+      background: #b6e6ab;
+      padding: 10px 14px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background 0.2s ease;
+      display: inline-block;
+    }
+    nav a:hover { background: #a3d59a; }
+
+    main { padding-top: 110px; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: url('firstView.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 60px 0 80px;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+    }
+    .hero-content {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .hero-heading {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .hero-sub {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .card-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 6px;
+      padding: 14px;
+      color: var(--text);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: #1c7f4b;
+    }
+    .hero .cta {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .cta a {
+      display: inline-block;
+      background: #fff;
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      min-width: 160px;
+      text-align: center;
+    }
+
+    /* Sections */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 0;
+    }
+    h2 {
+      font-size: 24px;
+      margin: 0 0 14px;
+      color: #1c7f4b;
+    }
+    h3 { margin: 0 0 12px; }
+    p { margin: 0 0 12px; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .info-box {
+      background: #f2fbf0;
+      border: 1px solid #d7ebd1;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .info-box ul { margin: 0; padding-left: 20px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      text-align: center;
+    }
+    th { background: #eef7ec; }
+
+    .notice {
+      margin-top: 30px;
+      background: #f4fdf1;
+      border-radius: 8px;
+      border: 1px solid #d7ebd1;
+      padding: 16px;
+    }
+    .highlight {
+      background: var(--yellow);
+      border: 1px solid #eddc9a;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-top: 24px;
+    }
+    .news-list {
+      list-style: none;
+      margin: 12px 0 0;
+      padding: 0;
+    }
+    .news-list li { border-bottom: 1px solid var(--border); padding: 10px 0; }
+
+    .online-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .online-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 12px;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    }
+
+    .doctor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .doctor-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .doctor-card .desc { padding: 12px; }
+    .doctor-card strong { display: block; margin-bottom: 6px; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .access {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+    .access ul { margin: 8px 0 0; padding-left: 18px; }
+
+    footer {
+      background: #f7f7f7;
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding: 30px 0 16px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+    .footer-inner ul { list-style: none; margin: 8px 0 0; padding: 0; }
+    .footer-inner li { margin: 4px 0; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 10px;
+      max-width: 520px;
+      width: 100%;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    @media (max-width: 960px) {
+      .header-inner { flex-wrap: wrap; }
+      nav ul { flex-wrap: wrap; }
+      .hero-content { text-align: left; }
+      .cta { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="logo.png" alt="佐藤医院ロゴ">
+        <div>
+          <div class="logo-text">佐藤医院</div>
+          <div style="font-size:12px; color:#555;">Sato Clinic</div>
+        </div>
+      </div>
+      <div class="online-btn">オンライン診療はこちら &gt;</div>
+      <nav>
+        <ul>
+          <li><a href="#first">初めての方</a></li>
+          <li><a href="#access">ご来院方法</a></li>
+          <li><a href="#reserve">予約・順番受付</a></li>
+          <li><a href="#schedule">診療時間・担当医</a></li>
+          <li><a href="#contact">お問合せ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="first">
+      <div class="hero-content">
+        <div>
+          <p class="hero-heading">ようこそ佐藤医院のホームページへ！</p>
+          <p class="hero-sub">佐藤医院（眼科）<br>平日8:30～19:00　土曜8:30～13:00　休診日：日祝<br>〒162-0056 東京都新宿区若松町31-5 G-GOTAKU 1F</p>
+        </div>
+        <div class="card-row">
+          <div class="card">
+            <h3>診療のご案内</h3>
+            <p><!-- ここから診療案内の本文を編集できます -->佐藤医院の診療科目は眼科です。開院以来、眼科専門にさまざまな患者さまの眼の治療に携わってきました。地域の皆さまのかかりつけ医として、安心できる医療を提供することを目指しております。<!-- ここまで --></p>
+            <p><!-- ここから診療ポリシーの本文を編集できます -->当院では丁寧な診察、丁寧な説明を心がけております。丁寧な診察とは、患者さんのお話を聞きながら丁寧に診察をすることを心がけています。丁寧な説明とは、わかりやすい言葉で丁寧に説明することを心がけています。<!-- ここまで --></p>
+          </div>
+          <div class="card">
+            <h3>初めての方へ</h3>
+            <p><!-- ここから初診向けメッセージを編集できます -->●紹介状をお持ちの方は、受付にてお知らせください。<br>●保険証の提出をお願い致します。<br>●診察内容によって順番が前後する場合もございます。あらかじめご了承ください。<!-- ここまで --></p>
+          </div>
+          <div class="card" id="reserve">
+            <h3>ご来院方法</h3>
+            <p><!-- ここから来院方法の本文を編集できます -->〒162-0056 東京都新宿区若松町31-5 G-GOTAKU 1F<br>最寄駅：都営大江戸線「若松河田駅」徒歩3分<br>東京メトロ東西線「早稲田駅」徒歩10分<br>都営バス「河田町」徒歩1分<!-- ここまで --></p>
+          </div>
+        </div>
+        <div class="cta">
+          <a href="#">初めてご来院の方へ</a>
+          <a href="#access">診療時間・担当医のご案内</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <h2>診療時間のご案内</h2>
+      <p>当院では、12月より午前の診療が変更となります。詳しくは「診療時間のご案内」をご確認ください。</p>
+
+      <div class="notice">
+        <h3>眼科・外来担当医</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>担当医</th>
+              <th>月</th>
+              <th>火</th>
+              <th>水</th>
+              <th>木</th>
+              <th>金</th>
+              <th>土</th>
+              <th>日祝</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>佐藤太郎</th>
+              <td>午前<br>午後</td>
+              <td>午前<br>午後</td>
+              <td>午前<br>午後</td>
+              <td>-<br>-</td>
+              <td>-<br>-</td>
+              <td>午前<br>-</td>
+              <td>-<br>-</td>
+            </tr>
+            <tr>
+              <th>佐藤花子</th>
+              <td>-<br>-</td>
+              <td>-<br>-</td>
+              <td>-<br>-</td>
+              <td>午前<br>午後</td>
+              <td>午前<br>午後</td>
+              <td>-<br>-</td>
+              <td>-<br>-</td>
+            </tr>
+            <tr>
+              <th>佐藤直樹</th>
+              <td>-<br>-</td>
+              <td>-<br>-</td>
+              <td>-<br>-</td>
+              <td>午前<br>午後</td>
+              <td>午前<br>午後</td>
+              <td>午前<br>-</td>
+              <td>-<br>-</td>
+            </tr>
+            <tr>
+              <th>佐藤真美</th>
+              <td>午前<br>-</td>
+              <td>午前<br>-</td>
+              <td>午前<br>-</td>
+              <td>-<br>-</td>
+              <td>-<br>-</td>
+              <td>-<br>-</td>
+              <td>-<br>-</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px; font-size:13px; color:#555;">※担当医は急遽変更となる場合がございます。あらかじめご了承ください。</p>
+      </div>
+
+      <div class="highlight">
+        <strong>重要なお知らせ</strong>
+        <marquee behavior="scroll" direction="left" scrollamount="4">◆年末年始休診期間◆ 2021年12月29日（水）～2022年1月3日（月）となります。診療開始は1月4日（火）8:30～です。ご不便をお掛けいたしますが、何卒よろしくお願い致します。</marquee>
+      </div>
+
+      <div class="notice" style="margin-top:18px;">
+        <h3>お知らせ</h3>
+        <ul class="news-list">
+          <li>2021年12月11日　<em><!-- ここからお知らせ1件目の本文を編集できます -->【年末年始 休診のお知らせ】年末年始につき、12月29日～1月3日まで休診とさせていただきます。ご不便をお掛けいたしますが、何卒ご了承くださいますようお願いいたします。<!-- ここまで --></em></li>
+          <li>2021年12月11日　<em><!-- ここからお知らせ2件目の本文を編集できます -->【重要なお知らせ】当院では感染症対策を行っております。院内の定期的な消毒を行い、換気をしております。<!-- ここまで --></em></li>
+          <li>2021年12月11日　<em><!-- ここからお知らせ3件目の本文を編集できます -->【来院の際はマスク着用にご協力ください】感染症予防のため、来院の際はマスクの着用と受付にて検温、手指消毒の実施をお願いしております。ご協力お願いいたします。<!-- ここまで --></em></li>
+          <li>2021年12月11日　<em><!-- ここからお知らせ4件目の本文を編集できます -->【求人情報】当院では看護師、医療事務のスタッフを募集しています。詳しくはお電話にてお問い合わせください。<!-- ここまで --></em></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>ご自宅や職場から診療を受けられます</h2>
+      <p><!-- ここからオンライン診療リード文を編集できます -->体調がすぐれず外出ができない方、仕事で病院に行けない方、お子様がいて受診が難しい方も安心して受診していただけます。スマホ、PC、タブレットからご予約をいただき、来院時と同じように診療を受けることができます。会計はクレジットカード決済。お薬は、事前に指定した薬局にて受け取りが可能です。<!-- ここまで --></p>
+      <div class="online-cards">
+        <div class="online-card">
+          <img src="online01.png" alt="オンライン診療予約アイコン">
+          <div><strong>オンライン診療</strong><br><!-- ここからオンライン診療カード本文を編集できます -->スマホやPCで簡単にオンライン診療。自宅や職場から受診可能。<!-- ここまで --></div>
+        </div>
+        <div class="online-card">
+          <img src="online02.png" alt="オンライン会計アイコン">
+          <div><strong>オンライン会計</strong><br><!-- ここからオンライン会計カード本文を編集できます -->会計はクレジットカード決済でキャッシュレス。<!-- ここまで --></div>
+        </div>
+        <div class="online-card">
+          <img src="online03.png" alt="薬の受け取りアイコン">
+          <div><strong>薬の受け取り</strong><br><!-- ここから薬の受け取りカード本文を編集できます -->指定した薬局でお薬の受け取りができます。<!-- ここまで --></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>当院の方針</h2>
+      <p><!-- ここから当院の方針本文を編集できます -->当院は、地域の皆さまの健康を支え、安心して医療を受けられる環境づくりに取り組んでおります。患者さまの声に耳を傾け、丁寧で分かりやすい説明を心がけています。<!-- ここまで --></p>
+
+      <h3>患者さまへの取り組み</h3>
+      <p><!-- ここから患者さまへの取り組み本文を編集できます -->当院の医療は、患者さまが安心して診療を受けられることを第一に考えています。信頼できる医療を提供するため、設備の充実や、スタッフの育成にも力を入れています。患者さまに安心してご来院いただけるよう、スタッフ一同誠心誠意対応いたします。<!-- ここまで --></p>
+    </section>
+
+    <section>
+      <h2>医師の紹介</h2>
+      <p><!-- ここから医師紹介リード文を編集できます -->患者さまに安心して診療を受けていただけるよう、専門性豊かな医師が担当いたします。気になる症状やご不安な点がありましたらお気軽にご相談ください。<!-- ここまで --></p>
+      <div class="doctor-grid">
+        <div class="doctor-card" data-doctor="院長 佐藤 太郎／眼科医" data-description="眼科全般、先進医療対応。地域の皆さまの健康を守ります。">
+          <img src="doctor01.jpg" alt="院長 佐藤 太郎">
+          <div class="desc">
+            <strong>院長 佐藤 太郎／眼科医</strong>
+            <span>眼科全般、先進医療対応</span>
+          </div>
+        </div>
+        <div class="doctor-card" data-doctor="副院長 佐藤 花子／内科医" data-description="内科、循環器、糖尿病。総合的な内科診療に対応いたします。">
+          <img src="doctor02.jpg" alt="副院長 佐藤 花子">
+          <div class="desc">
+            <strong>副院長 佐藤 花子／内科医</strong>
+            <span>内科、循環器、糖尿病</span>
+          </div>
+        </div>
+        <div class="doctor-card" data-doctor="医師 佐藤 直樹／外科医" data-description="整形外科、スポーツ整形。リハビリテーションにも対応。">
+          <img src="doctor03.jpg" alt="医師 佐藤 直樹">
+          <div class="desc">
+            <strong>医師 佐藤 直樹／外科医</strong>
+            <span>整形外科、スポーツ整形</span>
+          </div>
+        </div>
+        <div class="doctor-card" data-doctor="医師 佐藤 真美／小児科医" data-description="小児科、予防接種、乳幼児健診。お子さまの成長をサポートします。">
+          <img src="doctor04.jpg" alt="医師 佐藤 真美">
+          <div class="desc">
+            <strong>医師 佐藤 真美／小児科医</strong>
+            <span>小児科、予防接種、乳幼児健診</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>院内の雰囲気</h2>
+      <div class="gallery">
+        <img src="interior01.jpg" alt="院内の様子1">
+        <img src="interior02.jpg" alt="院内の様子2">
+        <img src="interior03.jpg" alt="院内の様子3">
+        <img src="interior04.jpg" alt="院内の様子4">
+      </div>
+    </section>
+
+    <section id="access">
+      <h2>アクセス</h2>
+      <div class="access">
+        <div>
+          <img src="map.jpg" alt="佐藤医院 周辺地図">
+        </div>
+        <div>
+          <p><!-- ここからアクセス本文を編集できます -->〒162-0056 東京都新宿区若松町31-5 G-GOTAKU 1F</p>
+          <ul>
+            <li>都営大江戸線「若松河田駅」徒歩3分</li>
+            <li>東京メトロ東西線「早稲田駅」徒歩10分</li>
+            <li>都営バス「河田町」徒歩1分</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-inner">
+      <div>
+        <h3>Guide Links</h3>
+        <ul>
+          <li>お知らせ</li>
+          <li>ご来院方法</li>
+          <li>診療のご案内</li>
+        </ul>
+      </div>
+      <div>
+        <h3>佐藤医院</h3>
+        <p><!-- ここから住所・営業時間の本文を編集できます -->所在地：〒162-0056 東京都新宿区若松町31-5 G-GOTAKU 1F<br>診療時間（平日）8:30～19:00　（土曜）8:30～13:00　休診日：日祝</p>
+        <p><!-- ここからオンライン診療説明を編集できます -->オンライン診療にも対応しております。外出が難しい方もお気軽にご相談ください。</p>
+      </div>
+      <div>
+        <h3>診療のご案内</h3>
+        <ul>
+          <li>オンライン診療</li>
+          <li>ご来院方法</li>
+          <li>診療時間・担当医</li>
+        </ul>
+      </div>
+      <div>
+        <h3>ご予約・ご相談</h3>
+        <p>03-9876-5432</p>
+        <p><!-- ここから予約案内の本文を編集できます -->初診の方もお気軽にお問い合わせください。</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2023 sato clinic.</div>
+      <div><a href="#">プライバシーポリシー</a>　|　<a href="#">お問い合わせ</a></div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="doctorModal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">×</span>
+      <h3 id="modalDoctor"></h3>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('doctorModal');
+    const modalDoctor = document.getElementById('modalDoctor');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalClose = document.getElementById('modalClose');
+
+    document.querySelectorAll('.doctor-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        modalDoctor.textContent = card.dataset.doctor;
+        modalDescription.textContent = card.dataset.description;
+        modal.style.display = 'flex';
+      });
+    });
+
+    const hideModal = () => { modal.style.display = 'none'; };
+    modalClose.addEventListener('click', hideModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideModal(); });
+  </script>
+</body>
+</html>
