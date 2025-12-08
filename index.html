@@ -1,624 +1,1555 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>佐藤医院 | トップページ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>佐藤医院｜地域のホームドクター</title>
   <style>
     :root {
-      --green: #a5d99e;
-      --dark-green: #4f9d69;
-      --light-gray: #f5f5f5;
-      --text: #333;
-      --accent: #48a868;
-      --border: #d9d9d9;
-      --yellow: #fff7d6;
+      --green-light: #d9ffb3;
+      --blue-main: #0065a8;
+      --blue-sub: #3a77b5;
+      --text-main: #2a5c8a;
+      --text-gray: #767676;
+      --border-gray: #dddddd;
+      --bg-body: #f5ffe8;
+      /* ← ヘッダーよりかなり薄い黄緑系 */
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
-      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans JP", sans-serif;
+      background-color: var(--bg-body);
+      /* ← 全体の地色を薄い緑に */
+      color: #000;
       line-height: 1.7;
-      background: #fff;
     }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
 
-    /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: #e2f4de;
-      border-bottom: 1px solid var(--border);
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
-    .header-inner {
-      max-width: 1100px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1200px, 100% - 32px);
+      /* ← ヘッダー＆フッターは従来の 1440px */
       margin: 0 auto;
+    }
+
+    /* メイン（セクション）用：幅 1300px＋白背景 */
+    .main-container {
+      width: min(1200px, 100% - 32px);
+      margin: 0 auto;
+      padding: 0 20px 20px 20px;
+      background: #ffffff;
+      border-radius: 20px;
+    }
+
+    /* ========================
+       HEADER
+       ======================== */
+
+    .site-header-top {
+      background: var(--green-light);
+      border-bottom: 1px solid #cde6a4;
+      padding: 5px 0;
+    }
+
+    .site-header-top-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 20px;
-      gap: 16px;
+      gap: 24px;
     }
-    .logo-area {
+
+    .logo-box {
+      width: 260px;
+      height: 80px;
+      /* border: 1px solid #ff383c; */
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      font-size: 26px;
     }
-    .logo-area img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
+
+    .header-hours {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-    .logo-text {
-      font-weight: 700;
-      color: var(--text);
-      font-size: 18px;
+
+    .header-hours-tags {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 60px;
+      font-size: 12px;
     }
-    .online-btn {
-      background: var(--dark-green);
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1px 12px;
+      border-radius: 999px;
+      background: var(--blue-sub);
       color: #fff;
-      padding: 10px 18px;
-      border-radius: 4px;
-      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .header-hours-text {
       font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      gap: 2px;
+    }
+
+    .header-cta-area {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .header-cta-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      padding: 8px 28px;
+      border-radius: 999px;
+      background: var(--blue-main);
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       white-space: nowrap;
     }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 10px;
-    }
-    nav a {
-      background: #b6e6ab;
-      padding: 10px 14px;
-      border-radius: 4px;
-      font-weight: 700;
+
+    /* ヘッダー内 CTA ボタン用（少し細め＆小さめ） */
+    .btn-pill-header {
+      padding: 4px 20px;
+      /* 縦の余白を減らす */
       font-size: 14px;
-      transition: background 0.2s ease;
+      /* 文字も少しだけ小さく */
+    }
+
+    .header-phone {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      padding: 0px 5px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      text-decoration: none;
+      line-height: 1;
+      /* ★ これを追加して行間を詰める */
+    }
+
+    .header-phone-icon {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .header-phone-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: translateY(0px);
+      /* 下に 1px ずらす。上げたい場合は -1px */
+      /* ← 緑色に着色する（好みに合わせて調整可） */
+      /* filter: brightness(0) saturate(100%) sepia(20%) hue-rotate(70deg) saturate(300%); */
+    }
+
+    /* nav */
+    .site-nav {
+      background: var(--green-light);
+      border-top: none;
+      /* 上線を消して一体感を出す */
+      border-bottom: 1px solid #cde6a4;
+      margin-top: -10px;
+      /* すこし上に寄せたい場合 ※調整用 */
+    }
+
+    .site-nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      padding: 0px 0px;
+      flex-wrap: wrap;
+      font-size: 24px;
+    }
+
+    /* ナビゲーションリンク：文字だけ＋シャドウ */
+    .site-nav a {
+      position: relative;
       display: inline-block;
+      /* transform を効かせるため */
+      padding: 4px 6px;
+      /* 余白は控えめに */
+      font-weight: 700;
+      /* color: var(--text-main); */
+      color: darkgreen;
+      text-decoration: none;
+      /* 文字の下にうっすら影を落とす */
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.8),
+        /* 上側のハイライトっぽい効果 */
+        0 3px 3px rgba(0, 0, 0, 0.18);
+      /* 下方向の影 */
     }
-    nav a:hover { background: #a3d59a; }
 
-    main { padding-top: 110px; }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      background: url('firstView.jpg') center/cover no-repeat;
-      color: #fff;
-      padding: 60px 0 80px;
-    }
-    .hero::after {
+    .site-nav a::after {
+      /* 特別な装飾は付けないので空のまま */
       content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
     }
-    .hero-content {
-      position: relative;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
+
+    .site-nav a:hover {
+      /* ホバー時に少しだけ下に押し込まれる感じ */
+      transform: translateY(1px);
+      text-shadow:
+        0 0px 0 rgba(255, 255, 255, 0.8),
+        0 2px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ========================
+       SECTIONS 共通
+       ======================== */
+    main {
+      padding: 24px 0 0;
+    }
+
+    section {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .section-title {
+      display: inline-block;
+      padding: 4px 10px;
+      border-bottom: 1px solid #b2b2b2;
+      color: var(--text-gray);
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* ========================
+   HERO
+   ======================== */
+
+    .hero {
+      padding: 32px 0 24px;
+      background: var(--green-light);
+    }
+
+    .hero-inner {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      gap: 32px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px 32px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
     }
-    .hero-heading {
+
+    .hero-copy-main {
       font-size: 26px;
       font-weight: 700;
-      margin: 0;
-      line-height: 1.4;
-    }
-    .hero-sub {
-      font-size: 16px;
-      margin: 0;
+      margin: 0 0 20px;
+      color: var(--text-main);
+      line-height: 1.6;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     }
 
-    .card-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-top: 20px;
+    .hero-copy-sub {
+      font-size: 15px;
+      color: #444;
     }
-    .card {
-      background: rgba(255,255,255,0.9);
-      border-radius: 6px;
-      padding: 14px;
-      color: var(--text);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
+    .hero-image {
+      border-radius: 24px;
+      min-height: 260px;
+      background-image: url("image/hospital.jpg");
+      /* ★ 右側に hospital.jpg を表示 */
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
     }
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 16px;
-      color: #1c7f4b;
-    }
-    .hero .cta {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
+
+    /* お知らせボックス */
+    .hero-notice {
       margin-top: 10px;
-      flex-wrap: wrap;
+      padding: 5px 16px;
+      border: none;
+      border-radius: 24px;
+      background: #ffffff;
     }
-    .cta a {
-      display: inline-block;
-      background: #fff;
-      color: var(--text);
-      padding: 12px 16px;
-      border-radius: 6px;
+
+    .hero-notice-title {
+      font-size: 20px;
       font-weight: 700;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-      min-width: 160px;
       text-align: center;
+      margin: 0 0 20px;
+      /* color: var(--text-main); */
+      color: var(--text-gray);
+      line-height: 1.6;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+      /* font-size: 20px;
+      font-weight: bold; */
+      margin-bottom: 4px;
     }
 
-    /* Sections */
-    section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px 0;
-    }
-    h2 {
-      font-size: 24px;
-      margin: 0 0 14px;
-      color: #1c7f4b;
-    }
-    h3 { margin: 0 0 12px; }
-    p { margin: 0 0 12px; }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 14px;
-    }
-    .info-box {
-      background: #f2fbf0;
-      border: 1px solid #d7ebd1;
-      border-radius: 8px;
-      padding: 16px;
-    }
-    .info-box ul { margin: 0; padding-left: 20px; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 14px;
-      background: #fff;
-    }
-    th, td {
-      border: 1px solid var(--border);
-      padding: 10px;
-      text-align: center;
-    }
-    th { background: #eef7ec; }
-
-    .notice {
-      margin-top: 30px;
-      background: #f4fdf1;
-      border-radius: 8px;
-      border: 1px solid #d7ebd1;
-      padding: 16px;
-    }
-    .highlight {
-      background: var(--yellow);
-      border: 1px solid #eddc9a;
-      border-radius: 6px;
-      padding: 12px 14px;
-      margin-top: 24px;
-    }
-    .news-list {
-      list-style: none;
-      margin: 12px 0 0;
-      padding: 0;
-    }
-    .news-list li { border-bottom: 1px solid var(--border); padding: 10px 0; }
-
-    .online-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
-    .online-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px;
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 12px;
-      align-items: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-    }
-
-    .doctor-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .doctor-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+    /* 下の1行テキスト部分を Marquee 用コンテナにする */
+    .hero-notice-body {
+      font-size: 14px;
+      color: var(--text-main);
+      font-weight: 700;
       overflow: hidden;
+      white-space: nowrap;
       position: relative;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .doctor-card .desc { padding: 12px; }
-    .doctor-card strong { display: block; margin-bottom: 6px; }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
     }
 
-    .access {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      align-items: start;
+    /* 実際に流れるテキスト */
+    .hero-notice-marquee {
+      display: inline-block;
+      padding-left: 100%;
+      animation: heroMarquee 30s linear infinite;
+      /* ★ ゆっくり右→左 */
     }
-    .access ul { margin: 8px 0 0; padding-left: 18px; }
 
-    footer {
-      background: #f7f7f7;
-      margin-top: 40px;
-      border-top: 1px solid var(--border);
-      padding: 30px 0 16px;
+    /* 右から左へゆっくり流すアニメーション */
+    @keyframes heroMarquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
     }
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
+
+    .shadow-photo-img {
+      /* width: auto%;
+      height: 100%; */
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    /* ========================
+       診察時間
+       ======================== */
+
+    .time-inner {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+      /* ★ 左の画像幅を固定 */
+      /* grid-template-columns: 550px 1fr; */
+      gap: 24px;
+      align-items: stretch;
+      /* ★ 左右のボックスを同じ高さに伸ばす */
     }
-    .footer-bottom {
-      max-width: 1100px;
-      margin: 20px auto 0;
-      padding: 0 20px;
+
+    .time-image {
+      /* border-radius: 20px;
+      background: #ffffff;
+      background-image: url("image/tradinghour.jpg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #fff; */
+      height: 100%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      flex-wrap: wrap;
+      justify-content: flex-start;
+      /* center にしてもOK */
+      /* 高さは中身に合わせる */
     }
-    .footer-inner ul { list-style: none; margin: 8px 0 0; padding: 0; }
-    .footer-inner li { margin: 4px 0; }
 
-    /* Modal */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      display: none;
+    /* 中の <img> に対して */
+    .time-image img {
+      width: 100%;
+      /* カラム幅いっぱいに表示 */
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      /* 右と同じ丸み */
+      border: 1px solid #4caf50;
+      /* ★ 右のカードと同じ色のボーダー */
+    }
+
+    /* 右側カード：左の time-image と高さを揃えるために高さ 100%＋flex レイアウト */
+    .time-card {
+      background: var(--green-light);
+      border-radius: 20px;
+      border: 1px solid #4caf50;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .time-status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .status-chip {
+      min-width: 210px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 18px;
+      color: #f5f5f5;
+    }
+
+    .status-open {
+      background: #4caf50;
+    }
+
+    .status-close {
+      background: #666666;
+    }
+
+    .time-text {
+      font-size: 16px;
+    }
+
+    /* ボタンをカードの下寄せに置くため、margin-top を少しだけ */
+    .time-reserve-btn-wrap {
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* ========================
+   おしらせ
+   ======================== */
+
+    .news-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .news-list {
+      border: 1px solid #666;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* 1つのニュース全体 */
+    .news-item {
+      border-top: 1px solid #666;
+    }
+
+    /* 一番上だけ上線なし */
+    .news-item:first-child {
+      border-top: none;
+    }
+
+    /* タイトル行（タイトル＋＋アイコン）のボタン部分 */
+    .news-item-header {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    /* タイトル文字部分 */
+    .news-item-title {
+      flex: 1;
+      padding: 8px 12px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    /* 右側の＋アイコン */
+    .news-item-icon {
+      width: 40px;
+      border-left: 1px solid #666;
+      display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 2000;
-      padding: 20px;
-    }
-    .modal-content {
-      background: #fff;
-      border-radius: 10px;
-      max-width: 520px;
-      width: 100%;
-      padding: 20px;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 14px;
       font-size: 20px;
-      cursor: pointer;
-      color: #666;
+      transition: transform 0.2s ease;
     }
+
+    /* 展開されたときは＋を45度回転させて×風に */
+    .news-item.open .news-item-icon {
+      transform: rotate(45deg);
+    }
+
+    /* 展開エリア（本文） */
+    .news-item-content {
+      display: none;
+      padding: 10px 10px 12px;
+      font-size: 16px;
+      line-height: 1.6;
+      background: lightcyan;
+      border-top: 1px solid #ddd;
+    }
+
+    /* .open が付いているニュースだけ本文を表示 */
+    .news-item.open .news-item-content {
+      display: block;
+    }
+
+    /* .news-side-box {
+      border: 1px solid #ff383c;
+      border-radius: 8px;
+      min-height: 220px;
+    } */
+
+    .news-side-box {
+      /* コンテナは「位置合わせ」だけ担当 */
+      display: flex;
+      border-radius: 20px;
+      justify-content: center;
+      /* 右寄せ。中央にしたければ center */
+      /* padding や border は付けない */
+    }
+
+    /* img {
+      width: 315px;
+      height: auto;
+      border-radius: 20px;
+      border-color: 1px solid #4caf50;
+    } */
+
+    /* 実際に赤枠を付けるのは画像側 */
+    .news-side-image {
+      width: 315px;
+      /* ★ ここに画像の実サイズを指定 */
+      height: 250px;
+      display: block;
+      border-radius: 20px;
+      border: 1px solid #4caf50;
+      object-fit: cover;
+    }
+
+    /* ========================
+       院長挨拶
+       ======================== */
+
+    .greeting-inner {
+      display: grid;
+      grid-template-columns: 380px minmax(0, 1fr);
+      /* 左カラムは 380px 固定、右が残り全部を使う */
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .greeting-photo {
+      /* 枠は画像側に持たせるので、ここではレイアウトだけ担当 */
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .greeting-photo-img {
+      display: block;
+      max-width: 380px;
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      /* match hero */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      /* match hero */
+    }
+
+    .greeting-text-box {
+      border-radius: 20px;
+      /* ★ rounded corners */
+      border: 1px solid #4caf50;
+      /* ★ same bright green as others */
+      padding: 24px;
+      /* comfortable spacing */
+      font-size: 16px;
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .greeting-sign {
+      text-align: right;
+      font-size: 16px;
+      margin-top: 24px;
+      /* spacing from body text */
+    }
+
+    /* ========================
+       診察内容
+       ======================== */
+
+    .services-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .service-card {
+      background: var(--green-light);
+      border-radius: 20px;
+      /* padding: 10px; */
+      padding: 16px 20px;
+      /* New */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      border: none;
+      /* remove the red border */
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      transition: 0.15s ease;
+      box-shadow: 0 14px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    .service-card-inner {
+      display: flex;
+      gap: 16px;
+    }
+
+    .service-card img {
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .service-card-text {
+      font-size: 14px;
+    }
+
+    .service-card-text-title {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .services-more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    /* ========================
+       当院について & 理念
+       ======================== */
+
+    .about-photo-group {
+      max-width: 1000px;
+      /* ★ controls how wide the photo row can expand */
+      /* margin: 0 auto 32px; */
+      margin: auto;
+    }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-bottom: 20px;
+      justify-items: center;
+    }
+
+    .about-card-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .about-text-box {
+      border-radius: 12px;
+      border: 1px solid #4caf50;
+      padding: 16px;
+      font-size: 16px;
+    }
+
+    /* ホバー時に少しだけ浮かせる */
+    .about-text-box:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      transform: translateY(-2px);
+    }
+
+    .policy-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    /* 左側テキストはそのまま */
+    .policy-text-box {
+      border-radius: 12px;
+      border: 1px solid #4caf50;
+      padding: 16px;
+      font-size: 16px;
+    }
+
+    /* 右側の枠（写真を入れるカード） */
+    .policy-card {
+      border-radius: 20px;
+      border: 1px solid #4caf50;
+      overflow: hidden;
+      /* ← 角丸に合わせて画像をクリップ */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      /* Hero と同じ影 */
+    }
+
+    .policy-img {
+      width: 100%;
+      /* ★ Fill the frame horizontally */
+      height: 100%;
+      /* ★ Fill the frame vertically */
+      object-fit: cover;
+      /* ★ Zoom & crop to fill perfectly */
+      display: block;
+      border-radius: 0;
+      /* ★ No rounding – handled by container */
+      box-shadow: none;
+      /* ★ Shadow should go on container, not image */
+    }
+
+    /* ========================
+       スタッフ紹介
+       ======================== */
+
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    /* .staff-card {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-gray);
+      border-radius: 20px;
+      border: none;
+      padding: 0;
+      background: none;
+      display: flex;
+      align-items: stretch;
+    } */
+
+    .staff-card {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-gray);
+    }
+
+    /* .staff-photo {
+      border-radius: 24px;
+      border: 1px solid #4caf50;
+      height: 220px;
+      margin-bottom: 8px;
+      width: 100%;
+    } */
+
+    /* Overlay container */
+    .staff-photo {
+      position: relative;
+      /* ★ Overlay を写真の上に重ねるため必須 */
+      border-radius: 24px;
+      border: none;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      aspect-ratio: 4 / 5;
+    }
+
+    /* Hidden by default */
+    .staff-desc {
+      position: absolute;
+      inset: 0;
+      /* top:0; right:0; bottom:0; left:0 と同じ */
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      padding: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #fff;
+
+      background: rgba(0, 0, 0, 0.55);
+      /* 半透明の黒背景 */
+
+      opacity: 0;
+      /* ★ 最初は非表示 */
+      transition: opacity 0.3s ease;
+      /* なめらかにフェード */
+    }
+
+    /* When hover → fade-in description */
+    .staff-photo:hover .staff-desc {
+      opacity: 1;
+    }
+
+    .staff-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* 枠いっぱいに表示しつつ縦横比維持 */
+      display: block;
+    }
+
+    .staff-name {
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    /* 中の写真 */
+    .about-card-image {
+      width: 100%;
+      display: block;
+
+      /* ☆ 全カードを同じ比率・同じ高さにする */
+      aspect-ratio: 4 / 3;
+      /* 横:縦 = 4:3。お好みで 16/9 などに変更可 */
+      object-fit: cover;
+      /* 画像を枠いっぱいに表示しつつ、はみ出す部分だけトリミング */
+
+      border-radius: 16px;
+      /* 角丸（外枠より少し小さく） */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      /* Hero と同じ影 */
+    }
+
+    .about-text-box {
+      border-radius: 20px;
+      border: 1px solid #4caf50;
+      padding: 24px;
+      font-size: 16px;
+      background: #ffffff;
+
+      /* 影＋ホバー用 */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    /* ========================
+       アクセス・お問い合わせ
+       ======================== */
+
+    .access-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .access-map {
+      border-radius: 8px;
+      border: 1px solid #4caf50;
+      padding: 12px;
+      min-height: 260px;
+    }
+
+    .access-text-box {
+      border-radius: 8px;
+      border: 1px solid #4caf50;
+      padding: 16px;
+      font-size: 14px;
+    }
+
+    /* ========================
+       FOOTER
+       ======================== */
+
+    .site-footer {
+      background: var(--green-light);
+      margin-top: 0px;
+    }
+
+    .footer-top {
+      padding: 30px 0;
+    }
+
+    .footer-links {
+      display: flex;
+      padding: 0 32px 0 32px;
+      gap: 96px;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-column-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #283849;
+      margin-bottom: 16px;
+    }
+
+    .footer-link {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .footer-lang {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .footer-lang-selector {
+      position: relative;
+      width: 160px;
+      height: 44px;
+      background: #3a77b5;
+      border-radius: 12px;
+      border: 1px solid #767676;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .footer-lang-selector::after {
+      content: "";
+      width: 10px;
+      height: 6px;
+      background: #fff;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      margin-left: 8px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      padding: 10px 0 24px;
+      border-top: 1px solid #cde6a4;
+    }
+
+    /* ========================
+       RESPONSIVE
+       ======================== */
 
     @media (max-width: 960px) {
-      .header-inner { flex-wrap: wrap; }
-      nav ul { flex-wrap: wrap; }
-      .hero-content { text-align: left; }
-      .cta { justify-content: flex-start; }
+
+      .hero-inner,
+      .time-inner,
+      .news-wrapper,
+      .greeting-inner,
+      .services-inner,
+      .about-cards,
+      .policy-inner,
+      .staff-grid,
+      .access-inner,
+      .footer-links {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .site-header-top-inner {
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+
+      .header-cta-area {
+        align-items: flex-start;
+      }
+
+      .staff-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .logo-box {
+        width: 200px;
+        font-size: 20px;
+      }
+
+      .site-nav-inner {
+        font-size: 14px;
+      }
+
+      .btn-pill-header {
+        padding: 3px 14px;
+        font-size: 13px;
+      }
+
+      .hero-copy-main {
+        font-size: 20px;
+      }
+
+      .status-chip {
+        font-size: 16px;
+        min-width: auto;
+      }
+
+      .staff-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
   </style>
 </head>
+
 <body>
+  <!-- ========================
+       HEADER
+       ======================== -->
   <header>
-    <div class="header-inner">
-      <div class="logo-area">
-        <img src="logo.png" alt="佐藤医院ロゴ">
-        <div>
-          <div class="logo-text">佐藤医院</div>
-          <div style="font-size:12px; color:#555;">Sato Clinic</div>
+    <div class="site-header-top">
+      <div class="container site-header-top-inner">
+        <!--         <div class="logo-box">Logo Here</div> -->
+        <!-- ▼ ロゴ枠（左端の赤枠＋ロゴ） -->
+        <div class="header-logo-frame frame">
+          <img src="image/Logo.png" alt="佐藤医院ロゴ">
+        </div>
+        <div class="header-hours">
+          <div class="header-hours-tags">
+            <span class="chip">診察</span>
+            <span class="chip">午前</span>
+            <span class="chip">午後</span>
+          </div>
+          <div>
+            <div class="header-hours-text">
+              月、火、木、金、土（休診：木日祝）
+            </div>
+            <div class="header-hours-text">09:00-12:00</div>
+            <div class="header-hours-text">14:00-19:00</div>
+          </div>
+        </div>
+
+        <div class="header-cta-area">
+          <!-- <div class="header-cta-buttons">
+            <a href="#reserve" class="btn-pill">WEB予約</a>
+            <a href="#access" class="btn-pill">アクセス</a>
+          </div> -->
+          <div class="header-cta-buttons">
+            <a href="#reserve" class="btn-pill btn-pill-header">WEB予約</a>
+            <a href="#access" class="btn-pill btn-pill-header">アクセス</a>
+          </div>
+
+          <a href="tel:0000000000" class="header-phone">
+            <div class="header-phone-icon">
+              <img src="image/phone.png" alt="Handset">
+            </div>
+            <span>00-0000-0000</span>
+          </a>
         </div>
       </div>
-      <div class="online-btn">オンライン診療はこちら &gt;</div>
-      <nav>
-        <ul>
-          <li><a href="#first">初めての方</a></li>
-          <li><a href="#access">ご来院方法</a></li>
-          <li><a href="#reserve">予約・順番受付</a></li>
-          <li><a href="#schedule">診療時間・担当医</a></li>
-          <li><a href="#contact">お問合せ</a></li>
-        </ul>
-      </nav>
     </div>
+
+    <nav class="site-nav">
+      <div class="container site-nav-inner">
+        <a href="#home">ホーム</a>
+        <a href="#news">おしらせ</a>
+        <a href="#services">診察内容</a>
+        <a href="#about">当院について</a>
+        <a href="#time">診察時間・所在地</a>
+        <a href="#faq">よくあるご質問</a>
+      </div>
+    </nav>
   </header>
 
+  <!-- ========================
+       MAIN
+       ======================== -->
   <main>
-    <section class="hero" id="first">
-      <div class="hero-content">
-        <div>
-          <p class="hero-heading">ようこそ佐藤医院のホームページへ！</p>
-          <p class="hero-sub">佐藤医院（眼科）<br>平日8:30～19:00　土曜8:30～13:00　休診日：日祝<br>〒162-0056 東京都新宿区若松町31-5 G-GOTAKU 1F</p>
-        </div>
-        <div class="card-row">
-          <div class="card">
-            <h3>診療のご案内</h3>
-            <p><!-- ここから診療案内の本文を編集できます -->佐藤医院の診療科目は眼科です。開院以来、眼科専門にさまざまな患者さまの眼の治療に携わってきました。地域の皆さまのかかりつけ医として、安心できる医療を提供することを目指しております。<!-- ここまで --></p>
-            <p><!-- ここから診療ポリシーの本文を編集できます -->当院では丁寧な診察、丁寧な説明を心がけております。丁寧な診察とは、患者さんのお話を聞きながら丁寧に診察をすることを心がけています。丁寧な説明とは、わかりやすい言葉で丁寧に説明することを心がけています。<!-- ここまで --></p>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div>
+            <p class="hero-copy-main">
+              地域の皆さまの健康を見守り<br />
+              未来の安心をしっかりと支える<br />
+              ホームドクターであり続けます
+            </p>
+            <p class="hero-copy-sub">
+              地域に根ざしたホームドクターとして、日々の暮らしにそっと寄り添い、皆さまの未来を支えていく医療を目指しています。<br />
+              小さな体調の変化や、なんとなく不安な気持ちも、遠慮なくご相談ください。<br />
+              丁寧な対話と適切な診療で、安心できる毎日をともにつくります。<br />
+              地域の健康を見守り、人生の節目に寄り添う存在として、長く信頼されるクリニックであり続けます。
+            </p>
           </div>
-          <div class="card">
-            <h3>初めての方へ</h3>
-            <p><!-- ここから初診向けメッセージを編集できます -->●紹介状をお持ちの方は、受付にてお知らせください。<br>●保険証の提出をお願い致します。<br>●診察内容によって順番が前後する場合もございます。あらかじめご了承ください。<!-- ここまで --></p>
-          </div>
-          <div class="card" id="reserve">
-            <h3>ご来院方法</h3>
-            <p><!-- ここから来院方法の本文を編集できます -->〒162-0056 東京都新宿区若松町31-5 G-GOTAKU 1F<br>最寄駅：都営大江戸線「若松河田駅」徒歩3分<br>東京メトロ東西線「早稲田駅」徒歩10分<br>都営バス「河田町」徒歩1分<!-- ここまで --></p>
-          </div>
-        </div>
-        <div class="cta">
-          <a href="#">初めてご来院の方へ</a>
-          <a href="#access">診療時間・担当医のご案内</a>
-        </div>
-      </div>
-    </section>
 
-    <section id="schedule">
-      <h2>診療時間のご案内</h2>
-      <p>当院では、12月より午前の診療が変更となります。詳しくは「診療時間のご案内」をご確認ください。</p>
-
-      <div class="notice">
-        <h3>眼科・外来担当医</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>担当医</th>
-              <th>月</th>
-              <th>火</th>
-              <th>水</th>
-              <th>木</th>
-              <th>金</th>
-              <th>土</th>
-              <th>日祝</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>佐藤太郎</th>
-              <td>午前<br>午後</td>
-              <td>午前<br>午後</td>
-              <td>午前<br>午後</td>
-              <td>-<br>-</td>
-              <td>-<br>-</td>
-              <td>午前<br>-</td>
-              <td>-<br>-</td>
-            </tr>
-            <tr>
-              <th>佐藤花子</th>
-              <td>-<br>-</td>
-              <td>-<br>-</td>
-              <td>-<br>-</td>
-              <td>午前<br>午後</td>
-              <td>午前<br>午後</td>
-              <td>-<br>-</td>
-              <td>-<br>-</td>
-            </tr>
-            <tr>
-              <th>佐藤直樹</th>
-              <td>-<br>-</td>
-              <td>-<br>-</td>
-              <td>-<br>-</td>
-              <td>午前<br>午後</td>
-              <td>午前<br>午後</td>
-              <td>午前<br>-</td>
-              <td>-<br>-</td>
-            </tr>
-            <tr>
-              <th>佐藤真美</th>
-              <td>午前<br>-</td>
-              <td>午前<br>-</td>
-              <td>午前<br>-</td>
-              <td>-<br>-</td>
-              <td>-<br>-</td>
-              <td>-<br>-</td>
-              <td>-<br>-</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="margin-top:8px; font-size:13px; color:#555;">※担当医は急遽変更となる場合がございます。あらかじめご了承ください。</p>
-      </div>
-
-      <div class="highlight">
-        <strong>重要なお知らせ</strong>
-        <marquee behavior="scroll" direction="left" scrollamount="4">◆年末年始休診期間◆ 2021年12月29日（水）～2022年1月3日（月）となります。診療開始は1月4日（火）8:30～です。ご不便をお掛けいたしますが、何卒よろしくお願い致します。</marquee>
-      </div>
-
-      <div class="notice" style="margin-top:18px;">
-        <h3>お知らせ</h3>
-        <ul class="news-list">
-          <li>2021年12月11日　<em><!-- ここからお知らせ1件目の本文を編集できます -->【年末年始 休診のお知らせ】年末年始につき、12月29日～1月3日まで休診とさせていただきます。ご不便をお掛けいたしますが、何卒ご了承くださいますようお願いいたします。<!-- ここまで --></em></li>
-          <li>2021年12月11日　<em><!-- ここからお知らせ2件目の本文を編集できます -->【重要なお知らせ】当院では感染症対策を行っております。院内の定期的な消毒を行い、換気をしております。<!-- ここまで --></em></li>
-          <li>2021年12月11日　<em><!-- ここからお知らせ3件目の本文を編集できます -->【来院の際はマスク着用にご協力ください】感染症予防のため、来院の際はマスクの着用と受付にて検温、手指消毒の実施をお願いしております。ご協力お願いいたします。<!-- ここまで --></em></li>
-          <li>2021年12月11日　<em><!-- ここからお知らせ4件目の本文を編集できます -->【求人情報】当院では看護師、医療事務のスタッフを募集しています。詳しくはお電話にてお問い合わせください。<!-- ここまで --></em></li>
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <h2>ご自宅や職場から診療を受けられます</h2>
-      <p><!-- ここからオンライン診療リード文を編集できます -->体調がすぐれず外出ができない方、仕事で病院に行けない方、お子様がいて受診が難しい方も安心して受診していただけます。スマホ、PC、タブレットからご予約をいただき、来院時と同じように診療を受けることができます。会計はクレジットカード決済。お薬は、事前に指定した薬局にて受け取りが可能です。<!-- ここまで --></p>
-      <div class="online-cards">
-        <div class="online-card">
-          <img src="online01.png" alt="オンライン診療予約アイコン">
-          <div><strong>オンライン診療</strong><br><!-- ここからオンライン診療カード本文を編集できます -->スマホやPCで簡単にオンライン診療。自宅や職場から受診可能。<!-- ここまで --></div>
+          <!-- 右側：hospital.jpg を背景にしたビジュアル -->
+          <div class="hero-image"></div>
         </div>
-        <div class="online-card">
-          <img src="online02.png" alt="オンライン会計アイコン">
-          <div><strong>オンライン会計</strong><br><!-- ここからオンライン会計カード本文を編集できます -->会計はクレジットカード決済でキャッシュレス。<!-- ここまで --></div>
-        </div>
-        <div class="online-card">
-          <img src="online03.png" alt="薬の受け取りアイコン">
-          <div><strong>薬の受け取り</strong><br><!-- ここから薬の受け取りカード本文を編集できます -->指定した薬局でお薬の受け取りができます。<!-- ここまで --></div>
-        </div>
-      </div>
-    </section>
 
-    <section>
-      <h2>当院の方針</h2>
-      <p><!-- ここから当院の方針本文を編集できます -->当院は、地域の皆さまの健康を支え、安心して医療を受けられる環境づくりに取り組んでおります。患者さまの声に耳を傾け、丁寧で分かりやすい説明を心がけています。<!-- ここまで --></p>
-
-      <h3>患者さまへの取り組み</h3>
-      <p><!-- ここから患者さまへの取り組み本文を編集できます -->当院の医療は、患者さまが安心して診療を受けられることを第一に考えています。信頼できる医療を提供するため、設備の充実や、スタッフの育成にも力を入れています。患者さまに安心してご来院いただけるよう、スタッフ一同誠心誠意対応いたします。<!-- ここまで --></p>
-    </section>
-
-    <section>
-      <h2>医師の紹介</h2>
-      <p><!-- ここから医師紹介リード文を編集できます -->患者さまに安心して診療を受けていただけるよう、専門性豊かな医師が担当いたします。気になる症状やご不安な点がありましたらお気軽にご相談ください。<!-- ここまで --></p>
-      <div class="doctor-grid">
-        <div class="doctor-card" data-doctor="院長 佐藤 太郎／眼科医" data-description="眼科全般、先進医療対応。地域の皆さまの健康を守ります。">
-          <img src="doctor01.jpg" alt="院長 佐藤 太郎">
-          <div class="desc">
-            <strong>院長 佐藤 太郎／眼科医</strong>
-            <span>眼科全般、先進医療対応</span>
-          </div>
-        </div>
-        <div class="doctor-card" data-doctor="副院長 佐藤 花子／内科医" data-description="内科、循環器、糖尿病。総合的な内科診療に対応いたします。">
-          <img src="doctor02.jpg" alt="副院長 佐藤 花子">
-          <div class="desc">
-            <strong>副院長 佐藤 花子／内科医</strong>
-            <span>内科、循環器、糖尿病</span>
-          </div>
-        </div>
-        <div class="doctor-card" data-doctor="医師 佐藤 直樹／外科医" data-description="整形外科、スポーツ整形。リハビリテーションにも対応。">
-          <img src="doctor03.jpg" alt="医師 佐藤 直樹">
-          <div class="desc">
-            <strong>医師 佐藤 直樹／外科医</strong>
-            <span>整形外科、スポーツ整形</span>
-          </div>
-        </div>
-        <div class="doctor-card" data-doctor="医師 佐藤 真美／小児科医" data-description="小児科、予防接種、乳幼児健診。お子さまの成長をサポートします。">
-          <img src="doctor04.jpg" alt="医師 佐藤 真美">
-          <div class="desc">
-            <strong>医師 佐藤 真美／小児科医</strong>
-            <span>小児科、予防接種、乳幼児健診</span>
+        <!-- お知らせ：1行目はタイトル、2行目は Marquee -->
+        <div class="hero-notice">
+          <div class="hero-notice-title">重要なお知らせ</div>
+          <div class="hero-notice-body">
+            <div class="hero-notice-marquee">
+              年末年始の休診日は、12月29日(金)～1月4日(木)となります。年始は1月5日(金)より通常診療を再開いたします。
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>院内の雰囲気</h2>
-      <div class="gallery">
-        <img src="interior01.jpg" alt="院内の様子1">
-        <img src="interior02.jpg" alt="院内の様子2">
-        <img src="interior03.jpg" alt="院内の様子3">
-        <img src="interior04.jpg" alt="院内の様子4">
+    <section id="time">
+      <div class="container main-container">
+        <h2 class="section-title">診察時間</h2>
+        <div class="time-inner">
+          <!-- 左：tradinghour.jpg を背景にしたボックス -->
+          <div class="time-image">
+            <img src="image/tradinghour.jpg" alt="Trading Hour">
+          </div>
+
+          <!-- 右：カード＋ボタンをひとまとめにして高さを揃える -->
+          <div>
+            <div class="time-card" id="reserve">
+              <div class="time-status-row">
+                <div class="status-chip status-open">ただいま診察中</div>
+                <div class="status-chip status-close">ただいま休診中</div>
+              </div>
+              <div class="time-text">
+                受付時間：8 時～11 時 / 13～18 時 <br />
+                休診日：木曜・土曜午後・日曜<br /><br />
+                ※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。
+              </div>
+              <div class="time-reserve-btn-wrap">
+                <a href="#" class="btn-pill">WEB予約はこちらから</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- おしらせ -->
+    <section id="news">
+      <div class="container main-container">
+        <h2 class="section-title">おしらせ</h2>
+        <div class="news-wrapper">
+          <div>
+            <div class="news-list">
+              <!-- ① インフルエンザ予防接種について -->
+              <div class="news-item">
+                <button class="news-item-header" type="button">
+                  <div class="news-item-title">インフルエンザ予防接種について</div>
+                  <div class="news-item-icon">+</div>
+                </button>
+                <div class="news-item-content">
+                  <p>今年もインフルエンザの予防接種を開始いたしました。予約制となっておりますので、お電話または受付にてご予約をお願いいたします。
+                    例年、予約が集中しやすいため、早めのご予約をおすすめいたします。</p>
+                </div>
+              </div>
+
+              <!-- ② 年末年始の休診について -->
+              <div class="news-item">
+                <button class="news-item-header" type="button">
+                  <div class="news-item-title">年末年始の休診について</div>
+                  <div class="news-item-icon">+</div>
+                </button>
+                <div class="news-item-content">
+                  <p>年末年始の休診日は、12月29日(金)～1月4日(木)となります。
+                    年始は1月5日(金)より通常診療を再開いたします。
+                    皆様にはご不便をおかけしますが、何卒ご了承くださいますようお願いいたします。</p>
+                </div>
+              </div>
+
+              <!-- ③ 健康診断のご案内 -->
+              <div class="news-item">
+                <button class="news-item-header" type="button">
+                  <div class="news-item-title">健康診断のご案内</div>
+                  <div class="news-item-icon">+</div>
+                </button>
+                <div class="news-item-content">
+                  <p>今年も健康診断を実施しております。定期的な健康チェックは、病気の早期発見・予防にとても重要です。
+                    各種健康診断メニューをご用意しておりますので、ご希望の方はお電話にてお申し込みください。</p>
+                </div>
+              </div>
+
+              <!-- ④ 新型コロナウイルス対策について -->
+              <div class="news-item">
+                <button class="news-item-header" type="button">
+                  <div class="news-item-title">新型コロナウイルス対策について</div>
+                  <div class="news-item-icon">+</div>
+                </button>
+                <div class="news-item-content">
+                  <p>当院では引き続き、新型コロナウイルス感染症対策を徹底しております。
+                    ご来院の際には、マスクの着用、手指消毒にご協力をお願いいたします。
+                    また、発熱や風邪症状のある方は、事前にお電話でご相談いただけるとスムーズにご案内が可能です。</p>
+                </div>
+              </div>
+
+              <!-- ⑤ オンライン診療の導入について -->
+              <div class="news-item">
+                <button class="news-item-header" type="button">
+                  <div class="news-item-title">オンライン診療の導入について</div>
+                  <div class="news-item-icon">+</div>
+                </button>
+                <div class="news-item-content">
+                  <p>2024年より、オンライン診療を一部導入いたしました。
+                    通院が難しい方や、遠方にお住まいの方にご利用いただけます。
+                    ご希望の方は、当院スタッフまでお問い合わせください。
+                    皆様の健康をサポートできるよう、スタッフ一同努めてまいります。
+                    何かご不明な点がございましたら、お気軽にお問い合わせください。</p>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 16px">
+              <a href="#" class="btn-pill">過去のニュース</a>
+            </div>
+          </div>
+          <div class="news-side-box">
+            <img src="image/tree_200px.jpg" alt="tree inside yard" class="shadow-photo-img" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 院長挨拶 -->
+    <section id="greeting">
+      <div class="container main-container">
+        <h2 class="section-title">院長挨拶</h2>
+        <div class="greeting-inner">
+          <div class="greeting-photo">
+            <img src="image/director.jpg" alt="院長写真" class="greeting-photo-img" />
+          </div>
+          <div>
+            <div class="greeting-text-box">
+              こんにちは。佐藤内科医院の院⾧、佐藤太郎と申します。
+              当院のホームページをご覧いただき、ありがとうございます。
+              佐藤内科医院では、「地域に根ざした医療」をモットーに、患者様一人ひとりに寄り添った医療を提供することを目指しております。
+              日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、地域の皆様の健康を支える役割を担っていきたいと考えております。
+              私たちは、患者様の不安を少しでも軽減し、安心して診療を受けていただけるよう、わかりやすい説明と丁寧な対応を心掛けております。
+              また、近隣の医療機関とも連携し、必要に応じて高度医療へのアクセスもサポートいたします。
+              どんな小さな不調でも、どうぞお気軽にご相談ください。
+              これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。
+              どうぞよろしくお願いいたします。
+
+              <div class="greeting-sign">
+                佐藤医院<br>
+                院長 佐藤太郎
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 診察内容 -->
+    <section id="services">
+      <div class="container main-container">
+        <h2 class="section-title">診察内容</h2>
+        <div class="services-inner">
+          <div>
+            <div class="service-card">
+              <div class="service-card-inner">
+                <img src="image/icons/general_practice.png" alt="一般内科診療" />
+                <div class="service-card-text">
+                  <span class="service-card-text-title">一般内科診療</span>
+                  風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。また、原因不明の不調や軽い症状であっても、早期診断に努めております。
+                </div>
+              </div>
+            </div>
+            <div class="service-card" style="margin-top: 16px">
+              <div class="service-card-inner">
+                <img src="image/icons/lifestyle_disease.png" alt="生活習慣病の診断・治療" />
+                <div class="service-card-text">
+                  <span class="service-card-text-title">生活習慣病の診断・治療</span>
+                  高血圧症、糖尿病、脂質異常症（高コレステロール血症）、メタボリック症候群など、生活習慣病の診断と治療を行います。病気の進行を予防し、健康維持のための生活指導や薬物療法を行います。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="service-card">
+              <div class="service-card-inner">
+                <img src="image/icons/gastroenterology.png" alt="消化器系の診察" />
+                <div class="service-card-text">
+                  <span class="service-card-text-title">消化器系の診察</span><br />
+                  胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。
+                </div>
+              </div>
+            </div>
+            <div class="service-card" style="margin-top: 16px">
+              <div class="service-card-inner">
+                <img src="image/icons/respiratory.png" alt="呼吸器系の診察" />
+                <div class="service-card-text">
+                  <span class="service-card-text-title">呼吸器系の診察</span><br />
+                  咳、息切れ、胸の痛みなど、呼吸器系の症状について診察を行っています。季節性の喘息やアレルギー性鼻炎、慢性閉塞性肺疾患（COPD）などにも対応し、適切な治療と予防をサポートします。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-more">
+          <a href="#" class="btn-pill">更に詳しく</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 当院について -->
+    <section id="about">
+      <div class="container main-container">
+        <h2 class="section-title">当院について</h2>
+        <div class="about-cards">
+          <div class="about-card">
+            <img src="image/about_1.jpg" alt="Doctor-1" class="shadow-photo-img">
+          </div>
+          <div class="about-card">
+            <img src="image/about_2.jpg" alt="Doctor-2" class="shadow-photo-img">
+          </div>
+          <div class="about-card">
+            <img src="image/about_3.jpg" alt="Doctor-3" class="shadow-photo-img">
+          </div>
+        </div>
+        <div class="about-text-box">
+          佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。
+        </div>
+        <div style="margin-top: 16px; text-align: center">
+          <a href="#" class="btn-pill">更に詳しく</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 医院の理念・方針 -->
+    <section id="policy">
+      <div class="container main-container">
+        <h2 class="section-title">医院の理念・方針</h2>
+        <div class="policy-inner">
+          <div class="policy-text-box">
+            佐藤医院は、地域医療の一翼を担う医療機関として、「患者様第一」の精神を大切にしています。<br /><br />
+            私たちの理念は、単に病気を治療することにとどまらず、患者様が心身ともに健やかな生活を送るために、あらゆる面からサポートすることです。<br /><br />
+            診療を通じて、皆様が健康で充実した日々を送るお手伝いをすることを使命と考えています。
+          </div>
+          <div class="policy-card">
+            <img src="image/philosophy.jpg" alt="Philosophy" class="policy-img">
+          </div>
+        </div>
+        <div style="margin-top: 16px; text-align: center">
+          <a href="#" class="btn-pill">更に詳しく</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- スタッフ紹介 -->
+    <section id="staff">
+      <div class="container main-container">
+        <h2 class="section-title">スタッフ紹介</h2>
+        <div class="staff-grid">
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="image/taro_sato.jpg" alt="院長 佐藤 太郎" class="staff-img">
+            </div>
+            <!-- ▼ Hover description overlay -->
+            <div class="staff-desc">
+              地域医療に25年以上従事。<br>
+              内科全般の診療を担当しています。
+            </div>
+            <div class="staff-name">院長：佐藤 太郎</div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="image/mari_suzuki.jpg" alt="看護師長 鈴木 真理" class="staff-img">
+            </div>
+            <div class="staff-name">看護師長：鈴木 真理</div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="image/yumi_takahashi.jpg" alt="臨床検査技師 高橋 由美" class="staff-img">
+            </div>
+            <div class="staff-name">臨床検査技師：高橋 由美</div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="image/hana_yamamoto.jpg" alt="医療事務 山本 花" class="staff-img">
+            </div>
+            <div class="staff-name">医療事務：山本 花</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section id="staff">
+      <div class="container main-container">
+        <h2 class="section-title">スタッフ紹介</h2>
+        <div class="staff-grid">
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="image/taro_sato.jpg" alt="Staff-1" class="shadow-photo-img">
+            </div>
+            <div>院長：佐藤 太郎</div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="image/mari_suzuki.jpg" alt="Staff-2" class="shadow-photo-img">
+            </div>
+            <div>看護師長：鈴木 真理</div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="image/yumi_takahashi.jpg" alt="Staff-3" class="shadow-photo-img">
+            </div>
+            <div>臨床検査技師：高橋 由美</div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="image/hana_yamamoto.jpg" alt="Staff-4" class="shadow-photo-img">
+            </div>
+            <div>医療事務：山本 花</div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- アクセス / お問い合わせ -->
     <section id="access">
-      <h2>アクセス</h2>
-      <div class="access">
-        <div>
-          <img src="map.jpg" alt="佐藤医院 周辺地図">
-        </div>
-        <div>
-          <p><!-- ここからアクセス本文を編集できます -->〒162-0056 東京都新宿区若松町31-5 G-GOTAKU 1F</p>
-          <ul>
-            <li>都営大江戸線「若松河田駅」徒歩3分</li>
-            <li>東京メトロ東西線「早稲田駅」徒歩10分</li>
-            <li>都営バス「河田町」徒歩1分</li>
-          </ul>
+      <div class="container main-container">
+        <h2 class="section-title">アクセス（所在地）／ お問い合わせ</h2>
+        <div class="access-inner">
+          <div class="access-map">
+            <!-- Google マップ iframe などを埋め込む想定 -->
+          </div>
+          <div class="access-text-box">
+            <strong>【住所】</strong><br />
+            〒123-4567 東京都台東区上野 0 丁目 0 - 0<br /><br />
+
+            <strong>【アクセス】</strong><br />
+            最寄駅: JR 上野より徒歩 5 分<br />
+            当院専用の無料駐車場 10 台分あり<br /><br />
+            ご来院の際は、交通状況にご注意ください。<br />
+            最寄駅から徒歩 5 分の距離にあり、便利な立地です。<br /><br />
+
+            <strong>【お問い合わせ】</strong><br />
+            電話番号: 00-0000-0000<br />
+            ファックス: 00-0000-0000<br />
+            Eメール: info@sato-clinic-test.jp
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- ダミーアンカー：よくあるご質問 -->
+    <!-- FAQ ページへのリンク等を後で追加想定 -->
+    <!-- <section id="faq" style="padding-top: 16px; padding-bottom: 16px; border-bottom: none;">
+      <div class="container">
+
+      </div>
+    </section> -->
   </main>
 
-  <footer id="contact">
-    <div class="footer-inner">
-      <div>
-        <h3>Guide Links</h3>
-        <ul>
-          <li>お知らせ</li>
-          <li>ご来院方法</li>
-          <li>診療のご案内</li>
-        </ul>
-      </div>
-      <div>
-        <h3>佐藤医院</h3>
-        <p><!-- ここから住所・営業時間の本文を編集できます -->所在地：〒162-0056 東京都新宿区若松町31-5 G-GOTAKU 1F<br>診療時間（平日）8:30～19:00　（土曜）8:30～13:00　休診日：日祝</p>
-        <p><!-- ここからオンライン診療説明を編集できます -->オンライン診療にも対応しております。外出が難しい方もお気軽にご相談ください。</p>
-      </div>
-      <div>
-        <h3>診療のご案内</h3>
-        <ul>
-          <li>オンライン診療</li>
-          <li>ご来院方法</li>
-          <li>診療時間・担当医</li>
-        </ul>
-      </div>
-      <div>
-        <h3>ご予約・ご相談</h3>
-        <p>03-9876-5432</p>
-        <p><!-- ここから予約案内の本文を編集できます -->初診の方もお気軽にお問い合わせください。</p>
+  <!-- ========================
+       FOOTER
+       ======================== -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container footer-links">
+        <div>
+          <div class="footer-column-title">Quick Links</div>
+          <div class="footer-link">サイトマップ</div>
+          <div class="footer-link">プライバシーポリシー</div>
+          <div class="footer-link">サイトポリシー</div>
+          <div class="footer-link">Placeholder</div>
+          <div class="footer-link">Placeholder</div>
+        </div>
+
+        <div>
+          <div class="footer-column-title">当院について</div>
+          <div class="footer-link">院長略歴・ご挨拶</div>
+          <div class="footer-link">沿革</div>
+          <div class="footer-link">医師・スタッフご紹介</div>
+          <div class="footer-link">診察科目と内容</div>
+          <div class="footer-link">院内・診療機器ご紹介</div>
+        </div>
+
+        <div>
+          <div class="footer-column-title">ご予約はこちらから</div>
+          <div class="footer-link">WEB予約</div>
+          <div class="footer-link">WEB問診票</div>
+          <div class="footer-link">アクセス（所在地）</div>
+          <div class="footer-link">お問い合わせ</div>
+          <div class="footer-link">よくあるご質問</div>
+        </div>
+
+        <div class="footer-lang">
+          <div class="footer-lang-selector">
+            <span>日本語</span>
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <div>© 2023 sato clinic.</div>
-      <div><a href="#">プライバシーポリシー</a>　|　<a href="#">お問い合わせ</a></div>
+      Copyright © 佐藤医院 All rights reserved<br />
+      Produced by 20251005
     </div>
   </footer>
-
-  <div class="modal-overlay" id="doctorModal">
-    <div class="modal-content">
-      <span class="modal-close" id="modalClose">×</span>
-      <h3 id="modalDoctor"></h3>
-      <p id="modalDescription"></p>
-    </div>
-  </div>
-
   <script>
-    const modal = document.getElementById('doctorModal');
-    const modalDoctor = document.getElementById('modalDoctor');
-    const modalDescription = document.getElementById('modalDescription');
-    const modalClose = document.getElementById('modalClose');
+    // おしらせのアコーディオン制御
+    document.addEventListener("DOMContentLoaded", function () {
+      const headers = document.querySelectorAll(".news-item-header");
 
-    document.querySelectorAll('.doctor-card').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        modalDoctor.textContent = card.dataset.doctor;
-        modalDescription.textContent = card.dataset.description;
-        modal.style.display = 'flex';
+      headers.forEach(function (header) {
+        header.addEventListener("click", function () {
+          const item = header.closest(".news-item");
+          // 開閉トグル
+          item.classList.toggle("open");
+
+          // ※ もし「常に1件だけ開きたい」場合は、下のコメントアウトを使う
+          /*
+          document.querySelectorAll(".news-item").forEach(function (other) {
+            if (other !== item) {
+              other.classList.remove("open");
+            }
+          });
+          item.classList.toggle("open");
+          */
+        });
       });
     });
-
-    const hideModal = () => { modal.style.display = 'none'; };
-    modalClose.addEventListener('click', hideModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideModal(); });
   </script>
+
 </body>
+
 </html>
