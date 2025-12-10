@@ -464,17 +464,22 @@
     }
 
     .news-list {
-      border: 1px solid #666;
-      border-radius: 4px;
+      border-radius: 20px;
+      /* 他セクションと同じ角丸 */
+      border: 1px solid var(--border-gray);
+      /* #dddddd を使用 */
       overflow: hidden;
+      background: #fff;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      /* ふんわり影 */
     }
 
-    /* 1つのニュース全体 */
+    /* 1つのニュース同士を区切る線 */
     .news-item {
-      border-top: 1px solid #666;
+      border-top: 1px solid var(--border-gray);
     }
 
-    /* 一番上だけ上線なし */
+    /* 一番上だけ線ナシ */
     .news-item:first-child {
       border-top: none;
     }
@@ -491,6 +496,23 @@
       cursor: pointer;
     }
 
+    .news-item-header {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .news-item-header:hover {
+      background: #f7fff0;
+      /* ごく淡いグリーン */
+    }
+
     /* タイトル文字部分 */
     .news-item-title {
       flex: 1;
@@ -503,7 +525,7 @@
     /* 右側の＋アイコン */
     .news-item-icon {
       width: 40px;
-      border-left: 1px solid #666;
+      border-left: 1px solid var(--border-gray);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -512,8 +534,13 @@
     }
 
     /* 展開されたときは＋を45度回転させて×風に */
-    .news-item.open .news-item-icon {
+    /* .news-item.open .news-item-icon {
       transform: rotate(45deg);
+    } */
+
+    .news-item.open .news-item-header {
+      background: var(--green-light);
+      /* :root の #d9ffb3 */
     }
 
     /* 展開エリア（本文） */
@@ -530,12 +557,6 @@
     .news-item.open .news-item-content {
       display: block;
     }
-
-    /* .news-side-box {
-      border: 1px solid #ff383c;
-      border-radius: 8px;
-      min-height: 220px;
-    } */
 
     .news-side-box {
       /* コンテナは「位置合わせ」だけ担当 */
@@ -599,7 +620,7 @@
       /* ★ rounded corners */
       border: 1px solid #4caf50;
       /* ★ same bright green as others */
-      padding: 24px;
+      padding: 10px 24px;
       /* comfortable spacing */
       font-size: 16px;
       line-height: 1.8;
@@ -609,7 +630,7 @@
     .greeting-sign {
       text-align: right;
       font-size: 16px;
-      margin-top: 24px;
+      margin-top: 10px;
       /* spacing from body text */
     }
 
@@ -881,10 +902,50 @@
     }
 
     .access-map {
-      border-radius: 8px;
+      border-radius: 12px;
       border: 1px solid #4caf50;
+      padding: 0;
+      min-height: 350px;
+      overflow: hidden;
+      position: relative;
+      /* ★ ボタンを中でレイアウトできるように */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* iframe を枠いっぱいに広げる */
+    .access-map iframe {
+      width: 100%;
+      height: 100%;
+      flex-grow: 1;
+      /* ★ 余ったスペースをすべて地図に使わせる */
+      border: 0;
+      display: block;
+    }
+
+    .map-actions {
       padding: 12px;
-      min-height: 260px;
+      background: #fff;
+      border-top: 1px solid #e0e0e0;
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .map-btn {
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid #0065a8;
+      background: #fff;
+      color: #0065a8;
+      font-size: 14px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .map-btn:hover {
+      background: #0065a8;
+      color: #fff;
     }
 
     .access-text-box {
@@ -1375,14 +1436,19 @@
       <div class="container main-container">
         <h2 class="section-title">スタッフ紹介</h2>
         <div class="staff-grid">
+
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/taro_sato.jpg" alt="院長 佐藤 太郎" class="staff-img">
-            </div>
-            <!-- ▼ Hover description overlay -->
-            <div class="staff-desc">
-              地域医療に25年以上従事。<br>
-              内科全般の診療を担当しています。
+
+              <!-- ▼ Hover description overlay (★ staff-photo の中に移動) -->
+              <div class="staff-desc">
+                経歴：光明大学医学部卒業後、瑞穂中央総合病院で内科医として10年間勤務。<br>
+                その後、地域医療への貢献を目指し、佐藤内科医院を開院。<br>
+                専門分野： 生活習慣病、呼吸器疾患、内科全般<br><br>
+                コメント： 患者様にとって気軽に相談できる「かかりつけ医」を目指しています。<br>
+                どんな小さな不安でも、まずはご相談ください。
+              </div>
             </div>
             <div class="staff-name">院長：佐藤 太郎</div>
           </div>
@@ -1390,6 +1456,13 @@
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/mari_suzuki.jpg" alt="看護師長 鈴木 真理" class="staff-img">
+              <!-- ▼ Hover description overlay (★ staff-photo の中に移動) -->
+              <div class="staff-desc">
+                経歴： 白桜大学看護学部卒業後、緑が丘大学病院で10 年勤務。地域医療に携わりたい思いから、佐藤内科医院に入職。<br>
+                得意分野： 親身な対応、注射・採血技術、健康管理指導<br><br>
+                メッセージ： 安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。<br>
+                些細なことでもお気軽にご相談ください。
+              </div>
             </div>
             <div class="staff-name">看護師長：鈴木 真理</div>
           </div>
@@ -1397,6 +1470,12 @@
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/yumi_takahashi.jpg" alt="臨床検査技師 高橋 由美" class="staff-img">
+              <!-- ▼ Hover description overlay (★ staff-photo の中に移動) -->
+              <div class="staff-desc">
+                経歴： 東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15年間の臨床検査技師としての経験を積む。<br>
+                得意分野： 血液検査、心電図検査、超音波検査<br><br>
+                コメント： 検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。<br>
+              </div>
             </div>
             <div class="staff-name">臨床検査技師：高橋 由美</div>
           </div>
@@ -1404,6 +1483,13 @@
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/hana_yamamoto.jpg" alt="医療事務 山本 花" class="staff-img">
+              <!-- ▼ Hover description overlay (★ staff-photo の中に移動) -->
+              <div class="staff-desc">
+                経歴： 希望医療カレッジ卒業後、さくら診療所にて受付業務を担当。現在は佐藤内科医院で患者様対応を担当。<br>
+                得意分野： 受付業務、カルテ管理、医療費計算<br><br>
+                コメント： 皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。<br>
+                初めての方もどうぞ安心してお越しください。
+              </div>
             </div>
             <div class="staff-name">医療事務：山本 花</div>
           </div>
@@ -1447,10 +1533,26 @@
     <section id="access">
       <div class="container main-container">
         <h2 class="section-title">アクセス（所在地）／ お問い合わせ</h2>
+
         <div class="access-inner">
+          <!-- 左：地図＋ボタン -->
           <div class="access-map">
-            <!-- Google マップ iframe などを埋め込む想定 -->
+            <iframe src="https://www.google.com/maps?q=〒110-0015+東京都台東区東上野３−１５−５+曽我ビル3階&hl=ja&z=17&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+
+            <div class="map-actions">
+              <a href="https://www.google.com/maps/search/?api=1&query=〒110-0015+東京都台東区東上野３−１５−５+曽我ビル3階" target="_blank"
+                class="map-btn">
+                Googleマップで開く
+              </a>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=〒110-0015+東京都台東区東上野３−１５−５+曽我ビル3階"
+                target="_blank" class="map-btn">
+                現在地からのルートを表示
+              </a>
+            </div>
           </div>
+
+          <!-- 右：住所・アクセス情報（★ グリッドの中に移動） -->
           <div class="access-text-box">
             <strong>【住所】</strong><br />
             〒123-4567 東京都台東区上野 0 丁目 0 - 0<br /><br />
