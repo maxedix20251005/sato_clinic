@@ -13,9 +13,8 @@
       --text-main: #2a5c8a;
       --text-gray: #767676;
       --border-gray: #dddddd;
-      /* ▼ カード用の共通シャドウ（About のテキストと同じ強さ） */
-      /* --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); */
-      --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      --bg-body: #f5ffe8;
+      /* ← ヘッダーよりかなり薄い黄緑系 */
     }
 
     * {
@@ -55,7 +54,7 @@
       margin: 0 auto;
       padding: 0 20px 20px 20px;
       background: #ffffff;
-      border-radius: 24px;
+      border-radius: 20px;
     }
 
     /* ========================
@@ -381,10 +380,19 @@
     }
 
     .time-image {
+      /* border-radius: 20px;
+      background: #ffffff;
+      background-image: url("image/tradinghour.jpg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #fff; */
       height: 100%;
       display: flex;
       align-items: center;
-      justify-content: flex-start;/
+      justify-content: flex-start;
+      /* center にしてもOK */
+      /* 高さは中身に合わせる */
     }
 
     /* 中の <img> に対して */
@@ -393,7 +401,7 @@
       /* カラム幅いっぱいに表示 */
       height: auto;
       display: block;
-      border-radius: 24px;
+      border-radius: 20px;
       /* 右と同じ丸み */
       border: 1px solid #4caf50;
       /* ★ 右のカードと同じ色のボーダー */
@@ -402,13 +410,12 @@
     /* 右側カード：左の time-image と高さを揃えるために高さ 100%＋flex レイアウト */
     .time-card {
       background: var(--green-light);
-      border-radius: 24px;
+      border-radius: 20px;
       border: 1px solid #4caf50;
       padding: 20px;
       display: flex;
       flex-direction: column;
       gap: 16px;
-      box-shadow: var(--card-shadow);
     }
 
     .time-status-row {
@@ -457,14 +464,14 @@
     }
 
     .news-list {
-      border-radius: 24px;
+      border-radius: 20px;
       /* 他セクションと同じ角丸 */
       border: 1px solid var(--border-gray);
       /* #dddddd を使用 */
       overflow: hidden;
       background: #fff;
-      /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08); */
-      box-shadow: var(--card-shadow);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      /* ふんわり影 */
     }
 
     /* 1つのニュース同士を区切る線 */
@@ -554,11 +561,18 @@
     .news-side-box {
       /* コンテナは「位置合わせ」だけ担当 */
       display: flex;
-      border-radius: 24px;
+      border-radius: 20px;
       justify-content: center;
       /* 右寄せ。中央にしたければ center */
       /* padding や border は付けない */
     }
+
+    /* img {
+      width: 315px;
+      height: auto;
+      border-radius: 20px;
+      border-color: 1px solid #4caf50;
+    } */
 
     /* 実際に赤枠を付けるのは画像側 */
     .news-side-image {
@@ -566,7 +580,7 @@
       /* ★ ここに画像の実サイズを指定 */
       height: 250px;
       display: block;
-      border-radius: 24px;
+      border-radius: 20px;
       border: 1px solid #4caf50;
       object-fit: cover;
     }
@@ -602,7 +616,7 @@
     }
 
     .greeting-text-box {
-      border-radius: 24px;
+      border-radius: 20px;
       /* ★ rounded corners */
       border: 1px solid #4caf50;
       /* ★ same bright green as others */
@@ -611,7 +625,6 @@
       font-size: 16px;
       line-height: 1.8;
       position: relative;
-      box-shadow: var(--card-shadow);
     }
 
     .greeting-sign {
@@ -634,12 +647,13 @@
 
     .service-card {
       background: var(--green-light);
-      border-radius: 24px;
+      border-radius: 20px;
       /* padding: 10px; */
       padding: 16px 20px;
-      /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); */
-      box-shadow: var(--card-shadow);
+      /* New */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
       border: none;
+      /* remove the red border */
     }
 
     .service-card:hover {
@@ -656,7 +670,7 @@
     .service-card img {
       width: 150px;
       height: 150px;
-      border-radius: 24px;
+      border-radius: 20px;
       object-fit: cover;
       flex-shrink: 0;
     }
@@ -701,20 +715,15 @@
       width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
-      border-radius: 24px;
+      border-radius: 20px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
     }
 
     .about-text-box {
-      border-radius: 24px;
+      border-radius: 12px;
       border: 1px solid #4caf50;
-      padding: 24px;
+      padding: 16px;
       font-size: 16px;
-      background: #ffffff;
-
-      /* ここだけ修正 */
-      box-shadow: var(--card-shadow);
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
 
     /* ホバー時に少しだけ浮かせる */
@@ -736,16 +745,16 @@
       border: 1px solid #4caf50;
       padding: 16px;
       font-size: 16px;
-      box-shadow: var(--card-shadow);
     }
 
     /* 右側の枠（写真を入れるカード） */
     .policy-card {
-      border-radius: 24px;
+      border-radius: 20px;
       border: 1px solid #4caf50;
       overflow: hidden;
-      /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); */
-      box-shadow: var(--card-shadow);
+      /* ← 角丸に合わせて画像をクリップ */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      /* Hero と同じ影 */
     }
 
     .policy-img {
@@ -772,11 +781,31 @@
       gap: 16px;
     }
 
+    /* .staff-card {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-gray);
+      border-radius: 20px;
+      border: none;
+      padding: 0;
+      background: none;
+      display: flex;
+      align-items: stretch;
+    } */
+
     .staff-card {
       text-align: center;
       font-size: 16px;
       color: var(--text-gray);
     }
+
+    /* .staff-photo {
+      border-radius: 24px;
+      border: 1px solid #4caf50;
+      height: 220px;
+      margin-bottom: 8px;
+      width: 100%;
+    } */
 
     /* Overlay container */
     .staff-photo {
@@ -785,8 +814,7 @@
       border-radius: 24px;
       border: none;
       overflow: hidden;
-      /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); */
-      box-shadow: var(--card-shadow);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
       aspect-ratio: 4 / 5;
     }
 
@@ -833,6 +861,35 @@
       line-height: 1.6;
     }
 
+    /* 中の写真 */
+    .about-card-image {
+      width: 100%;
+      display: block;
+
+      /* ☆ 全カードを同じ比率・同じ高さにする */
+      aspect-ratio: 4 / 3;
+      /* 横:縦 = 4:3。お好みで 16/9 などに変更可 */
+      object-fit: cover;
+      /* 画像を枠いっぱいに表示しつつ、はみ出す部分だけトリミング */
+
+      border-radius: 16px;
+      /* 角丸（外枠より少し小さく） */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      /* Hero と同じ影 */
+    }
+
+    .about-text-box {
+      border-radius: 20px;
+      border: 1px solid #4caf50;
+      padding: 24px;
+      font-size: 16px;
+      background: #ffffff;
+
+      /* 影＋ホバー用 */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
     /* ========================
        アクセス・お問い合わせ
        ======================== */
@@ -854,7 +911,6 @@
       /* ★ ボタンを中でレイアウトできるように */
       display: flex;
       flex-direction: column;
-      /* box-shadow: var(--card-shadow); */
     }
 
     /* iframe を枠いっぱいに広げる */
@@ -865,7 +921,6 @@
       /* ★ 余ったスペースをすべて地図に使わせる */
       border: 0;
       display: block;
-      box-shadow: var(--card-shadow);
     }
 
     .map-actions {
@@ -898,7 +953,6 @@
       border: 1px solid #4caf50;
       padding: 16px;
       font-size: 14px;
-      box-shadow: var(--card-shadow);
     }
 
     /* ========================
@@ -1035,19 +1089,6 @@
       .staff-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-    }
-
-    .time-card,
-    .news-list,
-    .greeting-text-box,
-    .service-card,
-    .about-text-box,
-    .policy-text-box,
-    .policy-card,
-    .staff-photo,
-    .access-map,
-    .access-text-box {
-      box-shadow: var(--card-shadow);
     }
   </style>
 </head>
