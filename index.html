@@ -17,8 +17,7 @@
       --text-main: #2a5c8a;
       --text-gray: #767676;
       --border-gray: #dddddd;
-      /* ▼ カード用の共通シャドウ（About のテキストと同じ強さ） */
-      /* --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); */
+      /* Common shadow for cards (same weight of "About" text */
       --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
     }
 
@@ -31,12 +30,10 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         "Noto Sans JP", sans-serif;
       background-color: var(--bg-body);
-      /* ← 全体の地色を薄い緑に */
       color: #000;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         "Noto Sans JP", sans-serif;
       background-color: var(--bg-body);
-      /* ← 全体の地色を薄い緑に */
       color: #000;
       line-height: 1.7;
     }
@@ -54,11 +51,10 @@
 
     .container {
       width: min(1200px, 100% - 32px);
-      /* ← ヘッダー＆フッターは従来の 1440px */
       margin: 0 auto;
     }
 
-    /* メイン（セクション）用：幅 1300px＋白背景 */
+    /* Main section width (1300px with white background */
     .main-container {
       width: min(1200px, 100% - 32px);
       margin: 0 auto;
@@ -164,12 +160,10 @@
       white-space: nowrap;
     }
 
-    /* ヘッダー内 CTA ボタン用（少し細め＆小さめ） */
+    /* CTA button in Header section */
     .btn-pill-header {
       padding: 4px 20px;
-      /* 縦の余白を減らす */
       font-size: 14px;
-      /* 文字も少しだけ小さく */
     }
 
     .header-phone {
@@ -183,7 +177,6 @@
       color: var(--text-main);
       text-decoration: none;
       line-height: 1;
-      /* ★ これを追加して行間を詰める */
     }
 
     .header-phone-icon {
@@ -200,19 +193,14 @@
       height: 100%;
       object-fit: contain;
       transform: translateY(0px);
-      /* 下に 1px ずらす。上げたい場合は -1px */
-      /* ← 緑色に着色する（好みに合わせて調整可） */
-      /* filter: brightness(0) saturate(100%) sepia(20%) hue-rotate(70deg) saturate(300%); */
     }
 
     /* nav */
     .site-nav {
       background: var(--green-light);
       border-top: none;
-      /* 上線を消して一体感を出す */
       border-bottom: 1px solid #cde6a4;
       margin-top: -10px;
-      /* すこし上に寄せたい場合 ※調整用 */
     }
 
     .site-nav-inner {
@@ -225,50 +213,41 @@
       font-size: 24px;
     }
 
-    /* ナビゲーションリンク：文字だけ＋シャドウ */
+    /* Navigation link */
     .site-nav a {
       position: relative;
       display: inline-block;
-      /* transform を効かせるため */
       padding: 4px 6px;
-      /* 余白は控えめに */
       font-weight: 700;
       /* color: var(--text-main); */
       color: darkgreen;
       text-decoration: none;
-      /* 文字の下にうっすら影を落とす */
       text-shadow:
         0 1px 0 rgba(255, 255, 255, 0.8),
-        /* 上側のハイライトっぽい効果 */
+        /* Highlight effect for upper part */
         0 3px 3px rgba(0, 0, 0, 0.18);
-      /* 下方向の影 */
+      /* Shadow effect for bottom part */
     }
 
     .site-nav a::after {
-      /* 特別な装飾は付けないので空のまま */
       display: inline-block;
-      /* transform を効かせるため */
       padding: 4px 6px;
-      /* 余白は控えめに */
       font-weight: 700;
       /* color: var(--text-main); */
       color: darkgreen;
       text-decoration: none;
-      /* 文字の下にうっすら影を落とす */
       text-shadow:
         0 1px 0 rgba(255, 255, 255, 0.8),
-        /* 上側のハイライトっぽい効果 */
         0 3px 3px rgba(0, 0, 0, 0.18);
-      /* 下方向の影 */
     }
 
     .site-nav a::after {
-      /* 特別な装飾は付けないので空のまま */
+      /* No special effect */
       content: "";
     }
 
     .site-nav a:hover {
-      /* ホバー時に少しだけ下に押し込まれる感じ */
+      /* Effect when mouse hovering */
       transform: translateY(1px);
       text-shadow:
         0 0px 0 rgba(255, 255, 255, 0.8),
@@ -276,7 +255,7 @@
     }
 
     .site-nav a:hover {
-      /* ホバー時に少しだけ下に押し込まれる感じ */
+      /* Effect when mouse hovering */
       transform: translateY(1px);
       text-shadow:
         0 0px 0 rgba(255, 255, 255, 0.8),
@@ -284,7 +263,7 @@
     }
 
     /* ========================
-       SECTIONS 共通
+       SECTIONS COMMON
        ======================== */
     main {
       padding: 24px 0 0;
@@ -313,10 +292,8 @@
       background: var(--green-light);
     }
 
-    /* .hero-inner { */
-
     /* ========================
-       SECTIONS 共通
+       SECTIONS COMMON
        ======================== */
     main {
       padding: 24px 0 0;
@@ -388,9 +365,9 @@
       border-radius: 24px;
       min-height: 260px;
       background-image: url("image/hospital.jpg");
-      /* ★ 右側に hospital.jpg を表示 */
+      /* Display hospital.jpg on the right */
       background-size: cover;
-      background-position: center;
+      background-position: top;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
     }
 
@@ -403,13 +380,13 @@
       border-radius: 24px;
       min-height: 260px;
       background-image: url("image/hospital.jpg");
-      /* ★ 右側に hospital.jpg を表示 */
+      /* Display hospital.jpg on the right */
       background-size: cover;
       background-position: center;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
     }
 
-    /* お知らせボックス */
+    /* News box */
     .hero-notice {
       margin-top: 10px;
       padding: 5px 16px;
@@ -427,12 +404,10 @@
       color: var(--text-gray);
       line-height: 1.6;
       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-      /* font-size: 20px;
-      font-weight: bold; */
       margin-bottom: 4px;
     }
 
-    /* 下の1行テキスト部分を Marquee 用コンテナにする */
+    /* Container for marquee text */
     .hero-notice-body {
       font-size: 14px;
       color: var(--text-main);
@@ -442,15 +417,15 @@
       position: relative;
     }
 
-    /* 実際に流れるテキスト */
+    /* Marquee text */
     .hero-notice-marquee {
       display: inline-block;
       padding-left: 100%;
       animation: heroMarquee 30s linear infinite;
-      /* ★ ゆっくり右→左 */
+      /* Right to left, slowly... */
     }
 
-    /* 右から左へゆっくり流すアニメーション */
+    /* Animation, right to left slowly */
     @keyframes heroMarquee {
       0% {
         transform: translateX(0);
@@ -462,8 +437,6 @@
     }
 
     .shadow-photo-img {
-      /* width: auto%;
-      height: 100%; */
       width: 100%;
       height: auto;
       border-radius: 24px;
@@ -471,12 +444,10 @@
     }
 
     /* ========================
-       診察時間
+       Service hour
        ======================== */
 
-    /* .time-inner { */
-
-    /* お知らせボックス */
+    /* News box */
     .hero-notice {
       margin-top: 10px;
       padding: 5px 16px;
@@ -490,16 +461,13 @@
       font-weight: 700;
       text-align: center;
       margin: 0 0 20px;
-      /* color: var(--text-main); */
       color: var(--text-gray);
       line-height: 1.6;
       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-      /* font-size: 20px;
-      font-weight: bold; */
       margin-bottom: 4px;
     }
 
-    /* 下の1行テキスト部分を Marquee 用コンテナにする */
+    /* Container for marquee text */
     .hero-notice-body {
       font-size: 14px;
       color: var(--text-main);
@@ -509,15 +477,15 @@
       position: relative;
     }
 
-    /* 実際に流れるテキスト */
+    /* Marquee text */
     .hero-notice-marquee {
       display: inline-block;
       padding-left: 100%;
       animation: heroMarquee 30s linear infinite;
-      /* ★ ゆっくり右→左 */
+      /* Right to left, slowly */
     }
 
-    /* 右から左へゆっくり流すアニメーション */
+    /* Animation, right to left slowly */
     @keyframes heroMarquee {
       0% {
         transform: translateX(0);
@@ -529,8 +497,6 @@
     }
 
     .shadow-photo-img {
-      /* width: auto%;
-      height: 100%; */
       width: 100%;
       height: auto;
       border-radius: 24px;
