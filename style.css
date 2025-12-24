@@ -8,7 +8,10 @@
       --text-main: #2a5c8a;
       --text-gray: #767676;
       --border-gray: #dddddd;
-      --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      /* --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.08); */
+      --shadow-sm: 0 4px 8px rgba(0, 0, 0, .06);
+      --shadow-md: 0 8px 16px rgba(0, 0, 0, .08);
+      --shadow-lg: 0 14px 24px rgba(0, 0, 0, .16);
       --bg-body: #f5f5f5;
     }
 
@@ -55,21 +58,22 @@
     }
 
     main {
-      padding: 24px 0 0;
+      padding: 0px 0 0;
     }
 
     section {
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border-gray);
+      padding: 12px 0;
+      /* Display light gray line between each section as separator */
+      /* border-bottom: 1px solid var(--border-gray); */
     }
 
     .section-title {
-      display: inline-block;
-      padding: 4px 10px;
-      border-bottom: 1px solid #b2b2b2;
-      color: var(--text-gray);
-      font-size: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 32px;
+      padding-top: 15px;
+      padding-bottom: 6px;
+      border-bottom: 5px double var(--text-gray);
+      /* box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.2); */
+      color: var(--blue-main);
     }
 
     /* ========================
@@ -262,6 +266,11 @@
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
     }
 
+    .hero-inner:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      transform: translateY(-2px);
+    }
+
     .hero-copy-main {
       font-size: 26px;
       font-weight: 700;
@@ -287,25 +296,31 @@
 
     /* Notice */
     .hero-notice {
-      margin-top: 10px;
+      margin-top: 24px;
       padding: 5px 16px;
       border: none;
       border-radius: 24px;
       background: #fff;
     }
 
+    .hero-notice:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      transform: translateY(-2px);
+    }
+
     .hero-notice-title {
       font-size: 20px;
       font-weight: 700;
       text-align: center;
-      margin: 0 0 4px;
+      margin: 4px 0 4px;
       color: var(--text-gray);
       line-height: 1.6;
       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     }
 
     .hero-notice-body {
-      font-size: 14px;
+      font-size: 16px;
+      margin: 4px 0 4px;
       color: var(--text-main);
       font-weight: 700;
       overflow: hidden;
@@ -340,10 +355,16 @@
     }
 
     .time-image {
+      border-radius: 24px;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: flex-start;
+    }
+
+    .time-image:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      transform: translateY(-2px);
     }
 
     .time-image img {
@@ -362,7 +383,12 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-md);
+    }
+
+    .time-card:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      transform: translateY(-2px);
     }
 
     .time-status-row {
@@ -413,7 +439,7 @@
       border: 1px solid var(--border-gray);
       overflow: hidden;
       background: #fff;
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-md);
     }
 
     .news-item {
@@ -523,7 +549,12 @@
       font-size: 16px;
       line-height: 1.8;
       position: relative;
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-md);
+    }
+
+    .greeting-text-box:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      transform: translateY(-2px);
     }
 
     .greeting-sign {
@@ -553,7 +584,7 @@
       /* padding: 10px; */
       padding: 16px 20px;
       /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); */
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-md);
       border: none;
     }
 
@@ -626,13 +657,10 @@
       padding: 24px;
       font-size: 16px;
       background: #ffffff;
-
-      /* ここだけ修正 */
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-md);
       transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
 
-    /* ホバー時に少しだけ浮かせる */
     .about-text-box:hover {
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
       transform: translateY(-2px);
@@ -645,22 +673,25 @@
       align-items: flex-start;
     }
 
-    /* 左側テキストはそのまま */
     .policy-text-box {
-      border-radius: 12px;
+      border-radius: 24px;
       border: 1px solid #4caf50;
       padding: 16px;
       font-size: 16px;
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-md);
     }
 
-    /* 右側の枠（写真を入れるカード） */
+    .policy-text-box:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      transform: translateY(-2px);
+    }
+
     .policy-card {
       border-radius: 24px;
       border: 1px solid #4caf50;
       overflow: hidden;
       /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); */
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-lg);
     }
 
     .policy-img {
@@ -701,7 +732,7 @@
       border: none;
       overflow: hidden;
       /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); */
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-lg);
       aspect-ratio: 4 / 5;
     }
 
@@ -760,7 +791,7 @@
     }
 
     .access-map {
-      border-radius: 12px;
+      border-radius: 24px;
       border: 1px solid #4caf50;
       padding: 0;
       min-height: 350px;
@@ -769,7 +800,7 @@
       /* Button layout (inside) */
       display: flex;
       flex-direction: column;
-      /* box-shadow: var(--card-shadow); */
+      box-shadow: var(--shadow-md);
     }
 
     /* iframe */
@@ -780,7 +811,7 @@
       /* Let all spaces used for the map */
       border: 0;
       display: block;
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-md);
     }
 
     .map-actions {
@@ -809,11 +840,16 @@
     }
 
     .access-text-box {
-      border-radius: 8px;
+      border-radius: 24px;
       border: 1px solid #4caf50;
       padding: 16px;
       font-size: 14px;
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-md);
+    }
+
+    .access-text-box:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      transform: translateY(-2px);
     }
 
     /* ========================
@@ -963,5 +999,5 @@
     .staff-photo,
     .access-map,
     .access-text-box {
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--shadow-md);
     }
