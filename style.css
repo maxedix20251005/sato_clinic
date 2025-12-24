@@ -8,10 +8,12 @@
       --text-main: #2a5c8a;
       --text-gray: #767676;
       --border-gray: #dddddd;
-      /* --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.08); */
       --shadow-sm: 0 4px 8px rgba(0, 0, 0, .06);
       --shadow-md: 0 8px 16px rgba(0, 0, 0, .08);
       --shadow-lg: 0 14px 24px rgba(0, 0, 0, .16);
+      --radius-sm: 12px;
+      --radius-lg: 24px;
+      --radius-999: 999px;
       --bg-body: #f5f5f5;
     }
 
@@ -54,7 +56,7 @@
       margin: 0 auto;
       padding: 0 20px 20px;
       background: #fff;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
     }
 
     main {
@@ -81,7 +83,7 @@
    ======================== */
     .btn-pill {
       padding: 8px 28px;
-      border-radius: 999px;
+      border-radius: var(--radius-999);
       background: var(--blue-main);
       color: #fff;
       font-size: 16px;
@@ -104,7 +106,7 @@
       align-items: center;
       justify-content: center;
       padding: 1px 12px;
-      border-radius: 999px;
+      border-radius: var(--radius-999);
       background: var(--blue-sub);
       color: #fff;
       font-size: 12px;
@@ -113,7 +115,7 @@
     .shadow-photo-img {
       width: 100%;
       height: auto;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
     }
 
@@ -261,7 +263,7 @@
       align-items: stretch;
       /* your chosen option */
       background: #fff;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       padding: 28px 32px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
     }
@@ -286,7 +288,7 @@
     }
 
     .hero-image {
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       min-height: 260px;
       background-image: url("image/hospital.jpg");
       background-size: cover;
@@ -299,7 +301,7 @@
       margin-top: 24px;
       padding: 5px 16px;
       border: none;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       background: #fff;
     }
 
@@ -355,7 +357,7 @@
     }
 
     .time-image {
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       height: 100%;
       display: flex;
       align-items: center;
@@ -371,13 +373,13 @@
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid #4caf50;
     }
 
     .time-card {
       background: var(--green-light);
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid #4caf50;
       padding: 20px;
       display: flex;
@@ -435,7 +437,7 @@
     }
 
     .news-list {
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border-gray);
       overflow: hidden;
       background: #fff;
@@ -463,7 +465,8 @@
     }
 
     .news-item-header:hover {
-      background: #f7fff0;
+      /* background: #f7fff0; */
+      background: lightseagreen;
     }
 
     .news-item-title {
@@ -493,7 +496,8 @@
       padding: 10px 10px 12px;
       font-size: 16px;
       line-height: 1.6;
-      background: lightcyan;
+      /* background: lightcyan; */
+      background: #fafafa;
       border-top: 1px solid #ddd;
     }
 
@@ -503,7 +507,7 @@
 
     .news-side-box {
       display: flex;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       justify-content: center;
     }
 
@@ -512,7 +516,7 @@
       width: 315px;
       height: 250px;
       display: block;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid #4caf50;
       object-fit: cover;
     }
@@ -538,12 +542,12 @@
       max-width: 380px;
       width: 100%;
       height: auto;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
     }
 
     .greeting-text-box {
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid #4caf50;
       padding: 10px 24px;
       font-size: 16px;
@@ -580,7 +584,7 @@
 
     .service-card {
       background: var(--green-light);
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       /* padding: 10px; */
       padding: 16px 20px;
       /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); */
@@ -602,7 +606,7 @@
     .service-card img {
       width: 150px;
       height: 150px;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       object-fit: cover;
       flex-shrink: 0;
     }
@@ -647,12 +651,12 @@
       width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
     }
 
     .about-text-box {
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid #4caf50;
       padding: 24px;
       font-size: 16px;
@@ -674,7 +678,7 @@
     }
 
     .policy-text-box {
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid #4caf50;
       padding: 16px;
       font-size: 16px;
@@ -687,7 +691,7 @@
     }
 
     .policy-card {
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid #4caf50;
       overflow: hidden;
       /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); */
@@ -728,7 +732,7 @@
     .staff-photo {
       position: relative;
       /* ★ Overlay を写真の上に重ねるため必須 */
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: none;
       overflow: hidden;
       /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); */
@@ -791,7 +795,7 @@
     }
 
     .access-map {
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid #4caf50;
       padding: 0;
       min-height: 350px;
@@ -825,7 +829,7 @@
 
     .map-btn {
       padding: 6px 16px;
-      border-radius: 999px;
+      border-radius: var(--radius-999);
       border: 1px solid #0065a8;
       background: #fff;
       color: #0065a8;
@@ -840,7 +844,7 @@
     }
 
     .access-text-box {
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid #4caf50;
       padding: 16px;
       font-size: 14px;
@@ -896,10 +900,10 @@
 
     .footer-lang-selector {
       position: relative;
-      width: 160px;
+      width: 120px;
       height: 44px;
       background: #3a77b5;
-      border-radius: 12px;
+      border-radius: var(--radius-999);
       border: 1px solid #767676;
       padding: 12px 24px;
       display: flex;
