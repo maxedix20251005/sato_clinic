@@ -6,7 +6,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>佐藤医院｜地域のホームドクター</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 
@@ -59,13 +62,22 @@
 
     <nav class="site-nav">
       <div class="container site-nav-inner">
-        <a href="#home">ホーム</a>
-        <a href="#news">おしらせ</a>
-        <a href="#services">診察内容</a>
-        <a href="#about">当院について</a>
-        <a href="#time">診察時間・所在地</a>
-        <a href="#faq">よくあるご質問</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" type="button">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-label">メニュー</span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="#home">ホーム</a>
+          <a href="#news">おしらせ</a>
+          <a href="#services">診察内容</a>
+          <a href="#about">当院について</a>
+          <a href="#time">診察時間・所在地</a>
+          <a href="#access">アクセス</a>
+        </div>
       </div>
+      <div class="nav-overlay" aria-hidden="true"></div>
     </nav>
   </header>
 
@@ -89,6 +101,10 @@
               丁寧な対話と適切な診療で、安心できる毎日をともにつくります。<br />
               地域の健康を見守り、人生の節目に寄り添う存在として、長く信頼されるクリニックであり続けます。
             </p>
+            <div class="hero-cta">
+              <a href="#reserve" class="btn-pill btn-primary">WEB予約</a>
+              <a href="#access" class="btn-pill btn-secondary">アクセス</a>
+            </div>
           </div>
 
           <!-- Right: hospital.jpg -->
@@ -96,13 +112,10 @@
         </div>
 
         <!-- News: 1st line: Title, 2nd line: Marquee -->
-        <div class="hero-notice">
-          <div class="hero-notice-title">重要なお知らせ</div>
-          <div class="hero-notice-body">
-            <div class="hero-notice-marquee">
-              年末年始の休診日は、12月29日(金)～1月4日(木)となります。年始は1月5日(金)より通常診療を再開いたします。
-            </div>
-          </div>
+        <div class="hero-alert" role="status">
+          <div class="hero-alert-title">重要なお知らせ</div>
+          <div class="hero-alert-body">年末年始の休診日は、12月29日(金)～1月4日(木)です。年始は1月5日(金)より通常診療を再開いたします。</div>
+          <button class="hero-alert-close" type="button" aria-label="お知らせを閉じる">×</button>
         </div>
       </div>
     </section>
@@ -120,8 +133,7 @@
           <div>
             <div class="time-card" id="reserve">
               <div class="time-status-row">
-                <div class="status-chip status-open">ただいま診察中</div>
-                <div class="status-chip status-close">ただいま休診中</div>
+                <div class="status-chip status-open" id="status-chip">ただいま診察中</div>
               </div>
               <div class="time-text">
                 受付時間：8 時～11 時 / 13～18 時 <br />
@@ -129,7 +141,7 @@
                 ※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。
               </div>
               <div class="time-reserve-btn-wrap">
-                <a href="#" class="btn-pill">WEB予約はこちらから</a>
+                <a href="#" class="btn-pill btn-primary">WEB予約はこちらから</a>
               </div>
             </div>
           </div>
@@ -143,67 +155,67 @@
         <h2 class="section-title">おしらせ</h2>
         <div class="news-wrapper">
           <div>
-            <div class="news-list">
-              <!-- Flue vaccination -->
-              <div class="news-item">
-                <button class="news-item-header" type="button">
-                  <div class="news-item-title">インフルエンザ予防接種について</div>
-                  <div class="news-item-icon">+</div>
-                </button>
-                <div class="news-item-content">
-                  <p>今年もインフルエンザの予防接種を開始いたしました。予約制となっておりますので、お電話または受付にてご予約をお願いいたします。
-                    例年、予約が集中しやすいため、早めのご予約をおすすめいたします。</p>
+              <div class="news-list">
+                <!-- Flue vaccination -->
+                <div class="news-item">
+                  <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-1">
+                    <div class="news-item-title">インフルエンザ予防接種について</div>
+                    <div class="news-item-icon" aria-hidden="true">＋</div>
+                  </button>
+                  <div class="news-item-content" id="news-panel-1" hidden>
+                    <p>今年もインフルエンザの予防接種を開始いたしました。予約制となっておりますので、お電話または受付にてご予約をお願いいたします。
+                      例年、予約が集中しやすいため、早めのご予約をおすすめいたします。</p>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Year end trading hour -->
-              <div class="news-item">
-                <button class="news-item-header" type="button">
-                  <div class="news-item-title">年末年始の休診について</div>
-                  <div class="news-item-icon">+</div>
-                </button>
-                <div class="news-item-content">
-                  <p>年末年始の休診日は、12月29日(金)～1月4日(木)となります。
-                    年始は1月5日(金)より通常診療を再開いたします。
-                    皆様にはご不便をおかけしますが、何卒ご了承くださいますようお願いいたします。</p>
+                <!-- Year end trading hour -->
+                <div class="news-item">
+                  <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-2">
+                    <div class="news-item-title">年末年始の休診について</div>
+                    <div class="news-item-icon" aria-hidden="true">＋</div>
+                  </button>
+                  <div class="news-item-content" id="news-panel-2" hidden>
+                    <p>年末年始の休診日は、12月29日(金)～1月4日(木)となります。
+                      年始は1月5日(金)より通常診療を再開いたします。
+                      皆様にはご不便をおかけしますが、何卒ご了承くださいますようお願いいたします。</p>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Health check -->
-              <div class="news-item">
-                <button class="news-item-header" type="button">
-                  <div class="news-item-title">健康診断のご案内</div>
-                  <div class="news-item-icon">+</div>
-                </button>
-                <div class="news-item-content">
-                  <p>今年も健康診断を実施しております。定期的な健康チェックは、病気の早期発見・予防にとても重要です。
-                    各種健康診断メニューをご用意しておりますので、ご希望の方はお電話にてお申し込みください。</p>
+                <!-- Health check -->
+                <div class="news-item">
+                  <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-3">
+                    <div class="news-item-title">健康診断のご案内</div>
+                    <div class="news-item-icon" aria-hidden="true">＋</div>
+                  </button>
+                  <div class="news-item-content" id="news-panel-3" hidden>
+                    <p>今年も健康診断を実施しております。定期的な健康チェックは、病気の早期発見・予防にとても重要です。
+                      各種健康診断メニューをご用意しておりますので、ご希望の方はお電話にてお申し込みください。</p>
+                  </div>
                 </div>
-              </div>
 
-              <!-- COVID-19 policy -->
-              <div class="news-item">
-                <button class="news-item-header" type="button">
-                  <div class="news-item-title">新型コロナウイルス対策について</div>
-                  <div class="news-item-icon">+</div>
-                </button>
-                <div class="news-item-content">
-                  <p>当院では引き続き、新型コロナウイルス感染症対策を徹底しております。
-                    ご来院の際には、マスクの着用、手指消毒にご協力をお願いいたします。
-                    また、発熱や風邪症状のある方は、事前にお電話でご相談いただけるとスムーズにご案内が可能です。</p>
+                <!-- COVID-19 policy -->
+                <div class="news-item">
+                  <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-4">
+                    <div class="news-item-title">新型コロナウイルス対策について</div>
+                    <div class="news-item-icon" aria-hidden="true">＋</div>
+                  </button>
+                  <div class="news-item-content" id="news-panel-4" hidden>
+                    <p>当院では引き続き、新型コロナウイルス感染症対策を徹底しております。
+                      ご来院の際には、マスクの着用、手指消毒にご協力をお願いいたします。
+                      また、発熱や風邪症状のある方は、事前にお電話でご相談いただけるとスムーズにご案内が可能です。</p>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Online services -->
-              <div class="news-item">
-                <button class="news-item-header" type="button">
-                  <div class="news-item-title">オンライン診療の導入について</div>
-                  <div class="news-item-icon">+</div>
-                </button>
-                <div class="news-item-content">
-                  <p>2024年より、オンライン診療を一部導入いたしました。
-                    通院が難しい方や、遠方にお住まいの方にご利用いただけます。
-                    ご希望の方は、当院スタッフまでお問い合わせください。
+                <!-- Online services -->
+                <div class="news-item">
+                  <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-5">
+                    <div class="news-item-title">オンライン診療の導入について</div>
+                    <div class="news-item-icon" aria-hidden="true">＋</div>
+                  </button>
+                  <div class="news-item-content" id="news-panel-5" hidden>
+                    <p>2024年より、オンライン診療を一部導入いたしました。
+                      通院が難しい方や、遠方にお住まいの方にご利用いただけます。
+                      ご希望の方は、当院スタッフまでお問い合わせください。
                     皆様の健康をサポートできるよう、スタッフ一同努めてまいります。
                     何かご不明な点がございましたら、お気軽にお問い合わせください。</p>
                 </div>
@@ -442,19 +454,30 @@
 
           <!-- Right: Contact details -->
           <div class="access-text-box">
-            <strong>【住所】</strong><br />
-            〒123-4567 東京都台東区上野 0 丁目 0 - 0<br /><br />
-
-            <strong>【アクセス】</strong><br />
-            最寄駅: JR 上野より徒歩 5 分<br />
-            当院専用の無料駐車場 10 台分あり<br /><br />
-            ご来院の際は、交通状況にご注意ください。<br />
-            最寄駅から徒歩 5 分の距離にあり、便利な立地です。<br /><br />
-
-            <strong>【お問い合わせ】</strong><br />
-            電話番号: 00-0000-0000<br />
-            ファックス: 00-0000-0000<br />
-            Eメール: info@sato-clinic-test.jp
+            <div class="access-block">
+              <div class="access-heading">住所</div>
+              <p>〒123-4567 東京都台東区上野 0 丁目 0 - 0</p>
+            </div>
+            <div class="access-block">
+              <div class="access-heading">アクセス</div>
+              <ul>
+                <li>最寄駅: JR 上野より徒歩 5 分</li>
+                <li>当院専用の無料駐車場 10 台分あり</li>
+                <li>交通状況にご注意ください</li>
+              </ul>
+            </div>
+            <div class="access-block">
+              <div class="access-heading">お問い合わせ</div>
+              <ul>
+                <li>電話: 00-0000-0000</li>
+                <li>ファックス: 00-0000-0000</li>
+                <li>Eメール: info@sato-clinic-test.jp</li>
+              </ul>
+              <div class="time-reserve-btn-wrap" style="text-align:left">
+                <a href="tel:0000000000" class="btn-pill btn-secondary">電話をかける</a>
+                <a href="#reserve" class="btn-pill btn-primary">WEB予約</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -468,21 +491,17 @@
     <div class="footer-top">
       <div class="container footer-links">
         <div>
-          <div class="footer-column-title">Quick Links</div>
+          <div class="footer-column-title">ご案内</div>
           <div class="footer-link">サイトマップ</div>
           <div class="footer-link">プライバシーポリシー</div>
           <div class="footer-link">サイトポリシー</div>
-          <div class="footer-link">Placeholder</div>
-          <div class="footer-link">Placeholder</div>
         </div>
 
         <div>
           <div class="footer-column-title">当院について</div>
-          <div class="footer-link">院長略歴・ご挨拶</div>
-          <div class="footer-link">沿革</div>
-          <div class="footer-link">医師・スタッフご紹介</div>
-          <div class="footer-link">診察科目と内容</div>
-          <div class="footer-link">院内・診療機器ご紹介</div>
+          <div class="footer-link">院長挨拶</div>
+          <div class="footer-link">医師・スタッフ</div>
+          <div class="footer-link">診察科目</div>
         </div>
 
         <div>
@@ -508,26 +527,53 @@
     </div>
   </footer>
   <script>
-    // Accordion control for News
     document.addEventListener("DOMContentLoaded", function () {
+      // Accordion control for News
       const headers = document.querySelectorAll(".news-item-header");
-
       headers.forEach(function (header) {
         header.addEventListener("click", function () {
           const item = header.closest(".news-item");
-          // Open/close toggle
-          item.classList.toggle("open");
-
-          // Rem-out: Open 1 record only
-          /*
-          document.querySelectorAll(".news-item").forEach(function (other) {
-            if (other !== item) {
-              other.classList.remove("open");
-            }
-          });
-          item.classList.toggle("open");
-          */
+          const panel = item.querySelector(".news-item-content");
+          const isOpen = item.classList.toggle("open");
+          header.setAttribute("aria-expanded", isOpen);
+          panel.toggleAttribute("hidden", !isOpen);
+          const icon = header.querySelector(".news-item-icon");
+          if (icon) icon.textContent = isOpen ? "－" : "＋";
         });
+      });
+
+      // Hero alert dismiss
+      const alertClose = document.querySelector(".hero-alert-close");
+      const alertBox = document.querySelector(".hero-alert");
+      if (alertClose && alertBox) {
+        alertClose.addEventListener("click", function () {
+          alertBox.classList.add("is-hidden");
+        });
+      }
+
+      // Mobile navigation toggle
+      const navToggle = document.querySelector(".nav-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      const navOverlay = document.querySelector(".nav-overlay");
+      function closeNav() {
+        if (!navLinks || !navToggle) return;
+        navToggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("nav-open");
+        navLinks.classList.remove("is-open");
+      }
+      if (navToggle && navLinks) {
+        navToggle.addEventListener("click", function () {
+          const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+          navToggle.setAttribute("aria-expanded", (!isOpen).toString());
+          navLinks.classList.toggle("is-open", !isOpen);
+          document.body.classList.toggle("nav-open", !isOpen);
+        });
+      }
+      if (navOverlay) {
+        navOverlay.addEventListener("click", closeNav);
+      }
+      navLinks?.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeNav);
       });
     });
   </script>
