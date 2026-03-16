@@ -1,0 +1,98 @@
+:root{
+  --green-50:#f0f9f4;
+  --green-100:#d8f0e3;
+  --green-200:#bfe6d2;
+  --green-300:#a6dbbf;
+  --green-400:#6fc8a1;
+  --green-500:#2fb57f;
+  --green-600:#249b6c;
+  --green-700:#1d7f59;
+  --text:#1a1c1d;
+  --muted:#667085;
+  --border:#e6e7e9;
+  --bg:#ffffff;
+  --shadow:0 8px 24px rgba(0,0,0,.08);
+  --radius:16px;
+  --radius-sm:12px;
+  --container:1100px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:"Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;color:var(--text);background:#fff}
+a{color:var(--green-600);text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:var(--container);margin:0 auto;padding:0 20px}
+
+header.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--green-500),var(--green-700));display:grid;place-items:center;box-shadow:var(--shadow)}
+.logo svg{width:26px;height:26px;fill:#fff}
+.brand h1{font-size:18px;line-height:1.2;margin:0}
+.brand small{display:block;color:var(--muted);font-size:12px}
+.nav ul{display:flex;gap:20px;align-items:center;list-style:none;margin:0;padding:0}
+.nav a{font-weight:500}
+.call{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14px}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--green-600);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
+
+/* デスクトップではドロワー非表示 */
+.drawer{display:none}
+
+.menu-btn{display:none;background:transparent;border:0}
+@media (max-width:900px){
+  .nav ul.primary{display:none}
+  .menu-btn{display:inline-flex}
+  .drawer{position:fixed;inset:0 0 auto auto;width:min(86vw,360px);height:100vh;background:#fff;box-shadow:var(--shadow);padding:24px;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column;gap:16px}
+  .drawer.open{transform:translateX(0)}
+  .drawer a{padding:12px 0;border-bottom:1px solid var(--border)}
+}
+
+.hero{position:relative;background:linear-gradient(180deg,var(--green-50),#fff)}
+.hero-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center;padding:48px 0}
+.badge{display:inline-flex;gap:8px;align-items:center;background:#eaf9f1;color:var(--green-700);border:1px solid var(--green-200);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}
+.hero h2{font-size:34px;line-height:1.2;margin:14px 0 10px}
+.lead{color:#3a3f45}
+.hero-visual{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.hero .actions{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+
+section{padding:48px 0}
+section h3{font-size:22px;margin:0 0 18px}
+.grid{display:grid;gap:20px}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+}
+
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.card .body{padding:16px}
+.card h4{margin:0 0 6px;font-size:18px}
+.card p{margin:0;color:#3a3f45}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--green-700);background:var(--green-100);border:1px solid var(--green-200);padding:4px 8px;border-radius:999px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--green-300);background:#fff;color:var(--green-700);font-weight:700}
+.btn-primary{background:var(--green-600);border-color:var(--green-600);color:#fff}
+
+.items{display:grid;gap:12px}
+.item{display:flex;align-items:flex-start;gap:14px;padding:14px;border:1px solid var(--border);border-radius:12px;background:#fff}
+.item time{min-width:90px;color:var(--muted);font-size:13px}
+.item .more{margin-left:auto}
+
+.cta-banner{background:linear-gradient(135deg,var(--green-500),var(--green-700));color:#fff;border-radius:var(--radius);padding:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:var(--shadow)}
+.cta-banner .actions{display:flex;gap:10px;flex-wrap:wrap}
+
+.hours{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.hours table{width:100%;border-collapse:collapse}
+.hours th,.hours td{border-bottom:1px solid var(--border);padding:12px;text-align:center}
+.hours thead{background:var(--green-50)}
+
+footer{background:#0f2f26;color:#e8f6f0;margin-top:48px}
+footer a{color:#c7f1df}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px;padding:32px 0}
+.footer-brand{display:flex;gap:12px}
+.footer-brand .logo{box-shadow:none}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:14px 0;color:#a8cbbb;font-size:12px}
+@media (max-width:900px){.footer-inner{grid-template-columns:1fr}}
+
+.fab{position:fixed;right:18px;bottom:18px;z-index:40;background:var(--green-600);color:#fff;border-radius:999px;padding:14px 18px;box-shadow:var(--shadow);font-weight:700}
+@media (min-width:901px){.fab{display:none}}

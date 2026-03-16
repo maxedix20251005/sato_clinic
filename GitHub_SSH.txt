@@ -1,0 +1,51 @@
+Microsoft Windows [Version 10.0.26100.7171]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\academia>ssh-keygen -t rsa -b 4096 -C "github"
+Generating public/private rsa key pair.
+Enter file in which to save the key (C:\Users\academia/.ssh/id_rsa):
+Created directory 'C:\\Users\\academia/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in C:\Users\academia/.ssh/id_rsa
+Your public key has been saved in C:\Users\academia/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:Drv1TZlW0PVG7GUlGKH0DCl9+/0TuryWYL12N4WAD3g github
+The key's randomart image is:
++---[RSA 4096]----+
+|         .o.o+..=|
+|        ..o=o. +=|
+|         o.o+..o+|
+|        . E o. ..|
+|      . S. o.o.o |
+|       +   o.=o.o|
+|      . o . * + +|
+|       o . +.* +o|
+|      .   . +++ +|
++----[SHA256]-----+
+
+C:\Users\academia\.ssh>ssh -T git@github.com
+The authenticity of host 'github.com (20.27.177.113)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Enter passphrase for key 'C:\Users\academia/.ssh/id_rsa':
+Hi maxedix20251005! You've successfully authenticated, but GitHub does not provide shell access.
+
+C:\Users\academia\.ssh>ssh-add
+Enter passphrase for C:\Users\academia/.ssh/id_rsa:
+Identity added: C:\Users\academia/.ssh/id_rsa (github)
+
+C:\Users\academia\.ssh>git config --global core.sshCommand "C:/windows/system32/OpenSSH/ssh.exe"
+
+C:\Users\academia\.ssh>git config --global -l
+core.autocrlf=true
+core.sshcommand=C:/windows/system32/OpenSSH/ssh.exe
+user.name=LAPTOP-EGH8ETNI\academia
+user.email=202510_aw_syukuri@x-ide.sakura.ne.jp
+difftool.sourcetree.cmd=''
+mergetool.sourcetree.cmd=''
+mergetool.sourcetree.trustexitcode=false
+mergetool.sourcetree.keepbackup=false
+
