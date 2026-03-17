@@ -519,8 +519,11 @@
 
         <div class="footer-lang">
           <div class="footer-lang-selector">
-            <span>日本語</span>
-          </div>
+                        <select aria-label="Language" class="footer-lang-select">
+                            <option value="ja" selected>日本語</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
         </div>
       </div>
     </div>
@@ -530,71 +533,7 @@
       Produced by 20251005
     </div>
   </footer>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Accordion control for News
-      const headers = document.querySelectorAll(".news-item-header");
-      headers.forEach(function (header) {
-        header.addEventListener("click", function () {
-          const item = header.closest(".news-item");
-          const panel = item.querySelector(".news-item-content");
-          const isOpen = item.classList.toggle("open");
-          header.setAttribute("aria-expanded", isOpen);
-          panel.toggleAttribute("hidden", !isOpen);
-          const icon = header.querySelector(".news-item-icon");
-          if (icon) icon.textContent = isOpen ? "－" : "＋";
-        });
-      });
-
-      // Hero alert dismiss
-      const alertClose = document.querySelector(".hero-alert-close");
-      const alertBox = document.querySelector(".hero-alert");
-      if (alertClose && alertBox) {
-        alertClose.addEventListener("click", function () {
-          alertBox.classList.add("is-hidden");
-        });
-      }
-
-      // Mobile navigation toggle
-      const navToggle = document.querySelector(".nav-toggle");
-      const navLinks = document.querySelector(".nav-links");
-      const navOverlay = document.querySelector(".nav-overlay");
-      function closeNav() {
-        if (!navLinks || !navToggle) return;
-        navToggle.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("nav-open");
-        navLinks.classList.remove("is-open");
-      }
-      if (navToggle && navLinks) {
-        navToggle.addEventListener("click", function () {
-          const isOpen = navToggle.getAttribute("aria-expanded") === "true";
-          navToggle.setAttribute("aria-expanded", (!isOpen).toString());
-          navLinks.classList.toggle("is-open", !isOpen);
-          document.body.classList.toggle("nav-open", !isOpen);
-        });
-      }
-      if (navOverlay) {
-        navOverlay.addEventListener("click", closeNav);
-      }
-      navLinks?.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", closeNav);
-      });
-
-      // Sticky nav: fix to top when scrolling past header
-      const siteNav = document.querySelector(".site-nav");
-      const headerTop = document.querySelector(".site-header-top");
-      function updateStickyNav() {
-        if (!siteNav || !headerTop) return;
-        const trigger = headerTop.getBoundingClientRect().bottom + window.scrollY;
-        const shouldFix = window.scrollY >= trigger;
-        siteNav.classList.toggle("fixed", shouldFix);
-      }
-
-      window.addEventListener("scroll", updateStickyNav, { passive: true });
-      window.addEventListener("resize", updateStickyNav);
-      updateStickyNav();
-    });
-  </script>
+  <script src="scripts/main.js"></script>\n  <script src="scripts/lang.js"></script>
 
 
 </body>

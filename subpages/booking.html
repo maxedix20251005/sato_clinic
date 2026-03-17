@@ -1,37 +1,31 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>WEB予約 - 佐藤医院</title>
+    <title>WEB予約 / Online Booking - 佐藤医院</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body>
-    <!-- ========================
-       HEADER
-       ======================== -->
+    <!-- ======================== HEADER ======================== -->
     <header>
         <div class="site-header-top">
             <div class="container site-header-top-inner">
-                <!-- Logo -->
                 <div class="header-logo-frame frame">
                     <img src="../image/Logo.png" alt="佐藤医院ロゴ">
                 </div>
                 <div class="header-hours">
                     <div class="header-hours-tags">
-                        <span class="chip">診察</span>
-                        <span class="chip">午前</span>
-                        <span class="chip">午後</span>
+                        <span class="chip lang-toggle lang-ja">診察</span><span class="chip lang-toggle lang-en">Open</span>
+                        <span class="chip lang-toggle lang-ja">午前</span><span class="chip lang-toggle lang-en">AM</span>
+                        <span class="chip lang-toggle lang-ja">午後</span><span class="chip lang-toggle lang-en">PM</span>
                     </div>
                     <div>
-                        <div class="header-hours-text">
-                            月、火、木、金、土（休診：木日祝）
-                        </div>
+                        <div class="header-hours-text lang-toggle lang-ja">月、火、木、金、土（休診：木日祝）</div>
+                        <div class="header-hours-text lang-toggle lang-en">Mon, Tue, Thu, Fri, Sat (Closed Wed/Sun/Holidays)</div>
                         <div class="header-hours-text">09:00-12:00</div>
                         <div class="header-hours-text">14:00-19:00</div>
                     </div>
@@ -39,14 +33,12 @@
 
                 <div class="header-cta-area">
                     <div class="header-cta-buttons">
-                        <a href="#reserve" class="btn-pill btn-pill-header">WEB予約</a>
-                        <a href="../index.html#access" class="btn-pill btn-pill-header">アクセス</a>
+                        <a href="#reserve" class="btn-pill btn-pill-header"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Book Online</span></a>
+                        <a href="../index.html#access" class="btn-pill btn-pill-header"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
                     </div>
 
                     <a href="tel:0000000000" class="header-phone">
-                        <div class="header-phone-icon">
-                            <img src="../image/handset_blue.png" alt="Handset">
-                        </div>
+                        <div class="header-phone-icon"><img src="../image/handset_blue.png" alt="Handset"></div>
                         <span>00-0000-0000</span>
                     </a>
                 </div>
@@ -56,19 +48,18 @@
         <nav class="site-nav" aria-label="Global navigation">
             <div class="container site-nav-inner">
                 <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" type="button">
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-label">メニュー</span>
+                    <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-label lang-toggle lang-ja">メニュー</span><span class="nav-toggle-label lang-toggle lang-en">Menu</span>
                 </button>
                 <div class="nav-links" id="nav-links">
-                    <a href="../index.html">ホーム</a>
-                    <a href="news.html">おしらせ</a>
-                    <a href="services.html">診察内容</a>
-                    <a href="about.html">当院について</a>
-                    <a href="policy.html">理念・方針</a>
-                    <a href="../index.html#time">診察時間・所在地</a>
-                    <a href="../index.html#access">アクセス</a>
+                    <a href="../index.html"><span class="lang-toggle lang-ja">ホーム</span><span class="lang-toggle lang-en">Home</span></a>
+                    <a href="news.html"><span class="lang-toggle lang-ja">おしらせ</span><span class="lang-toggle lang-en">News</span></a>
+                    <a href="services.html"><span class="lang-toggle lang-ja">診察内容</span><span class="lang-toggle lang-en">Services</span></a>
+                    <a href="about.html"><span class="lang-toggle lang-ja">当院について</span><span class="lang-toggle lang-en">About</span></a>
+                    <a href="policy.html"><span class="lang-toggle lang-ja">理念・方針</span><span class="lang-toggle lang-en">Philosophy</span></a>
+                    <a href="booking.html"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Book</span></a>
+                    <a href="questionnaire.html"><span class="lang-toggle lang-ja">WEB問診票</span><span class="lang-toggle lang-en">Intake Form</span></a>
+                    <a href="../index.html#access"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
                 </div>
             </div>
             <div class="nav-overlay" aria-hidden="true"></div>
@@ -76,36 +67,35 @@
         <div class="nav-spacer" aria-hidden="true"></div>
     </header>
 
-    <!-- ========================
-       MAIN
-       ======================== -->
+    <!-- ======================== MAIN ======================== -->
     <main>
         <section class="reserve-section" id="reserve">
             <div class="container main-container">
-                <h2 class="section-title">WEB予約</h2>
+                <h2 class="section-title"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Online Booking</span></h2>
                 <div class="reserve-form-container">
-                    <p>以下のフォームに必要事項をご入力ください。予約受付後、確認の電話をいたします。</p>
+                    <p><span class="lang-toggle lang-ja">以下のフォームに必要事項をご入力ください。予約受付後、確認の電話をいたします。</span><span class="lang-toggle lang-en">Please fill out the form below. We will call you to confirm after receiving your request.</span></p>
                     <form class="reserve-form" action="#" method="post">
                         <div class="form-group">
-                            <label for="name">お名前 <span class="required">*</span></label>
+                            <label for="name"><span class="lang-toggle lang-ja">お名前</span><span class="lang-toggle lang-en">Full Name</span> <span class="required">*</span></label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">電話番号 <span class="required">*</span></label>
+                            <label for="phone"><span class="lang-toggle lang-ja">電話番号</span><span class="lang-toggle lang-en">Phone</span> <span class="required">*</span></label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">メールアドレス</label>
+                            <label for="email"><span class="lang-toggle lang-ja">メールアドレス</span><span class="lang-toggle lang-en">Email</span></label>
                             <input type="email" id="email" name="email">
                         </div>
                         <div class="form-group">
-                            <label for="date">希望日 <span class="required">*</span></label>
+                            <label for="date"><span class="lang-toggle lang-ja">希望日</span><span class="lang-toggle lang-en">Preferred Date</span> <span class="required">*</span></label>
                             <input type="date" id="date" name="date" required>
                         </div>
                         <div class="form-group">
-                            <label for="time">希望時間 <span class="required">*</span></label>
+                            <label for="time"><span class="lang-toggle lang-ja">希望時間</span><span class="lang-toggle lang-en">Preferred Time</span> <span class="required">*</span></label>
                             <select id="time" name="time" required>
-                                <option value="">選択してください</option>
+                                <option class="lang-toggle lang-ja" value="">選択してください</option>
+                                <option class="lang-toggle lang-en" value="">Select</option>
                                 <option value="09:00">09:00</option>
                                 <option value="09:30">09:30</option>
                                 <option value="10:00">10:00</option>
@@ -124,16 +114,16 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="symptoms">症状・相談内容</label>
-                            <textarea id="symptoms" name="symptoms" rows="4" placeholder="症状や相談内容をご記入ください"></textarea>
+                            <label for="symptoms"><span class="lang-toggle lang-ja">症状・相談内容</span><span class="lang-toggle lang-en">Symptoms / Concern</span></label>
+                            <textarea id="symptoms" name="symptoms" rows="4" data-placeholder-ja="症状や相談内容をご記入ください" data-placeholder-en="Please describe your symptoms or concern"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="notes">その他ご要望</label>
-                            <textarea id="notes" name="notes" rows="2" placeholder="その他ご要望があればご記入ください"></textarea>
+                            <label for="notes"><span class="lang-toggle lang-ja">その他ご要望</span><span class="lang-toggle lang-en">Other Requests</span></label>
+                            <textarea id="notes" name="notes" rows="2" data-placeholder-ja="その他ご要望があればご記入ください" data-placeholder-en="If you have any other requests, let us know"></textarea>
                         </div>
                         <div class="form-actions">
-                            <button type="submit" class="btn-pill btn-primary">予約する</button>
-                            <button type="reset" class="btn-pill btn-secondary">リセット</button>
+                            <button type="submit" class="btn-pill btn-primary"><span class="lang-toggle lang-ja">予約する</span><span class="lang-toggle lang-en">Submit Request</span></button>
+                            <button type="reset" class="btn-pill btn-secondary"><span class="lang-toggle lang-ja">リセット</span><span class="lang-toggle lang-en">Reset</span></button>
                         </div>
                     </form>
                 </div>
@@ -141,36 +131,37 @@
         </section>
     </main>
 
-    <!-- ========================
-       FOOTER
-       ======================== -->
+    <!-- ======================== FOOTER ======================== -->
     <footer class="site-footer">
         <div class="footer-top">
             <div class="container footer-links">
                 <div>
-                    <div class="footer-column-title">ご案内</div>
-                    <a href="sitemap.html" class="footer-link">サイトマップ</a>
-                    <a href="privacy.html" class="footer-link">プライバシーポリシー</a>
-                    <a href="site-policy.html" class="footer-link">サイトポリシー</a>
+                    <div class="footer-column-title"><span class="lang-toggle lang-ja">ご案内</span><span class="lang-toggle lang-en">Info</span></div>
+                    <a href="sitemap.html" class="footer-link"><span class="lang-toggle lang-ja">サイトマップ</span><span class="lang-toggle lang-en">Sitemap</span></a>
+                    <a href="privacy.html" class="footer-link"><span class="lang-toggle lang-ja">プライバシーポリシー</span><span class="lang-toggle lang-en">Privacy Policy</span></a>
+                    <a href="site-policy.html" class="footer-link"><span class="lang-toggle lang-ja">サイトポリシー</span><span class="lang-toggle lang-en">Site Policy</span></a>
                 </div>
 
                 <div>
-                    <div class="footer-column-title">当院について</div>
-                    <div class="footer-link">院長挨拶</div>
-                    <div class="footer-link">医師・スタッフ</div>
-                    <div class="footer-link">診察科目</div>
+                    <div class="footer-column-title"><span class="lang-toggle lang-ja">当院について</span><span class="lang-toggle lang-en">About Clinic</span></div>
+                    <a href="../index.html#greeting" class="footer-link"><span class="lang-toggle lang-ja">院長挨拶</span><span class="lang-toggle lang-en">Director</span></a>
+                    <a href="../index.html#staff" class="footer-link"><span class="lang-toggle lang-ja">医師・スタッフ</span><span class="lang-toggle lang-en">Staff</span></a>
+                    <a href="../index.html#services" class="footer-link"><span class="lang-toggle lang-ja">診察内容</span><span class="lang-toggle lang-en">Services</span></a>
                 </div>
 
                 <div>
-                    <div class="footer-column-title">ご予約はこちらから</div>
-                    <a href="booking.html" class="footer-link">WEB予約</a>
-                    <a href="questionnaire.html" class="footer-link">WEB問診票</a>
-                    <a href="../index.html#access" class="footer-link">アクセス／お問い合わせ</a>
+                    <div class="footer-column-title"><span class="lang-toggle lang-ja">ご予約はこちらから</span><span class="lang-toggle lang-en">Reservations</span></div>
+                    <a href="booking.html" class="footer-link"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Book Online</span></a>
+                    <a href="questionnaire.html" class="footer-link"><span class="lang-toggle lang-ja">WEB問診票</span><span class="lang-toggle lang-en">Intake Form</span></a>
+                    <a href="../index.html#access" class="footer-link"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
                 </div>
 
                 <div class="footer-lang">
                     <div class="footer-lang-selector">
-                        <span>日本語</span>
+                        <select aria-label="Language" class="footer-lang-select">
+                            <option value="ja">日本語</option>
+                            <option value="en">English</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -181,37 +172,7 @@
             Produced by 20251005
         </div>
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Accordion control for News (if needed)
-            // ... (existing code if any)
-
-            // Sticky nav: fix to top when scrolling past header
-            const siteNav = document.querySelector(".site-nav");
-            const headerTop = document.querySelector(".site-header-top");
-            function updateStickyNav() {
-                if (!siteNav || !headerTop) return;
-                const trigger = headerTop.getBoundingClientRect().bottom + window.scrollY;
-                const shouldFix = window.scrollY >= trigger;
-                siteNav.classList.toggle("fixed", shouldFix);
-            }
-
-            window.addEventListener("scroll", updateStickyNav, { passive: true });
-            window.addEventListener("resize", updateStickyNav);
-            updateStickyNav();
-
-            // Form submission handler (simple alert for demo)
-            const form = document.querySelector(".reserve-form");
-            if (form) {
-                form.addEventListener("submit", function (e) {
-                    e.preventDefault();
-                    alert("予約を受け付けました。確認の電話をお待ちください。");
-                    form.reset();
-                });
-            }
-        });
-    </script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/lang.js"></script>
 </body>
-
 </html>

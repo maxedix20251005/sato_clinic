@@ -238,7 +238,8 @@ section {
 .site-nav {
    background: #fff;
    border-bottom: 1px solid var(--border-gray);
-   position: relative;
+   position: sticky;
+   top: 0;
    z-index: 50;
    --nav-height: 58px;
 }
@@ -891,27 +892,76 @@ section {
 
 .footer-lang-selector {
    position: relative;
-   width: 120px;
-   height: 44px;
-   background: #3a77b5;
-   border-radius: var(--radius-999);
-   border: 1px solid #767676;
-   padding: 12px 24px;
+   width: 140px;
+   height: 42px;
+   background: #ffffff;
+   border-radius: 12px;
+   border: 1px solid #c9d5df;
+   padding: 0 12px;
    display: flex;
    align-items: center;
-   justify-content: space-between;
-   color: #fff;
-   font-size: 16px;
+   color: var(--text-main);
+   font-size: 14px;
+   box-shadow: var(--shadow-sm);
+   overflow: hidden;
 }
 
 .footer-lang-selector::after {
    content: "";
-   width: 10px;
-   height: 6px;
-   background: #fff;
+   position: absolute;
+   right: 10px;
+   width: 8px;
+   height: 5px;
+   background: var(--text-main);
    clip-path: polygon(0 0, 100% 0, 50% 100%);
-   margin-left: 8px;
 }
+
+.footer-lang-select {
+   width: 100%;
+   background: transparent;
+   color: var(--text-main);
+   border: none;
+   outline: none;
+   appearance: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   font-size: 14px;
+   font-family: inherit;
+   font-weight: 700;
+   padding: 12px 20px 12px 0;
+   cursor: pointer;
+}
+
+.footer-lang-select:focus-visible {
+   outline: none;
+   box-shadow: none;
+}
+
+.footer-lang-select option {
+   color: #1f3d55;
+}
+
+.footer-lang-select:focus {
+   outline: none !important;
+   box-shadow: none !important;
+}
+
+.footer-lang-select:active {
+   outline: none;
+   box-shadow: none;
+}
+
+.footer-lang-selector:focus-within {
+   outline: var(--focus-ring);
+   outline-offset: 2px;
+   box-shadow: var(--shadow-md);
+}
+
+/* Language toggle utility */
+.lang-toggle.lang-ja { display: inline; }
+.lang-toggle.lang-en { display: none; }
+body.lang-en .lang-toggle.lang-en { display: inline; }
+body.lang-en .lang-toggle.lang-ja { display: none; }
 
 .footer-bottom {
    text-align: center;
