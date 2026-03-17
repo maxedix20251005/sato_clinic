@@ -46,7 +46,7 @@
             <a href="#access" class="btn-pill">アクセス</a>
           </div> -->
           <div class="header-cta-buttons">
-            <a href="#reserve" class="btn-pill btn-pill-header">WEB予約</a>
+            <a href="booking.html" class="btn-pill btn-pill-header">WEB予約</a>
             <a href="#access" class="btn-pill btn-pill-header">アクセス</a>
           </div>
 
@@ -60,7 +60,7 @@
       </div>
     </div>
 
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="Global navigation">
       <div class="container site-nav-inner">
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" type="button">
           <span class="nav-toggle-bar"></span>
@@ -70,15 +70,17 @@
         </button>
         <div class="nav-links" id="nav-links">
           <a href="#home">ホーム</a>
-          <a href="#news">おしらせ</a>
-          <a href="#services">診察内容</a>
-          <a href="#about">当院について</a>
+          <a href="news.html">おしらせ</a>
+          <a href="services.html">診察内容</a>
+          <a href="about.html">当院について</a>
+          <a href="policy.html">理念・方針</a>
           <a href="#time">診察時間・所在地</a>
           <a href="#access">アクセス</a>
         </div>
       </div>
       <div class="nav-overlay" aria-hidden="true"></div>
     </nav>
+    <div class="nav-spacer" aria-hidden="true"></div>
   </header>
 
   <!-- ========================
@@ -102,7 +104,7 @@
               地域の健康を見守り、人生の節目に寄り添う存在として、長く信頼されるクリニックであり続けます。
             </p>
             <div class="hero-cta">
-              <a href="#reserve" class="btn-pill btn-primary">WEB予約</a>
+              <a href="booking.html" class="btn-pill btn-primary">WEB予約</a>
               <a href="#access" class="btn-pill btn-secondary">アクセス</a>
             </div>
           </div>
@@ -114,7 +116,9 @@
         <!-- News: 1st line: Title, 2nd line: Marquee -->
         <div class="hero-alert" role="status">
           <div class="hero-alert-title">重要なお知らせ</div>
-          <div class="hero-alert-body">年末年始の休診日は、12月29日(金)～1月4日(木)です。年始は1月5日(金)より通常診療を再開いたします。</div>
+          <div class="hero-alert-body">
+            <span class="hero-alert-marquee">年末年始の休診日は、12月29日(金)～1月4日(木)です。年始は1月5日(金)より通常診療を再開いたします。</span>
+          </div>
           <button class="hero-alert-close" type="button" aria-label="お知らせを閉じる">×</button>
         </div>
       </div>
@@ -141,7 +145,7 @@
                 ※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。
               </div>
               <div class="time-reserve-btn-wrap">
-                <a href="#" class="btn-pill btn-primary">WEB予約はこちらから</a>
+                <a href="booking.html" class="btn-pill btn-primary">WEB予約はこちらから</a>
               </div>
             </div>
           </div>
@@ -155,74 +159,74 @@
         <h2 class="section-title">おしらせ</h2>
         <div class="news-wrapper">
           <div>
-              <div class="news-list">
-                <!-- Flue vaccination -->
-                <div class="news-item">
-                  <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-1">
-                    <div class="news-item-title">インフルエンザ予防接種について</div>
-                    <div class="news-item-icon" aria-hidden="true">＋</div>
-                  </button>
-                  <div class="news-item-content" id="news-panel-1" hidden>
-                    <p>今年もインフルエンザの予防接種を開始いたしました。予約制となっておりますので、お電話または受付にてご予約をお願いいたします。
-                      例年、予約が集中しやすいため、早めのご予約をおすすめいたします。</p>
-                  </div>
+            <div class="news-list">
+              <!-- Flue vaccination -->
+              <div class="news-item">
+                <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-1">
+                  <div class="news-item-title">インフルエンザ予防接種について</div>
+                  <div class="news-item-icon" aria-hidden="true">＋</div>
+                </button>
+                <div class="news-item-content" id="news-panel-1" hidden>
+                  <p>今年もインフルエンザの予防接種を開始いたしました。予約制となっておりますので、お電話または受付にてご予約をお願いいたします。
+                    例年、予約が集中しやすいため、早めのご予約をおすすめいたします。</p>
                 </div>
+              </div>
 
-                <!-- Year end trading hour -->
-                <div class="news-item">
-                  <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-2">
-                    <div class="news-item-title">年末年始の休診について</div>
-                    <div class="news-item-icon" aria-hidden="true">＋</div>
-                  </button>
-                  <div class="news-item-content" id="news-panel-2" hidden>
-                    <p>年末年始の休診日は、12月29日(金)～1月4日(木)となります。
-                      年始は1月5日(金)より通常診療を再開いたします。
-                      皆様にはご不便をおかけしますが、何卒ご了承くださいますようお願いいたします。</p>
-                  </div>
+              <!-- Year end trading hour -->
+              <div class="news-item">
+                <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-2">
+                  <div class="news-item-title">年末年始の休診について</div>
+                  <div class="news-item-icon" aria-hidden="true">＋</div>
+                </button>
+                <div class="news-item-content" id="news-panel-2" hidden>
+                  <p>年末年始の休診日は、12月29日(金)～1月4日(木)となります。
+                    年始は1月5日(金)より通常診療を再開いたします。
+                    皆様にはご不便をおかけしますが、何卒ご了承くださいますようお願いいたします。</p>
                 </div>
+              </div>
 
-                <!-- Health check -->
-                <div class="news-item">
-                  <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-3">
-                    <div class="news-item-title">健康診断のご案内</div>
-                    <div class="news-item-icon" aria-hidden="true">＋</div>
-                  </button>
-                  <div class="news-item-content" id="news-panel-3" hidden>
-                    <p>今年も健康診断を実施しております。定期的な健康チェックは、病気の早期発見・予防にとても重要です。
-                      各種健康診断メニューをご用意しておりますので、ご希望の方はお電話にてお申し込みください。</p>
-                  </div>
+              <!-- Health check -->
+              <div class="news-item">
+                <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-3">
+                  <div class="news-item-title">健康診断のご案内</div>
+                  <div class="news-item-icon" aria-hidden="true">＋</div>
+                </button>
+                <div class="news-item-content" id="news-panel-3" hidden>
+                  <p>今年も健康診断を実施しております。定期的な健康チェックは、病気の早期発見・予防にとても重要です。
+                    各種健康診断メニューをご用意しておりますので、ご希望の方はお電話にてお申し込みください。</p>
                 </div>
+              </div>
 
-                <!-- COVID-19 policy -->
-                <div class="news-item">
-                  <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-4">
-                    <div class="news-item-title">新型コロナウイルス対策について</div>
-                    <div class="news-item-icon" aria-hidden="true">＋</div>
-                  </button>
-                  <div class="news-item-content" id="news-panel-4" hidden>
-                    <p>当院では引き続き、新型コロナウイルス感染症対策を徹底しております。
-                      ご来院の際には、マスクの着用、手指消毒にご協力をお願いいたします。
-                      また、発熱や風邪症状のある方は、事前にお電話でご相談いただけるとスムーズにご案内が可能です。</p>
-                  </div>
+              <!-- COVID-19 policy -->
+              <div class="news-item">
+                <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-4">
+                  <div class="news-item-title">新型コロナウイルス対策について</div>
+                  <div class="news-item-icon" aria-hidden="true">＋</div>
+                </button>
+                <div class="news-item-content" id="news-panel-4" hidden>
+                  <p>当院では引き続き、新型コロナウイルス感染症対策を徹底しております。
+                    ご来院の際には、マスクの着用、手指消毒にご協力をお願いいたします。
+                    また、発熱や風邪症状のある方は、事前にお電話でご相談いただけるとスムーズにご案内が可能です。</p>
                 </div>
+              </div>
 
-                <!-- Online services -->
-                <div class="news-item">
-                  <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-5">
-                    <div class="news-item-title">オンライン診療の導入について</div>
-                    <div class="news-item-icon" aria-hidden="true">＋</div>
-                  </button>
-                  <div class="news-item-content" id="news-panel-5" hidden>
-                    <p>2024年より、オンライン診療を一部導入いたしました。
-                      通院が難しい方や、遠方にお住まいの方にご利用いただけます。
-                      ご希望の方は、当院スタッフまでお問い合わせください。
+              <!-- Online services -->
+              <div class="news-item">
+                <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-5">
+                  <div class="news-item-title">オンライン診療の導入について</div>
+                  <div class="news-item-icon" aria-hidden="true">＋</div>
+                </button>
+                <div class="news-item-content" id="news-panel-5" hidden>
+                  <p>2024年より、オンライン診療を一部導入いたしました。
+                    通院が難しい方や、遠方にお住まいの方にご利用いただけます。
+                    ご希望の方は、当院スタッフまでお問い合わせください。
                     皆様の健康をサポートできるよう、スタッフ一同努めてまいります。
                     何かご不明な点がございましたら、お気軽にお問い合わせください。</p>
                 </div>
               </div>
             </div>
             <div style="margin-top: 16px">
-              <a href="#" class="btn-pill">過去のニュース</a>
+              <a href="news.html" class="btn-pill">過去のニュース</a>
             </div>
           </div>
           <div class="news-side-box">
@@ -311,7 +315,7 @@
         </div>
 
         <div class="services-more">
-          <a href="#" class="btn-pill">更に詳しく</a>
+          <a href="services.html" class="btn-pill">更に詳しく</a>
         </div>
       </div>
     </section>
@@ -336,7 +340,7 @@
           佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。
         </div>
         <div style="margin-top: 16px; text-align: center">
-          <a href="#" class="btn-pill">更に詳しく</a>
+          <a href="about.html" class="btn-pill">更に詳しく</a>
 
         </div>
 
@@ -357,7 +361,7 @@
           </div>
         </div>
         <div style="margin-top: 16px; text-align: center">
-          <a href="#" class="btn-pill">更に詳しく</a>
+          <a href="policy.html" class="btn-pill">更に詳しく</a>
         </div>
 
       </div>
@@ -475,7 +479,7 @@
               </ul>
               <div class="time-reserve-btn-wrap" style="text-align:left">
                 <a href="tel:0000000000" class="btn-pill btn-secondary">電話をかける</a>
-                <a href="#reserve" class="btn-pill btn-primary">WEB予約</a>
+                <a href="booking.html" class="btn-pill btn-primary">WEB予約</a>
               </div>
             </div>
           </div>
@@ -506,7 +510,7 @@
 
         <div>
           <div class="footer-column-title">ご予約はこちらから</div>
-          <div class="footer-link">WEB予約</div>
+          <a href="booking.html" class="footer-link">WEB予約</a>
           <div class="footer-link">WEB問診票</div>
           <div class="footer-link">アクセス（所在地）</div>
           <div class="footer-link">お問い合わせ</div>
@@ -575,6 +579,20 @@
       navLinks?.querySelectorAll("a").forEach(function (link) {
         link.addEventListener("click", closeNav);
       });
+
+      // Sticky nav: fix to top when scrolling past header
+      const siteNav = document.querySelector(".site-nav");
+      const headerTop = document.querySelector(".site-header-top");
+      function updateStickyNav() {
+        if (!siteNav || !headerTop) return;
+        const trigger = headerTop.getBoundingClientRect().bottom + window.scrollY;
+        const shouldFix = window.scrollY >= trigger;
+        siteNav.classList.toggle("fixed", shouldFix);
+      }
+
+      window.addEventListener("scroll", updateStickyNav, { passive: true });
+      window.addEventListener("resize", updateStickyNav);
+      updateStickyNav();
     });
   </script>
 
