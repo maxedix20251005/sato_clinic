@@ -77,7 +77,7 @@
         <div class="hero-inner">
           <div>
             <p class="hero-copy-main"><span class="lang-toggle lang-ja">地域の皆さまの健康を見守り<br />未来の安心をしっかりと支える<br />ホームドクターであり続けます</span><span class="lang-toggle lang-en">We watch over your health and support your future with trusted, community-based care.</span></p>
-            <p class="hero-copy-sub"><span class="lang-toggle lang-ja">地域に根ざしたホームドクターとして、日々の暮らしにそっと寄り添い、皆さまの未来を支えていく医療を目指しています。小さな体調の変化や不安も遠慮なくご相談ください。丁寧な対話と適切な診療で、安心できる毎日をともにつくります。</span><span class="lang-toggle lang-en">As your neighborhood doctor, we aim to be close to your daily life and support your future health. Please consult us for even minor concerns. With attentive conversations and appropriate care, we build安心 together.</span></p>
+            <p class="hero-copy-sub"><span class="lang-toggle lang-ja">地域に根ざしたホームドクターとして、日々の暮らしにそっと寄り添い、皆さまの未来を支えていく医療を目指しています。小さな体調の変化や不安も遠慮なくご相談ください。丁寧な対話と適切な診療で、安心できる毎日をともにつくります。</span><span class="lang-toggle lang-en">As your neighborhood doctor, we aim to be close to your daily life and support your future health. Please consult us for even minor concerns. With attentive conversations and appropriate care, we build peace of mind together.</span></p>
             <div class="hero-cta">
               <a href="subpages/booking.html" class="btn-pill btn-primary"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Book Online</span></a>
               <a href="#access" class="btn-pill btn-secondary"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
@@ -101,8 +101,44 @@
       <div class="container main-container">
         <h2 class="section-title"><span class="lang-toggle lang-ja">診察時間</span><span class="lang-toggle lang-en">Hours</span></h2>
         <div class="time-inner">
-          <div class="time-image">
-            <img src="image/tradinghour.jpg" alt="Clinic hours">
+          <div class="time-table-wrapper" aria-label="診察時間">
+            <table class="time-table">
+              <thead>
+                <tr>
+                  <th scope="col"><span class="lang-toggle lang-ja">診療時間</span><span class="lang-toggle lang-en">Hours</span></th>
+                  <th scope="col"><span class="lang-toggle lang-ja">月</span><span class="lang-toggle lang-en">Mon</span></th>
+                  <th scope="col"><span class="lang-toggle lang-ja">火</span><span class="lang-toggle lang-en">Tue</span></th>
+                  <th scope="col"><span class="lang-toggle lang-ja">水</span><span class="lang-toggle lang-en">Wed</span></th>
+                  <th scope="col"><span class="lang-toggle lang-ja">木</span><span class="lang-toggle lang-en">Thu</span></th>
+                  <th scope="col"><span class="lang-toggle lang-ja">金</span><span class="lang-toggle lang-en">Fri</span></th>
+                  <th scope="col"><span class="lang-toggle lang-ja">土</span><span class="lang-toggle lang-en">Sat</span></th>
+                  <th scope="col"><span class="lang-toggle lang-ja">日</span><span class="lang-toggle lang-en">Sun</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">09:00–12:00</th>
+                  <td data-day-ja="月" data-day-en="Mon" aria-label="月 / Mon 午前 診療あり"><span class="dot on"></span></td>
+                  <td data-day-ja="火" data-day-en="Tue" aria-label="火 / Tue 午前 診療あり"><span class="dot on"></span></td>
+                  <td data-day-ja="水" data-day-en="Wed" aria-label="水 / Wed 午前 診療あり"><span class="dot on"></span></td>
+                  <td data-day-ja="木" data-day-en="Thu" aria-label="木 / Thu 午前 休診"><span class="slash">/</span></td>
+                  <td data-day-ja="金" data-day-en="Fri" aria-label="金 / Fri 午前 診療あり"><span class="dot on"></span></td>
+                  <td data-day-ja="土" data-day-en="Sat" aria-label="土 / Sat 午前 診療あり"><span class="dot on"></span></td>
+                  <td data-day-ja="日" data-day-en="Sun" aria-label="日 / Sun 午前 休診"><span class="slash">/</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">14:00–19:00</th>
+                  <td data-day-ja="月" data-day-en="Mon" aria-label="月 / Mon 午後 診療あり"><span class="dot on"></span></td>
+                  <td data-day-ja="火" data-day-en="Tue" aria-label="火 / Tue 午後 診療あり"><span class="dot on"></span></td>
+                  <td data-day-ja="水" data-day-en="Wed" aria-label="水 / Wed 午後 診療あり"><span class="dot on"></span></td>
+                  <td data-day-ja="木" data-day-en="Thu" aria-label="木 / Thu 午後 休診"><span class="slash">/</span></td>
+                  <td data-day-ja="金" data-day-en="Fri" aria-label="金 / Fri 午後 診療あり"><span class="dot on"></span></td>
+                  <td data-day-ja="土" data-day-en="Sat" aria-label="土 / Sat 午後 休診"><span class="slash">/</span></td>
+                  <td data-day-ja="日" data-day-en="Sun" aria-label="日 / Sun 午後 休診"><span class="slash">/</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="time-note"><span class="lang-toggle lang-ja">※ 祝日は診療あり（休診日もございます。事前にご確認ください。）</span><span class="lang-toggle lang-en">* We are open on national holidays; some exceptions apply—please confirm in advance.</span></p>
           </div>
           <div>
             <div class="time-card" id="reserve">
@@ -229,9 +265,9 @@
               <div class="service-card-inner">
                 <img src="image/icons/lifestyle_disease.png" alt="生活習慣病の診断・治療" />
                 <div class="service-card-text">
-                  <span class="service-card-text-title"><span class="lang-toggle lang-ja">生活習慣病の診断・治療</span><span class="lang-toggle lang-en">Lifestyle Disease Care</span></span>
+                  <span class="service-card-text-title"><span class="lang-toggle lang-ja">生活習慣病の診断・治療</span><span class="lang-toggle lang-en">Lifestyle‑related Chronic Care</span></span>
                   <span class="lang-toggle lang-ja">高血圧、糖尿病、脂質異常症などを継続管理し、生活指導と薬物療法で進行予防を図ります。</span>
-                  <span class="lang-toggle lang-en">We manage hypertension, diabetes, dyslipidemia, and more with continuous follow-up, lifestyle guidance, and medication.</span>
+                  <span class="lang-toggle lang-en">We manage hypertension, diabetes, dyslipidemia, and similar chronic conditions with continuous follow-up, lifestyle guidance, and medication.</span>
                 </div>
               </div>
             </div>
@@ -244,7 +280,7 @@
                 <div class="service-card-text">
                   <span class="service-card-text-title"><span class="lang-toggle lang-ja">消化器系の診察</span><span class="lang-toggle lang-en">Gastroenterology</span></span><br />
                   <span class="lang-toggle lang-ja">胃痛・胸やけ・便秘・下痢などに対応し、必要に応じて内視鏡や超音波検査を行います。</span>
-                  <span class="lang-toggle lang-en">We address stomach pain, heartburn, constipation, diarrhea, and perform endoscopy/ultrasound when needed.</span>
+                  <span class="lang-toggle lang-en">We address abdominal pain, heartburn, constipation, diarrhea, and perform endoscopy/ultrasound when needed.</span>
                 </div>
               </div>
             </div>
@@ -254,7 +290,7 @@
                 <div class="service-card-text">
                   <span class="service-card-text-title"><span class="lang-toggle lang-ja">呼吸器系の診察</span><span class="lang-toggle lang-en">Respiratory Care</span></span><br />
                   <span class="lang-toggle lang-ja">咳・息切れ・胸痛などに対応し、喘息やCOPD、アレルギー性鼻炎の管理をサポートします。</span>
-                  <span class="lang-toggle lang-en">We see cough, dyspnea, chest discomfort and support management of asthma, COPD, and allergic rhinitis.</span>
+                  <span class="lang-toggle lang-en">We evaluate cough, shortness of breath, chest discomfort, and support management of asthma, COPD, and allergic rhinitis.</span>
                 </div>
               </div>
             </div>
@@ -309,7 +345,7 @@
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/taro_sato.jpg" alt="院長 佐藤 太郎" class="staff-img">
-              <div class="staff-desc"><span class="lang-toggle lang-ja">経歴：光明大学医学部卒業後、瑞穂中央総合病院で内科医として10年勤務し、地域医療のため当院を開院。専門：生活習慣病、呼吸器疾患。コメント：気軽に相談できるかかりつけ医を目指しています。</span><span class="lang-toggle lang-en">Career: Graduated Komyo Univ. Med, 10 years internal medicine at Mizuho Central Hospital, founded this clinic for community care. Specialty: lifestyle diseases, respiratory. Message: I aim to be your approachable family doctor.</span></div>
+              <div class="staff-desc"><span class="lang-toggle lang-ja">経歴：光明大学医学部卒業後、瑞穂中央総合病院で内科医として10年勤務し、地域医療のため当院を開院。専門：生活習慣病、呼吸器疾患。コメント：気軽に相談できるかかりつけ医を目指しています。</span><span class="lang-toggle lang-en">Career: Graduated Komyo University School of Medicine, 10 years in internal medicine at Mizuho Central Hospital, founded this clinic for community care. Specialty: lifestyle-related conditions, respiratory diseases. Message: I aim to be your approachable family doctor.</span></div>
             </div>
             <div class="staff-name"><span class="lang-toggle lang-ja">院長：佐藤 太郎</span><span class="lang-toggle lang-en">Director: Taro Sato</span></div>
           </div>
@@ -317,7 +353,7 @@
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/mari_suzuki.jpg" alt="看護師長 鈴木 真理" class="staff-img">
-              <div class="staff-desc"><span class="lang-toggle lang-ja">経歴：白桜大学看護学部卒、緑が丘大学病院で10年勤務後、地域医療を志し当院へ。得意：親身な対応、注射・採血、健康指導。</span><span class="lang-toggle lang-en">Career: Nursing degree at Hakusakura Univ., 10 years at Midorigaoka Univ. Hospital, joined to serve the community. Strengths: compassionate care, injections/blood draw, health coaching.</span></div>
+              <div class="staff-desc"><span class="lang-toggle lang-ja">経歴：白桜大学看護学部卒、緑が丘大学病院で10年勤務後、地域医療を志し当院へ。得意：親身な対応、注射・採血、健康指導。</span><span class="lang-toggle lang-en">Career: Nursing degree at Hakusakura Univ., 10 years at Midorigaoka Univ. Hospital, joined to serve the community. Strengths: compassionate care, injections and blood draws, health coaching.</span></div>
             </div>
             <div class="staff-name"><span class="lang-toggle lang-ja">看護師長：鈴木 真理</span><span class="lang-toggle lang-en">Head Nurse: Mari Suzuki</span></div>
           </div>
@@ -325,7 +361,7 @@
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/yumi_takahashi.jpg" alt="臨床検査技師 高橋 由美" class="staff-img">
-              <div class="staff-desc"><span class="lang-toggle lang-ja">経歴：臨床検査専門学校卒業後、武蔵中央医療センターで15年従事。得意：血液検査、心電図、超音波検査。</span><span class="lang-toggle lang-en">Career: Trained as clinical lab tech, 15 years at Musashi Central Medical Center. Strengths: blood tests, ECG, ultrasound.</span></div>
+              <div class="staff-desc"><span class="lang-toggle lang-ja">経歴：臨床検査専門学校卒業後、武蔵中央医療センターで15年従事。得意：血液検査、心電図、超音波検査。</span><span class="lang-toggle lang-en">Career: Trained as a clinical laboratory technologist, 15 years at Musashi Central Medical Center. Strengths: blood tests, ECG, ultrasound.</span></div>
             </div>
             <div class="staff-name"><span class="lang-toggle lang-ja">臨床検査技師：高橋 由美</span><span class="lang-toggle lang-en">Lab Technologist: Yumi Takahashi</span></div>
           </div>
@@ -355,7 +391,7 @@
           <div class="access-text-box">
             <div class="access-block">
               <div class="access-heading"><span class="lang-toggle lang-ja">住所</span><span class="lang-toggle lang-en">Address</span></div>
-              <p>〒123-4567 東京都台東区上野 0 丁目 0-0</p>
+              <p><span class="lang-toggle lang-ja">〒123-4567 東京都台東区上野 0 丁目 0-0</span><span class="lang-toggle lang-en">0-0 Ueno 0-chome, Taito-ku, Tokyo 123-4567, Japan</span></p>
             </div>
             <div class="access-block">
               <div class="access-heading"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></div>
@@ -396,8 +432,8 @@
 
         <div>
           <div class="footer-column-title"><span class="lang-toggle lang-ja">当院について</span><span class="lang-toggle lang-en">About Clinic</span></div>
-          <a href="#greeting" class="footer-link"><span class="lang-toggle lang-ja">院長挨拶</span><span class="lang-toggle lang-en">Director</span></a>
-          <a href="#staff" class="footer-link"><span class="lang-toggle lang-ja">医師・スタッフ</span><span class="lang-toggle lang-en">Staff</span></a>
+          <a href="#greeting" class="footer-link"><span class="lang-toggle lang-ja">院長挨拶</span><span class="lang-toggle lang-en">Director's Message</span></a>
+          <a href="#staff" class="footer-link"><span class="lang-toggle lang-ja">医師・スタッフ</span><span class="lang-toggle lang-en">Our Team</span></a>
           <a href="#services" class="footer-link"><span class="lang-toggle lang-ja">診察内容</span><span class="lang-toggle lang-en">Services</span></a>
         </div>
 

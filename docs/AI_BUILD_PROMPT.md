@@ -4,7 +4,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 静的な日本語クリニックサイトを、以下の構成とルールで再構築してください。
 
 ## File Map / ファイル構成
-- `index.html`（トップ）: hero, 診察時間、 おしらせ(アコーディオン)、院長挨拶、診察内容概要、当院について、理念・方針、スタッフ、アクセス/お問い合わせ、フッター
+- `index.html`（トップ）: hero, 診察時間(HTMLテーブル＋ステータスカード, JA/EN切替), おしらせ(アコーディオン)、院長挨拶、診察内容概要、当院について、理念・方針、スタッフ、アクセス/お問い合わせ、フッター
 - `subpages/booking.html` : WEB予約フォーム
 - `subpages/questionnaire.html` : WEB問診票フォーム
 - `subpages/news.html` : おしらせ一覧
@@ -29,6 +29,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 - Hero alert: 閉じるボタンで非表示
 - Mobile nav: ハンバーガーで開閉、オーバーレイ＆bodyロック、リンク/overlayクリックで閉じる
 - Forms: 送信時はアラート表示→リセット（デモ動作）
+- Hours table: `<th scope>` で曜日/時間を構造化し、`.lang-toggle` で日英表示を切替。SPではカード風にスタックし、曜日ラベルを自動表示。
 
 ## Sections & Navigation / セクションとナビ
 - Top nav links to `subpages/...`（個別ページ）とトップ内アンカー（#time, #news, #greeting, #services, #about, #policy, #staff, #access）
@@ -50,7 +51,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 - DOMContentLoaded 後に実行。用途はアコーディオン、ヒーローアラート閉じ、モバイルナビ開閉、フォーム送信の簡易アラートのみ。
 
 ## Accessibility / アクセシビリティ
-- `lang="ja"`, focus-visible のアウトライン、コントラスト保持。ARIA属性はナビ/アコーディオンで利用。
+- `lang="ja"`, focus-visible のアウトライン、コントラスト保持。ARIA属性はナビ/アコーディオンで利用。診察時間テーブルは `<th scope>` と日英 `.lang-toggle` を使用し、モバイルでは曜日ラベルを表示。
 
 ## Hosting / ホスティング
 - ビルドなしの静的サイト。`index.html` をブラウザで開けば動作すること。

@@ -19,6 +19,43 @@ document.addEventListener("DOMContentLoaded", () => {
     alertClose.addEventListener("click", () => alertBox.classList.add("is-hidden"));
   }
 
+  // Hero alert marquee (JS fallback for browsers that ignore CSS animation)
+  const marqueeBody = document.querySelector(".hero-alert-body");
+  const marqueeText = document.querySelector(".hero-alert-marquee");
+  if (marqueeBody && marqueeText) {
+    const clone = marqueeText.cloneNode(true);
+    marqueeBody.appendChild(clone);
+    marqueeBody.style.display = "flex";
+    marqueeBody.style.gap = "0";
+    marqueeBody.style.alignItems = "center";
+    [marqueeText, clone].forEach((el) => {
+      el.style.animation = "none";
+      el.style.flexShrink = "0";
+    });
+
+    let x = 0;
+    let last = null;
+    const speedPxPerSec = 60; // adjust for desired speed
+
+    const tick = (ts) => {
+      if (last === null) {
+        last = ts;
+        return requestAnimationFrame(tick);
+      }
+      const dt = ts - last;
+      last = ts;
+      const w = marqueeText.offsetWidth || 1;
+      x -= (speedPxPerSec * dt) / 1000;
+      if (-x >= w) {
+        x += w;
+      }
+      marqueeText.style.transform = `translateX(${x}px)`;
+      clone.style.transform = `translateX(${x + w}px)`;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
   // Mobile nav toggle
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");

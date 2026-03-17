@@ -20,7 +20,7 @@
 - Navigation: desktop inline links; mobile hamburger + overlay + body lock
 - Hero: copy + image, dual CTAs, dismissible alert
 - Buttons: `.btn-pill` base; `.btn-primary` / `.btn-secondary` variants
-- Time card: status chip + reserve CTA
+- Hours section: semantic HTML table (JA/EN) + time status/reserve card
 - News accordion: `aria-expanded`, `hidden`, +/- icon toggle
 - News archive list
 - Reservation form (booking)
@@ -31,6 +31,7 @@
 ## Accessibility / アクセシビリティ
 - `lang="ja"`, focus-visible outlines, high-contrast buttons
 - Accordions/nav toggle use `aria-expanded`; alert closable
+- Hours table uses `<th scope>` headers, bilingual labels via `.lang-toggle`, and mobile stacking with day labels rendered from data attributes
 - Mobile nav overlay prevents background scroll
 
 ## Performance / パフォーマンス

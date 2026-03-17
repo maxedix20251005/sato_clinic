@@ -11,7 +11,7 @@ Create a welcoming, trustworthy clinic homepage that makes online booking obviou
 
 ## Page Sections / ページ構成
 - Hero with promise, dual CTAs (WEB予約 primary, アクセス secondary), alert for notices
-- 診察時間カード（ステータス＋予約ボタン）
+- 診察時間セクション：HTMLテーブル＋ステータスカード（画像依存なし、JA/EN表示切替対応）
 - おしらせアコーディオン
 - 院長挨拶・診察内容・当院について・理念・スタッフ紹介
 - アクセス／お問い合わせ（地図・連絡先）
@@ -41,6 +41,7 @@ Create a welcoming, trustworthy clinic homepage that makes online booking obviou
 - サイトマップページ `subpages/sitemap.html` を追加し、全セクションをツリー表示。
 
 ## Recent Updates / 直近の更新
+- 診察時間画像を廃止し、アクセシブルなHTMLテーブルに置換（曜日・注記を日英切替対応）。
 - フッターのリンクをサイトマップに更新し、予約・問診・アクセスの導線を整理。
 - 文字化け対策として全ファイルを UTF-8 (BOMなし) で管理。
 - プライバシーポリシーを独立ページ subpages/privacy.html として公開し、全ページのフッターからリンク。 / Published a standalone privacy page (subpages/privacy.html) and wired all footers to it.

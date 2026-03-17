@@ -150,6 +150,12 @@ section {
    font-size: 12px;
 }
 
+/* Keep header badges uniform width */
+.header-hours-tags .chip {
+   min-width: 70px;
+   justify-content: center;
+}
+
 .shadow-photo-img {
    width: 100%;
    border-radius: var(--radius-lg);
@@ -187,6 +193,8 @@ section {
    gap: 1px;
    min-width: 60px;
    font-size: 12px;
+   align-items: center;
+   text-align: center;
 }
 
 .header-hours-text {
@@ -405,13 +413,15 @@ section {
 .hero-alert-body .hero-alert-marquee {
    display: inline-block;
    white-space: nowrap;
-   padding-left: 100%;
-   animation: scroll-left 20s linear infinite;
+   width: max-content;
+   min-width: 100%;
+   animation: scroll-left 18s linear infinite;
+   will-change: transform;
 }
 
 @keyframes scroll-left {
    0% {
-      transform: translateX(0);
+      transform: translateX(100%);
    }
 
    100% {
@@ -455,6 +465,113 @@ section {
    width: 100%;
    border-radius: var(--radius-lg);
    border: 1px solid #4caf50;
+}
+
+.time-table-wrapper {
+   background: #fff;
+   border: 1px solid #4caf50;
+   border-radius: var(--radius-lg);
+   padding: 20px;
+   box-shadow: var(--shadow-md);
+}
+
+.time-table {
+   width: 100%;
+   border-collapse: collapse;
+   text-align: center;
+   font-size: 15px;
+}
+
+.time-table th,
+.time-table td {
+   border: 1px solid #c7d8e2;
+   padding: 10px 8px;
+}
+
+.time-table thead th {
+   background: #cce0ef;
+   font-weight: 700;
+}
+
+.time-table tbody th {
+   background: #f9fcff;
+   font-weight: 600;
+   width: 120px;
+}
+
+.dot {
+   display: inline-block;
+   width: 12px;
+   height: 12px;
+   border-radius: 50%;
+   vertical-align: middle;
+   background: #b0b0b0;
+}
+
+.dot.on {
+   background: #2ea44f;
+}
+
+.slash {
+   color: #6b6b6b;
+   font-weight: 700;
+}
+
+.time-note {
+   margin-top: 10px;
+   font-size: 16px;
+   line-height: 1.6;
+   color: #4a4a4a;
+}
+
+@media (max-width: 720px) {
+   .time-table-wrapper {
+      padding: 16px;
+   }
+
+   .time-table thead {
+      display: none;
+   }
+
+   .time-table,
+   .time-table tbody,
+   .time-table tr,
+   .time-table td,
+   .time-table th {
+      display: block;
+      width: 100%;
+   }
+
+   .time-table tr {
+      margin-bottom: 12px;
+      border: 1px solid #c7d8e2;
+      border-radius: 10px;
+      overflow: hidden;
+   }
+
+   .time-table tbody th {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #c7d8e2;
+   }
+
+   .time-table td {
+      text-align: left;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      align-items: center;
+      padding: 10px 12px;
+   }
+
+   .time-table td::before {
+      content: attr(data-day-ja);
+      color: #567;
+      font-weight: 600;
+   }
+
+   body.lang-en .time-table td::before {
+      content: attr(data-day-en);
+   }
 }
 
 .time-card {
