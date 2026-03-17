@@ -1,55 +1,41 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
-
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>佐藤医院｜地域のホームドクター</title>
+  <title>佐藤医院 / Sato Clinic</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-
-
 <body>
-  <!-- <div style="background:yellow;padding:8px;font-weight:700">TEST 2025-12-23</div> -->
-  <!-- ========================
-       HEADER
-       ======================== -->
+  <!-- ======================== HEADER ======================== -->
   <header>
     <div class="site-header-top">
       <div class="container site-header-top-inner">
-        <!-- Logo -->
         <div class="header-logo-frame frame">
           <img src="image/Logo.png" alt="佐藤医院ロゴ">
         </div>
         <div class="header-hours">
           <div class="header-hours-tags">
-            <span class="chip">診察</span>
-            <span class="chip">午前</span>
-            <span class="chip">午後</span>
+            <span class="chip lang-toggle lang-ja">診察</span><span class="chip lang-toggle lang-en">Open</span>
+            <span class="chip lang-toggle lang-ja">午前</span><span class="chip lang-toggle lang-en">AM</span>
+            <span class="chip lang-toggle lang-ja">午後</span><span class="chip lang-toggle lang-en">PM</span>
           </div>
           <div>
-            <div class="header-hours-text">
-              月、火、木、金、土（休診：木日祝）
-            </div>
+            <div class="header-hours-text lang-toggle lang-ja">月、火、木、金、土（休診：木日祝）</div>
+            <div class="header-hours-text lang-toggle lang-en">Mon, Tue, Thu, Fri, Sat (Closed Wed/Sun/Holidays)</div>
             <div class="header-hours-text">09:00-12:00</div>
             <div class="header-hours-text">14:00-19:00</div>
           </div>
         </div>
 
         <div class="header-cta-area">
-          <!-- <div class="header-cta-buttons">
-            <a href="#reserve" class="btn-pill">WEB予約</a>
-            <a href="#access" class="btn-pill">アクセス／お問い合わせ</a>
-          </div> -->
           <div class="header-cta-buttons">
-            <a href="subpages/booking.html" class="btn-pill btn-pill-header">WEB予約</a>
-            <a href="#access" class="btn-pill btn-pill-header">アクセス／お問い合わせ</a>
+            <a href="subpages/booking.html" class="btn-pill btn-pill-header"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Book Online</span></a>
+            <a href="#access" class="btn-pill btn-pill-header"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
           </div>
-
           <a href="tel:0000000000" class="header-phone">
             <div class="header-phone-icon">
               <img src="image/handset_blue.png" alt="Handset">
@@ -66,16 +52,16 @@
           <span class="nav-toggle-bar"></span>
           <span class="nav-toggle-bar"></span>
           <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-label">メニュー</span>
+          <span class="nav-toggle-label lang-toggle lang-ja">メニュー</span><span class="nav-toggle-label lang-toggle lang-en">Menu</span>
         </button>
         <div class="nav-links" id="nav-links">
-          <a href="#home">ホーム</a>
-          <a href="subpages/news.html">おしらせ</a>
-          <a href="subpages/services.html">診察内容</a>
-          <a href="subpages/about.html">当院について</a>
-          <a href="subpages/policy.html">理念・方針</a>
-          <a href="#time">診察時間</a>
-          <a href="#access">アクセス／お問い合わせ</a>
+          <a href="#home"><span class="lang-toggle lang-ja">ホーム</span><span class="lang-toggle lang-en">Home</span></a>
+          <a href="subpages/news.html"><span class="lang-toggle lang-ja">おしらせ</span><span class="lang-toggle lang-en">News</span></a>
+          <a href="subpages/services.html"><span class="lang-toggle lang-ja">診察内容</span><span class="lang-toggle lang-en">Services</span></a>
+          <a href="subpages/about.html"><span class="lang-toggle lang-ja">当院について</span><span class="lang-toggle lang-en">About</span></a>
+          <a href="subpages/policy.html"><span class="lang-toggle lang-ja">理念・方針</span><span class="lang-toggle lang-en">Philosophy</span></a>
+          <a href="#time"><span class="lang-toggle lang-ja">診察時間</span><span class="lang-toggle lang-en">Hours</span></a>
+          <a href="#access"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
         </div>
       </div>
       <div class="nav-overlay" aria-hidden="true"></div>
@@ -83,69 +69,52 @@
     <div class="nav-spacer" aria-hidden="true"></div>
   </header>
 
-  <!-- ========================
-       MAIN
-       ======================== -->
+  <!-- ======================== MAIN ======================== -->
   <main>
     <!-- HERO -->
     <section id="home" class="hero">
       <div class="container">
         <div class="hero-inner">
           <div>
-            <p class="hero-copy-main">
-              地域の皆さまの健康を見守り<br />
-              未来の安心をしっかりと支える<br />
-              ホームドクターであり続けます
-            </p>
-            <p class="hero-copy-sub">
-              地域に根ざしたホームドクターとして、日々の暮らしにそっと寄り添い、皆さまの未来を支えていく医療を目指しています。<br />
-              小さな体調の変化や、なんとなく不安な気持ちも、遠慮なくご相談ください。<br />
-              丁寧な対話と適切な診療で、安心できる毎日をともにつくります。<br />
-              地域の健康を見守り、人生の節目に寄り添う存在として、長く信頼されるクリニックであり続けます。
-            </p>
+            <p class="hero-copy-main"><span class="lang-toggle lang-ja">地域の皆さまの健康を見守り<br />未来の安心をしっかりと支える<br />ホームドクターであり続けます</span><span class="lang-toggle lang-en">We watch over your health and support your future with trusted, community-based care.</span></p>
+            <p class="hero-copy-sub"><span class="lang-toggle lang-ja">地域に根ざしたホームドクターとして、日々の暮らしにそっと寄り添い、皆さまの未来を支えていく医療を目指しています。小さな体調の変化や不安も遠慮なくご相談ください。丁寧な対話と適切な診療で、安心できる毎日をともにつくります。</span><span class="lang-toggle lang-en">As your neighborhood doctor, we aim to be close to your daily life and support your future health. Please consult us for even minor concerns. With attentive conversations and appropriate care, we build安心 together.</span></p>
             <div class="hero-cta">
-              <a href="subpages/booking.html" class="btn-pill btn-primary">WEB予約</a>
-              <a href="#access" class="btn-pill btn-secondary">アクセス／お問い合わせ</a>
+              <a href="subpages/booking.html" class="btn-pill btn-primary"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Book Online</span></a>
+              <a href="#access" class="btn-pill btn-secondary"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
             </div>
           </div>
-
-          <!-- Right: hospital.jpg -->
           <div class="hero-image"></div>
         </div>
 
-        <!-- News: 1st line: Title, 2nd line: Marquee -->
         <div class="hero-alert" role="status">
-          <div class="hero-alert-title">重要なお知らせ</div>
+          <div class="hero-alert-title"><span class="lang-toggle lang-ja">重要なお知らせ</span><span class="lang-toggle lang-en">Important Notice</span></div>
           <div class="hero-alert-body">
-            <span class="hero-alert-marquee">年末年始の休診日は、12月29日(金)～1月4日(木)です。年始は1月5日(金)より通常診療を再開いたします。</span>
+            <span class="hero-alert-marquee lang-toggle lang-ja">年末年始の休診日は、12月29日(金)～1月4日(木)です。年始は1月5日(金)より通常診療を再開いたします。</span>
+            <span class="hero-alert-marquee lang-toggle lang-en">We will be closed Dec 29 (Fri) – Jan 4 (Thu). Regular hours resume on Jan 5 (Fri).</span>
           </div>
-          <button class="hero-alert-close" type="button" aria-label="お知らせを閉じる">×</button>
+          <button class="hero-alert-close" type="button" aria-label="close notice">×</button>
         </div>
       </div>
     </section>
 
     <section id="time">
       <div class="container main-container">
-        <h2 class="section-title">診察時間</h2>
+        <h2 class="section-title"><span class="lang-toggle lang-ja">診察時間</span><span class="lang-toggle lang-en">Hours</span></h2>
         <div class="time-inner">
-          <!-- Left: tradinghour.jpg -->
           <div class="time-image">
-            <img src="image/tradinghour.jpg" alt="Trading Hour">
+            <img src="image/tradinghour.jpg" alt="Clinic hours">
           </div>
-
-          <!-- Right: Card + Button, align top line -->
           <div>
             <div class="time-card" id="reserve">
               <div class="time-status-row">
-                <div class="status-chip status-open" id="status-chip">ただいま診察中</div>
+                <div class="status-chip status-open" id="status-chip"><span class="lang-toggle lang-ja">ただいま診察中</span><span class="lang-toggle lang-en">Now Open</span></div>
               </div>
               <div class="time-text">
-                受付時間：8 時～11 時 / 13～18 時 <br />
-                休診日：木曜・土曜午後・日曜<br /><br />
-                ※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。
+                <span class="lang-toggle lang-ja">受付時間：8:00〜11:00 / 13:00〜18:00<br />休診日：木曜・土曜午後・日曜<br /><br />※祝祭日も診察を行っていますが、休診日もございますので事前にご確認ください。</span>
+                <span class="lang-toggle lang-en">Reception: 8:00–11:00 / 13:00–18:00<br />Closed: Thu, Sat afternoon, Sun<br /><br />*We may close on some holidays—please check in advance.</span>
               </div>
               <div class="time-reserve-btn-wrap">
-                <a href="subpages/booking.html" class="btn-pill btn-primary">WEB予約はこちらから</a>
+                <a href="subpages/booking.html" class="btn-pill btn-primary"><span class="lang-toggle lang-ja">WEB予約はこちらから</span><span class="lang-toggle lang-en">Book Online</span></a>
               </div>
             </div>
           </div>
@@ -153,80 +122,64 @@
       </div>
     </section>
 
-    <!-- News -->
     <section id="news">
       <div class="container main-container">
-        <h2 class="section-title">おしらせ</h2>
+        <h2 class="section-title"><span class="lang-toggle lang-ja">おしらせ</span><span class="lang-toggle lang-en">News</span></h2>
         <div class="news-wrapper">
           <div>
             <div class="news-list">
-              <!-- Flue vaccination -->
               <div class="news-item">
                 <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-1">
-                  <div class="news-item-title">インフルエンザ予防接種について</div>
+                  <div class="news-item-title"><span class="lang-toggle lang-ja">インフルエンザ予防接種について</span><span class="lang-toggle lang-en">Influenza Vaccinations</span></div>
                   <div class="news-item-icon" aria-hidden="true">＋</div>
                 </button>
                 <div class="news-item-content" id="news-panel-1" hidden>
-                  <p>今年もインフルエンザの予防接種を開始いたしました。予約制となっておりますので、お電話または受付にてご予約をお願いいたします。
-                    例年、予約が集中しやすいため、早めのご予約をおすすめいたします。</p>
+                  <p><span class="lang-toggle lang-ja">インフルエンザ予防接種を開始しました。予約制ですのでお電話または受付でご予約ください。混み合いますのでお早めに。</span><span class="lang-toggle lang-en">Flu shots are now available. Please reserve by phone or at reception. Slots fill quickly—book early.</span></p>
                 </div>
               </div>
 
-              <!-- Year end trading hour -->
               <div class="news-item">
                 <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-2">
-                  <div class="news-item-title">年末年始の休診について</div>
+                  <div class="news-item-title"><span class="lang-toggle lang-ja">年末年始の休診について</span><span class="lang-toggle lang-en">Year-End / New Year Schedule</span></div>
                   <div class="news-item-icon" aria-hidden="true">＋</div>
                 </button>
                 <div class="news-item-content" id="news-panel-2" hidden>
-                  <p>年末年始の休診日は、12月29日(金)～1月4日(木)となります。
-                    年始は1月5日(金)より通常診療を再開いたします。
-                    皆様にはご不便をおかけしますが、何卒ご了承くださいますようお願いいたします。</p>
+                  <p><span class="lang-toggle lang-ja">12月29日(金)～1月4日(木)は休診、1月5日(金)から通常診療です。ご不便をおかけしますがご了承ください。</span><span class="lang-toggle lang-en">Closed Dec 29 (Fri) – Jan 4 (Thu). Regular hours resume Jan 5 (Fri). Thank you for understanding.</span></p>
                 </div>
               </div>
 
-              <!-- Health check -->
               <div class="news-item">
                 <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-3">
-                  <div class="news-item-title">健康診断のご案内</div>
+                  <div class="news-item-title"><span class="lang-toggle lang-ja">健康診断のご案内</span><span class="lang-toggle lang-en">Health Checkups</span></div>
                   <div class="news-item-icon" aria-hidden="true">＋</div>
                 </button>
                 <div class="news-item-content" id="news-panel-3" hidden>
-                  <p>今年も健康診断を実施しております。定期的な健康チェックは、病気の早期発見・予防にとても重要です。
-                    各種健康診断メニューをご用意しておりますので、ご希望の方はお電話にてお申し込みください。</p>
+                  <p><span class="lang-toggle lang-ja">定期健康診断を実施中です。早期発見・予防のためにぜひご利用ください。内容や費用はお電話でお問い合わせください。</span><span class="lang-toggle lang-en">Routine checkups are available. Use them for early detection and prevention. Call us for details and pricing.</span></p>
                 </div>
               </div>
 
-              <!-- COVID-19 policy -->
               <div class="news-item">
                 <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-4">
-                  <div class="news-item-title">新型コロナウイルス対策について</div>
+                  <div class="news-item-title"><span class="lang-toggle lang-ja">新型コロナウイルス対策について</span><span class="lang-toggle lang-en">COVID-19 Measures</span></div>
                   <div class="news-item-icon" aria-hidden="true">＋</div>
                 </button>
                 <div class="news-item-content" id="news-panel-4" hidden>
-                  <p>当院では引き続き、新型コロナウイルス感染症対策を徹底しております。
-                    ご来院の際には、マスクの着用、手指消毒にご協力をお願いいたします。
-                    また、発熱や風邪症状のある方は、事前にお電話でご相談いただけるとスムーズにご案内が可能です。</p>
+                  <p><span class="lang-toggle lang-ja">ご来院時はマスクと手指消毒にご協力ください。発熱・風邪症状のある方は事前にお電話いただくとスムーズです。</span><span class="lang-toggle lang-en">Please wear a mask and sanitize your hands. If you have fever or cold symptoms, call us beforehand for smoother guidance.</span></p>
                 </div>
               </div>
 
-              <!-- Online services -->
               <div class="news-item">
                 <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-5">
-                  <div class="news-item-title">オンライン診療の導入について</div>
+                  <div class="news-item-title"><span class="lang-toggle lang-ja">オンライン診療の導入について</span><span class="lang-toggle lang-en">Online Consultations</span></div>
                   <div class="news-item-icon" aria-hidden="true">＋</div>
                 </button>
                 <div class="news-item-content" id="news-panel-5" hidden>
-                  <p>2024年より、オンライン診療を一部導入いたしました。
-                    通院が難しい方や、遠方にお住まいの方にご利用いただけます。
-                    ご希望の方は、当院スタッフまでお問い合わせください。
-                    皆様の健康をサポートできるよう、スタッフ一同努めてまいります。
-                    何かご不明な点がございましたら、お気軽にお問い合わせください。</p>
+                  <p><span class="lang-toggle lang-ja">オンライン診療を一部導入しました。通院が難しい方や遠方の方にご利用いただけます。ご希望の方はスタッフへお知らせください。</span><span class="lang-toggle lang-en">We now offer limited online visits for patients who find it hard to come in or live far away. Let our staff know if you'd like to use this service.</span></p>
                 </div>
               </div>
             </div>
             <div style="margin-top: 16px">
-              <a href="subpages/news.html" class="btn-pill">過去のニュース</a>
+              <a href="subpages/news.html" class="btn-pill"><span class="lang-toggle lang-ja">過去のニュース</span><span class="lang-toggle lang-en">News Archive</span></a>
             </div>
           </div>
           <div class="news-side-box">
@@ -236,29 +189,20 @@
       </div>
     </section>
 
-    <!-- Director's greeting -->
     <section id="greeting">
       <div class="container main-container">
-        <h2 class="section-title">院長挨拶</h2>
+        <h2 class="section-title"><span class="lang-toggle lang-ja">院長挨拶</span><span class="lang-toggle lang-en">Director's Message</span></h2>
         <div class="greeting-inner">
           <div class="greeting-photo">
             <img src="image/director.jpg" alt="院長写真" class="greeting-photo-img" />
           </div>
           <div>
             <div class="greeting-text-box">
-              こんにちは。佐藤内科医院の院⾧、佐藤太郎と申します。
-              当院のホームページをご覧いただき、ありがとうございます。
-              佐藤内科医院では、「地域に根ざした医療」をモットーに、患者様一人ひとりに寄り添った医療を提供することを目指しております。
-              日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、地域の皆様の健康を支える役割を担っていきたいと考えております。
-              私たちは、患者様の不安を少しでも軽減し、安心して診療を受けていただけるよう、わかりやすい説明と丁寧な対応を心掛けております。
-              また、近隣の医療機関とも連携し、必要に応じて高度医療へのアクセスもサポートいたします。
-              どんな小さな不調でも、どうぞお気軽にご相談ください。
-              これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。
-              どうぞよろしくお願いいたします。
-
+              <span class="lang-toggle lang-ja">こんにちは。佐藤内科医院の院長、佐藤太郎と申します。地域に根ざした医療をモットーに、日常の健康管理から生活習慣病の予防まで幅広く内科診療を行っています。わかりやすい説明と丁寧な対応を心がけ、必要に応じて専門医とも連携します。どんな小さな不調でもお気軽にご相談ください。</span>
+              <span class="lang-toggle lang-en">Hello, I’m Taro Sato, director of Sato Clinic. Our mission is community-rooted care, from daily health management to prevention of lifestyle diseases. We explain clearly, respond attentively, and collaborate with specialists when needed. Please feel free to consult us about any concern, big or small.</span>
               <div class="greeting-sign">
-                佐藤医院<br>
-                院長 佐藤太郎
+                <span class="lang-toggle lang-ja">佐藤医院<br>院長 佐藤太郎</span>
+                <span class="lang-toggle lang-en">Sato Clinic<br>Director Taro Sato</span>
               </div>
             </div>
           </div>
@@ -266,18 +210,18 @@
       </div>
     </section>
 
-    <!-- Practices -->
     <section id="services">
       <div class="container main-container">
-        <h2 class="section-title">診察内容</h2>
+        <h2 class="section-title"><span class="lang-toggle lang-ja">診察内容</span><span class="lang-toggle lang-en">Services</span></h2>
         <div class="services-inner">
           <div>
             <div class="service-card">
               <div class="service-card-inner">
                 <img src="image/icons/general_practice.png" alt="一般内科診療" />
                 <div class="service-card-text">
-                  <span class="service-card-text-title">一般内科診療</span>
-                  風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。また、原因不明の不調や軽い症状であっても、早期診断に努めております。
+                  <span class="service-card-text-title"><span class="lang-toggle lang-ja">一般内科診療</span><span class="lang-toggle lang-en">General Internal Medicine</span></span>
+                  <span class="lang-toggle lang-ja">風邪や発熱、喉の痛み、頭痛、腹痛などの一般的な体調不良に幅広く対応します。</span>
+                  <span class="lang-toggle lang-en">We treat colds, fever, sore throat, headache, stomach pain, and other common conditions.</span>
                 </div>
               </div>
             </div>
@@ -285,8 +229,9 @@
               <div class="service-card-inner">
                 <img src="image/icons/lifestyle_disease.png" alt="生活習慣病の診断・治療" />
                 <div class="service-card-text">
-                  <span class="service-card-text-title">生活習慣病の診断・治療</span>
-                  高血圧症、糖尿病、脂質異常症（高コレステロール血症）、メタボリック症候群など、生活習慣病の診断と治療を行います。病気の進行を予防し、健康維持のための生活指導や薬物療法を行います。
+                  <span class="service-card-text-title"><span class="lang-toggle lang-ja">生活習慣病の診断・治療</span><span class="lang-toggle lang-en">Lifestyle Disease Care</span></span>
+                  <span class="lang-toggle lang-ja">高血圧、糖尿病、脂質異常症などを継続管理し、生活指導と薬物療法で進行予防を図ります。</span>
+                  <span class="lang-toggle lang-en">We manage hypertension, diabetes, dyslipidemia, and more with continuous follow-up, lifestyle guidance, and medication.</span>
                 </div>
               </div>
             </div>
@@ -297,8 +242,9 @@
               <div class="service-card-inner">
                 <img src="image/icons/gastroenterology.png" alt="消化器系の診察" />
                 <div class="service-card-text">
-                  <span class="service-card-text-title">消化器系の診察</span><br />
-                  胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。
+                  <span class="service-card-text-title"><span class="lang-toggle lang-ja">消化器系の診察</span><span class="lang-toggle lang-en">Gastroenterology</span></span><br />
+                  <span class="lang-toggle lang-ja">胃痛・胸やけ・便秘・下痢などに対応し、必要に応じて内視鏡や超音波検査を行います。</span>
+                  <span class="lang-toggle lang-en">We address stomach pain, heartburn, constipation, diarrhea, and perform endoscopy/ultrasound when needed.</span>
                 </div>
               </div>
             </div>
@@ -306,180 +252,129 @@
               <div class="service-card-inner">
                 <img src="image/icons/respiratory.png" alt="呼吸器系の診察" />
                 <div class="service-card-text">
-                  <span class="service-card-text-title">呼吸器系の診察</span><br />
-                  咳、息切れ、胸の痛みなど、呼吸器系の症状について診察を行っています。季節性の喘息やアレルギー性鼻炎、慢性閉塞性肺疾患（COPD）などにも対応し、適切な治療と予防をサポートします。
+                  <span class="service-card-text-title"><span class="lang-toggle lang-ja">呼吸器系の診察</span><span class="lang-toggle lang-en">Respiratory Care</span></span><br />
+                  <span class="lang-toggle lang-ja">咳・息切れ・胸痛などに対応し、喘息やCOPD、アレルギー性鼻炎の管理をサポートします。</span>
+                  <span class="lang-toggle lang-en">We see cough, dyspnea, chest discomfort and support management of asthma, COPD, and allergic rhinitis.</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
         <div class="services-more">
-          <a href="subpages/services.html" class="btn-pill">更に詳しく</a>
+          <a href="subpages/services.html" class="btn-pill"><span class="lang-toggle lang-ja">更に詳しく</span><span class="lang-toggle lang-en">See Details</span></a>
         </div>
       </div>
     </section>
 
-    <!-- About hospital -->
     <section id="about">
       <div class="container main-container">
-        <h2 class="section-title">当院について</h2>
+        <h2 class="section-title"><span class="lang-toggle lang-ja">当院について</span><span class="lang-toggle lang-en">About Us</span></h2>
         <div class="about-cards">
-          <div class="about-card">
-            <img src="image/about_1.jpg" alt="Doctor-1" class="shadow-photo-img">
-          </div>
-          <div class="about-card">
-            <img src="image/about_2.jpg" alt="Doctor-2" class="shadow-photo-img">
-          </div>
-          <div class="about-card">
-            <img src="image/about_3.jpg" alt="Doctor-3" class="shadow-photo-img">
-
-          </div>
+          <div class="about-card"><img src="image/about_1.jpg" alt="Doctor-1" class="shadow-photo-img"></div>
+          <div class="about-card"><img src="image/about_2.jpg" alt="Doctor-2" class="shadow-photo-img"></div>
+          <div class="about-card"><img src="image/about_3.jpg" alt="Doctor-3" class="shadow-photo-img"></div>
         </div>
         <div class="about-text-box">
-          佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。
+          <span class="lang-toggle lang-ja">佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してきました。</span>
+          <span class="lang-toggle lang-en">Sato Clinic is committed to protecting community health and supporting better daily life. Since our founding, we have valued patient-centered care and provided community-based medicine.</span>
         </div>
         <div style="margin-top: 16px; text-align: center">
-          <a href="subpages/about.html" class="btn-pill">更に詳しく</a>
-
+          <a href="subpages/about.html" class="btn-pill"><span class="lang-toggle lang-ja">更に詳しく</span><span class="lang-toggle lang-en">Learn More</span></a>
         </div>
-
+      </div>
     </section>
 
-    <!-- Philosophy/policy -->
     <section id="policy">
       <div class="container main-container">
-        <h2 class="section-title">医院の理念・方針</h2>
+        <h2 class="section-title"><span class="lang-toggle lang-ja">医院の理念・方針</span><span class="lang-toggle lang-en">Clinic Philosophy</span></h2>
         <div class="policy-inner">
           <div class="policy-text-box">
-            佐藤医院は、地域医療の一翼を担う医療機関として、「患者様第一」の精神を大切にしています。<br /><br />
-            私たちの理念は、単に病気を治療することにとどまらず、患者様が心身ともに健やかな生活を送るために、あらゆる面からサポートすることです。<br /><br />
-            診療を通じて、皆様が健康で充実した日々を送るお手伝いをすることを使命と考えています。
+            <span class="lang-toggle lang-ja">佐藤医院は「患者様第一」を掲げ、心身の健康を多面的に支援します。わかりやすい説明と丁寧な対応を大切にし、必要に応じて専門医とも連携して最適な医療を提供します。</span>
+            <span class="lang-toggle lang-en">We place patients first, supporting their physical and mental well-being. Clear explanations, attentive care, and collaboration with specialists help us deliver the best possible treatment.</span>
           </div>
           <div class="policy-card">
             <img src="image/philosophy.jpg" alt="Philosophy" class="policy-img">
           </div>
         </div>
         <div style="margin-top: 16px; text-align: center">
-          <a href="subpages/policy.html" class="btn-pill">更に詳しく</a>
+          <a href="subpages/policy.html" class="btn-pill"><span class="lang-toggle lang-ja">更に詳しく</span><span class="lang-toggle lang-en">Learn More</span></a>
         </div>
-
       </div>
     </section>
 
-    <!-- Staff -->
     <section id="staff">
       <div class="container main-container">
-        <h2 class="section-title">スタッフ紹介</h2>
+        <h2 class="section-title"><span class="lang-toggle lang-ja">スタッフ紹介</span><span class="lang-toggle lang-en">Our Team</span></h2>
         <div class="staff-grid">
-
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/taro_sato.jpg" alt="院長 佐藤 太郎" class="staff-img">
-
-              <!-- ▼ Hover description overlay (★ staff-photo の中に移動) -->
-              <div class="staff-desc">
-                経歴：光明大学医学部卒業後、瑞穂中央総合病院で内科医として10年間勤務。<br>
-                その後、地域医療への貢献を目指し、佐藤内科医院を開院。<br>
-                専門分野： 生活習慣病、呼吸器疾患、内科全般<br><br>
-                コメント： 患者様にとって気軽に相談できる「かかりつけ医」を目指しています。<br>
-                どんな小さな不安でも、まずはご相談ください。
-              </div>
+              <div class="staff-desc"><span class="lang-toggle lang-ja">経歴：光明大学医学部卒業後、瑞穂中央総合病院で内科医として10年勤務し、地域医療のため当院を開院。専門：生活習慣病、呼吸器疾患。コメント：気軽に相談できるかかりつけ医を目指しています。</span><span class="lang-toggle lang-en">Career: Graduated Komyo Univ. Med, 10 years internal medicine at Mizuho Central Hospital, founded this clinic for community care. Specialty: lifestyle diseases, respiratory. Message: I aim to be your approachable family doctor.</span></div>
             </div>
-            <div class="staff-name">院長：佐藤 太郎</div>
+            <div class="staff-name"><span class="lang-toggle lang-ja">院長：佐藤 太郎</span><span class="lang-toggle lang-en">Director: Taro Sato</span></div>
           </div>
 
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/mari_suzuki.jpg" alt="看護師長 鈴木 真理" class="staff-img">
-              <!-- ▼ Hover description overlay (★ staff-photo の中に移動) -->
-              <div class="staff-desc">
-                経歴： 白桜大学看護学部卒業後、緑が丘大学病院で10 年勤務。地域医療に携わりたい思いから、佐藤内科医院に入職。<br>
-                得意分野： 親身な対応、注射・採血技術、健康管理指導<br><br>
-                メッセージ： 安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。<br>
-                些細なことでもお気軽にご相談ください。
-              </div>
+              <div class="staff-desc"><span class="lang-toggle lang-ja">経歴：白桜大学看護学部卒、緑が丘大学病院で10年勤務後、地域医療を志し当院へ。得意：親身な対応、注射・採血、健康指導。</span><span class="lang-toggle lang-en">Career: Nursing degree at Hakusakura Univ., 10 years at Midorigaoka Univ. Hospital, joined to serve the community. Strengths: compassionate care, injections/blood draw, health coaching.</span></div>
             </div>
-            <div class="staff-name">看護師長：鈴木 真理</div>
+            <div class="staff-name"><span class="lang-toggle lang-ja">看護師長：鈴木 真理</span><span class="lang-toggle lang-en">Head Nurse: Mari Suzuki</span></div>
           </div>
 
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/yumi_takahashi.jpg" alt="臨床検査技師 高橋 由美" class="staff-img">
-              <!-- ▼ Hover description overlay (★ staff-photo の中に移動) -->
-              <div class="staff-desc">
-                経歴： 東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15年間の臨床検査技師としての経験を積む。<br>
-                得意分野： 血液検査、心電図検査、超音波検査<br><br>
-                コメント： 検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。<br>
-              </div>
+              <div class="staff-desc"><span class="lang-toggle lang-ja">経歴：臨床検査専門学校卒業後、武蔵中央医療センターで15年従事。得意：血液検査、心電図、超音波検査。</span><span class="lang-toggle lang-en">Career: Trained as clinical lab tech, 15 years at Musashi Central Medical Center. Strengths: blood tests, ECG, ultrasound.</span></div>
             </div>
-            <div class="staff-name">臨床検査技師：高橋 由美</div>
+            <div class="staff-name"><span class="lang-toggle lang-ja">臨床検査技師：高橋 由美</span><span class="lang-toggle lang-en">Lab Technologist: Yumi Takahashi</span></div>
           </div>
 
           <div class="staff-card">
             <div class="staff-photo">
               <img src="image/hana_yamamoto.jpg" alt="医療事務 山本 花" class="staff-img">
-              <!-- ▼ Hover description overlay (★ staff-photo の中に移動) -->
-              <div class="staff-desc">
-                経歴： 希望医療カレッジ卒業後、さくら診療所にて受付業務を担当。現在は佐藤内科医院で患者様対応を担当。<br>
-                得意分野： 受付業務、カルテ管理、医療費計算<br><br>
-                コメント： 皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。<br>
-                初めての方もどうぞ安心してお越しください。
-              </div>
+              <div class="staff-desc"><span class="lang-toggle lang-ja">経歴：医療カレッジ卒業後、診療所受付を経て当院へ。得意：受付対応、カルテ管理、医療費計算。</span><span class="lang-toggle lang-en">Career: Medical college graduate, reception experience before joining us. Strengths: front-desk service, chart management, billing.</span></div>
             </div>
-            <div class="staff-name">医療事務：山本 花</div>
+            <div class="staff-name"><span class="lang-toggle lang-ja">医療事務：山本 花</span><span class="lang-toggle lang-en">Medical Admin: Hana Yamamoto</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact us -->
     <section id="access">
       <div class="container main-container">
-        <h2 class="section-title">アクセス／お問い合わせ／ お問い合わせ</h2>
-
+        <h2 class="section-title"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></h2>
         <div class="access-inner">
-          <!-- Left: Map + Button -->
           <div class="access-map">
-            <iframe src="https://www.google.com/maps?q=〒110-0015+東京都台東区東上野３−１５−５+曽我ビル3階&hl=ja&z=17&output=embed"
-              loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-
+            <iframe src="https://www.google.com/maps?q=〒110-0015+東京都台東区東上野３−１５−５+曽我ビル3階&hl=ja&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
             <div class="map-actions">
-              <a href="https://www.google.com/maps/search/?api=1&query=〒110-0015+東京都台東区東上野３−１５−５+曽我ビル3階" target="_blank"
-                class="map-btn">
-                Googleマップで開く
-              </a>
-              <a href="https://www.google.com/maps/dir/?api=1&destination=〒110-0015+東京都台東区東上野３−１５−５+曽我ビル3階"
-                target="_blank" class="map-btn">
-                現在地からのルートを表示
-              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=〒110-0015+東京都台東区東上野３−１５−５+曽我ビル3階" target="_blank" class="map-btn"><span class="lang-toggle lang-ja">Googleマップで開く</span><span class="lang-toggle lang-en">Open in Google Maps</span></a>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=〒110-0015+東京都台東区東上野３−１５−５+曽我ビル3階" target="_blank" class="map-btn"><span class="lang-toggle lang-ja">現在地からのルート</span><span class="lang-toggle lang-en">Route from your location</span></a>
             </div>
           </div>
-
-          <!-- Right: Contact details -->
           <div class="access-text-box">
             <div class="access-block">
-              <div class="access-heading">住所</div>
-              <p>〒123-4567 東京都台東区上野 0 丁目 0 - 0</p>
+              <div class="access-heading"><span class="lang-toggle lang-ja">住所</span><span class="lang-toggle lang-en">Address</span></div>
+              <p>〒123-4567 東京都台東区上野 0 丁目 0-0</p>
             </div>
             <div class="access-block">
-              <div class="access-heading">アクセス／お問い合わせ</div>
+              <div class="access-heading"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></div>
               <ul>
-                <li>最寄駅: JR 上野より徒歩 5 分</li>
-                <li>当院専用の無料駐車場 10 台分あり</li>
-                <li>交通状況にご注意ください</li>
+                <li><span class="lang-toggle lang-ja">最寄駅: JR上野より徒歩5分</span><span class="lang-toggle lang-en">5 min walk from JR Ueno</span></li>
+                <li><span class="lang-toggle lang-ja">専用無料駐車場 10台</span><span class="lang-toggle lang-en">10 free clinic parking spaces</span></li>
+                <li><span class="lang-toggle lang-ja">ご来院時は交通状況にご注意ください</span><span class="lang-toggle lang-en">Please check traffic when you visit</span></li>
               </ul>
             </div>
             <div class="access-block">
-              <div class="access-heading">お問い合わせ</div>
+              <div class="access-heading"><span class="lang-toggle lang-ja">お問い合わせ</span><span class="lang-toggle lang-en">Contact</span></div>
               <ul>
-                <li>電話: 00-0000-0000</li>
-                <li>ファックス: 00-0000-0000</li>
-                <li>Eメール: info@sato-clinic-test.jp</li>
+                <li>電話 / Phone: 00-0000-0000</li>
+                <li>FAX: 00-0000-0000</li>
+                <li>E-mail: info@sato-clinic-test.jp</li>
               </ul>
               <div class="time-reserve-btn-wrap" style="text-align:left">
-                <a href="tel:0000000000" class="btn-pill btn-secondary">電話をかける</a>
-                <a href="subpages/booking.html" class="btn-pill btn-primary">WEB予約</a>
+                <a href="tel:0000000000" class="btn-pill btn-secondary"><span class="lang-toggle lang-ja">電話をかける</span><span class="lang-toggle lang-en">Call</span></a>
+                <a href="subpages/booking.html" class="btn-pill btn-primary"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Book Online</span></a>
               </div>
             </div>
           </div>
@@ -488,42 +383,38 @@
     </section>
   </main>
 
-  <!-- ========================
-       FOOTER
-       ======================== -->
+  <!-- ======================== FOOTER ======================== -->
   <footer class="site-footer">
     <div class="footer-top">
       <div class="container footer-links">
         <div>
-          <div class="footer-column-title">ご案内</div>
-          <a href="subpages/sitemap.html" class="footer-link">サイトマップ</a>
-          <a href="subpages/privacy.html" class="footer-link">プライバシーポリシー</a>
-          <a href="subpages/site-policy.html" class="footer-link">サイトポリシー</a>
+          <div class="footer-column-title"><span class="lang-toggle lang-ja">ご案内</span><span class="lang-toggle lang-en">Info</span></div>
+          <a href="subpages/sitemap.html" class="footer-link"><span class="lang-toggle lang-ja">サイトマップ</span><span class="lang-toggle lang-en">Sitemap</span></a>
+          <a href="subpages/privacy.html" class="footer-link"><span class="lang-toggle lang-ja">プライバシーポリシー</span><span class="lang-toggle lang-en">Privacy Policy</span></a>
+          <a href="subpages/site-policy.html" class="footer-link"><span class="lang-toggle lang-ja">サイトポリシー</span><span class="lang-toggle lang-en">Site Policy</span></a>
         </div>
 
         <div>
-          <div class="footer-column-title">当院について</div>
-          <a href="#greeting" class="footer-link">院長挨拶</a>
-          <a href="#staff" class="footer-link">医師・スタッフ</a>
-          <a href="#services" class="footer-link">診察内容</a>
+          <div class="footer-column-title"><span class="lang-toggle lang-ja">当院について</span><span class="lang-toggle lang-en">About Clinic</span></div>
+          <a href="#greeting" class="footer-link"><span class="lang-toggle lang-ja">院長挨拶</span><span class="lang-toggle lang-en">Director</span></a>
+          <a href="#staff" class="footer-link"><span class="lang-toggle lang-ja">医師・スタッフ</span><span class="lang-toggle lang-en">Staff</span></a>
+          <a href="#services" class="footer-link"><span class="lang-toggle lang-ja">診察内容</span><span class="lang-toggle lang-en">Services</span></a>
         </div>
 
         <div>
-          <div class="footer-column-title">ご予約はこちらから</div>
-          <a href="subpages/booking.html" class="footer-link">WEB予約</a>
-          <a href="subpages/questionnaire.html" class="footer-link">WEB問診票</a>
-          <a href="#access" class="footer-link">アクセス／お問い合わせ</a>
-          
-          
+          <div class="footer-column-title"><span class="lang-toggle lang-ja">ご予約はこちらから</span><span class="lang-toggle lang-en">Reservations</span></div>
+          <a href="subpages/booking.html" class="footer-link"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Book Online</span></a>
+          <a href="subpages/questionnaire.html" class="footer-link"><span class="lang-toggle lang-ja">WEB問診票</span><span class="lang-toggle lang-en">Intake Form</span></a>
+          <a href="#access" class="footer-link"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
         </div>
 
         <div class="footer-lang">
           <div class="footer-lang-selector">
-                        <select aria-label="Language" class="footer-lang-select">
-                            <option value="ja" selected>日本語</option>
-                            <option value="en">English</option>
-                        </select>
-                    </div>
+            <select aria-label="Language" class="footer-lang-select">
+              <option value="ja">日本語</option>
+              <option value="en">English</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
@@ -533,10 +424,7 @@
       Produced by 20251005
     </div>
   </footer>
-  <script src="scripts/main.js"></script>\n  <script src="scripts/lang.js"></script>
-
-
+  <script src="scripts/main.js"></script>
+  <script src="scripts/lang.js"></script>
 </body>
-
 </html>
-
