@@ -1,1 +1,26 @@
-# Deployment Guide / デプロイ手順\n\n## Local Preview / ローカル確認\n- Open `index.html`, `booking.html`, `news.html`, `services.html`, `about.html`, `policy.html` in a browser; no build step required. ブラウザで各HTMLファイルを直接開く。\n- Optional: `python3 -m http.server 8000` then visit `http://localhost:8000`. 簡易サーバーでも可。\n\n## Production Hosting / 本番ホスティング\n- Static hosting: GitHub Pages, Netlify, Vercel, Cloudflare Pages, S3/static bucket. 静的ホスティングならどこでも可。\n- Upload root keeping `index.html`, `css/`, `image/`, `docs/` intact. ルート構成を保ってアップロード。\n- Caching: long cache for images/CSS; short/no-cache for `index.html`. 画像/CSSは長期、HTMLは短期キャッシュ。\n- Compression: enable gzip/brotli if available. 可能なら圧縮を有効化。\n\n## Environment Notes / 環境メモ\n- No env vars or dependencies. 依存・環境変数なし。\n- External call: Google Fonts (Noto Sans JP) allow `fonts.googleapis.com` / `fonts.gstatic.com`. フォント取得を許可。\n\n## Verification Checklist / 動作確認\n- Loads on desktop & mobile (>=360px). 表示確認。\n- Navigation: hamburger open/close, overlay blocks scroll. ナビ開閉とスクロール抑止。\n- Accordions keyboard-toggle; alert dismissible. アコーディオン操作・アラート閉鎖。\n- CTAs: WEB予約リンク先が正しい（現状プレースホルダー）。\n- Map iframe renders; external map links open new tab. 地図表示と外部リンク遷移。\n- Lighthouse (mobile) Accessibility/Best Practices ≥ 90 を目標。\n*** End Patch
+﻿# Deployment Guide / デプロイ手順
+
+## Local Preview / ローカル確認
+- ブラウザで `index.html` を開く（ビルド不要）。
+- サブページは `subpages/booking.html`, `questionnaire.html`, `news.html`, `services.html`, `about.html`, `policy.html`, `privacy.html`, `site-policy.html`, `sitemap.html` を直接開いて確認。
+- 簡易サーバー例: `python3 -m http.server 8000` → `http://localhost:8000`。
+
+## Production Hosting / 本番ホスティング
+- 静的ホスティング（GitHub Pages / Netlify / Vercel / Cloudflare Pages / S3 等）。
+- デプロイするディレクトリ構成: ルートに `index.html`, `css/`, `image/`, `subpages/`, `docs/`。
+- キャッシュ: 画像/CSS は長期、HTML は短期または no-cache。gzip/brotli を有効化できれば有効化。
+- 外部取得: Google Fonts (Noto Sans JP) 用に `fonts.googleapis.com` / `fonts.gstatic.com` へのアクセスを許可。
+
+## Verification Checklist / 動作確認
+- レイアウト: デスクトップ/モバイル(>=360px)で崩れない。
+- ナビ: ハンバーガー開閉、オーバーレイで背面スクロール抑止、リンクタップで閉じる。
+- おしらせアコーディオン: キーボードで開閉可、`aria-expanded`/`hidden` 反映。
+- ヒーローアラート: 閉じるボタンで隠せる。
+- フォーム: `booking.html` と `questionnaire.html` でラベル/必須表示があること、送信時アラート→リセット（デモ動作）。
+- フッターリンク: サイトマップ・プライバシー・サイトポリシー・WEB予約・WEB問診票が正しく遷移。
+- マップ: アクセスセクションの iframe が表示されること。
+- 文字コード: すべて UTF-8 (BOMなし) で保存されていること。
+
+## Notes / 補足
+- 依存パッケージ・環境変数なしの純静的サイト。
+- 画像は `image/` 配下で相対参照。新規画像追加時は適切に圧縮・リサイズすること。

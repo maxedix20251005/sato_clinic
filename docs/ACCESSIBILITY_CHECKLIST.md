@@ -1,1 +1,15 @@
-# Accessibility Checklist / アクセシビリティ確認項目\n\n- Language set to Japanese (`lang=\"ja\"`). ページ言語を日本語に設定。\n- Base font 16px; line-height 1.8. 基本フォント16px・行間1.8。\n- Color contrast: primary buttons/body text meet 4.5:1. コントラスト4.5:1以上。\n- Focus visible: 2px outline on links/buttons. フォーカス時のアウトライン表示。\n- Navigation: mobile toggle has `aria-expanded`; overlay blocks background scroll. モバイルナビはARIA＋オーバーレイで背面操作抑止。\n- Accordions: `aria-expanded` + `hidden`; icon swaps +/−. アコーディオンはARIAと表示切替。\n- Alert: dismiss button is keyboard-focusable; closing hides it. アラートはキーボードで閉じられる。\n- Tap targets ≥44px on mobile. モバイルで44px以上のタップ領域。\n- Images have meaningful `alt`. 画像に適切な代替テキスト。\n- Motion minimal; no marquee. アニメーション最小限、マルキーなし。\n- If forms are added, ensure labels and error announcements. フォーム追加時はラベルとエラー告知必須。\n- Reservation form: labels associated with inputs, required fields marked, submit button accessible.\n*** End Patch
+﻿# Accessibility Checklist / アクセシビリティ確認項目
+
+- Language: `lang="ja"` を各HTMLに指定。
+- Typography: ベース16px・行間1.8、Noto Sans JP。
+- Contrast: 主要ボタン/本文で 4.5:1 以上を維持。
+- Focus visible: リンク/ボタン/フォーム要素に 2px アウトライン。
+- Navigation: モバイルメニューは `aria-expanded` を持ち、オーバーレイで背面操作を抑止し、リンククリックで自動クローズ。
+- Accordions (news): `aria-expanded` + `hidden` で開閉し、+/- アイコンをトグル。
+- Alert: ヒーローのお知らせは閉じるボタンで非表示にでき、キーボード操作可。
+- Motion: 最小限。ヒーローのお知らせは横スクロール（マルキー）を使用するため、必要に応じて `prefers-reduced-motion` で無効化することを検討。
+- Tap targets: モバイルで44px以上を確保（ボタン/ナビ）。
+- Images: すべて意味のある `alt` を付与。
+- Forms (WEB予約・WEB問診票): すべての入力にラベルを関連付け、必須項目にマークを表示。送信後は確認アラート→リセット（デモ実装）。
+- Error handling: 実装時は入力検証エラーを文言とフォーカス移動で通知すること（TODO）。
+- Links: フッター/ナビの内部アンカーやサブページリンクはキーボード操作で到達可能。

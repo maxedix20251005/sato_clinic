@@ -1,1 +1,26 @@
-# Image Optimization Notes / 画像最適化メモ\n\n## Current Assets / 現状\n- Images live under `image/` and are referenced directly. すべて `image/` 配下を直接参照。\n- Formats: PNG/JPG only; no WebP/AVIF yet. 現状はPNG/JPGのみ。\n\n## Recommended Steps / 推奨手順\n- Resize to displayed dimensions (hero ~1200px wide, staff ~500px tall, icons ~150px square). 表示サイズにリサイズ。\n- Compress: mozjpeg/guetzli for JPG, oxipng/pngquant for PNG; aim <200KB for large, <50KB for small. 適度に圧縮。\n- Convert to WebP for hero, staff, about/policy, services; keep originals as fallback. 主要画像はWebP併存。\n- Set explicit dimensions in HTML/CSS to prevent layout shift. サイズ指定でレイアウトシフト防止。\n- Lazy-load non-critical images with `loading=\"lazy\"` below the fold. 折りたたみ以降は遅延読み込み。\n\n## Workflow / ワークフロー例\n- Export at target sizes. 所定サイズで書き出し。\n- Batch compress: `npx sharp-cli input.jpg --resize 1400 --quality 78 --output image/hospital.jpg` など。\n- Recheck quality on retina and standard displays. 実機で画質確認。\n\n## Delivery / 配信\n- Enable host-side compression/WebP if available (Cloudflare Polish, Netlify Image CDN, etc.). ホスト側の自動圧縮/変換を活用。\n*** End Patch
+﻿# Image Optimization Notes / 画像最適化メモ
+
+## Current Assets / 現状
+- `image/` 配下に hero/診察時間/院長/スタッフ/サービス/アイコン等が格納。拡張子は主に JPG/PNG。
+- `director.jpg` 差し替え済み（中身が空でないことを要確認）。
+
+## Recommended Steps / 推奨手順
+- リサイズ: ヒーロー/大画像 ~1200px幅、スタッフ~500px高、サービス/アイコン~150px角を目安に。
+- 圧縮: JPG は mozjpeg などで 70–80 品質、PNG は pngquant/oxipng。大きな画像は <200KB、小さなものは <50KB を目標。
+- 形式: WebP を並行生成（hero、院長、スタッフ、サービス、about/policy画像）。互換性のため JPG/PNG も残す。
+- 属性: HTML/CSS で幅・高さを明示し、折りたたみ以降の画像は `loading="lazy"` を検討。
+- カラープロファイル: sRGB へ統一。
+
+## Workflow / ワークフロー例
+- リサイズ＆変換例（sharp-cli）: `npx sharp-cli image/director.jpg --resize 1200 --quality 78 --output image/director.jpg`
+- バッチ圧縮後に実機（retina/標準）で画質確認。
+
+## Delivery / 配信
+- ホスティングで gzip/brotli、自動 WebP 変換（Cloudflare Polish, Netlify Image CDN 等）が使える場合は有効化。
+- キャッシュ: 画像は長期キャッシュ推奨。
+
+## Checklist / 確認事項
+- 意味のある `alt` を付けているか。
+- 表示サイズに対して過剰な解像度でないか。
+- Lazy-load を適用する画像を選定したか（fold 以降）。
+- 差し替えた画像ファイルが 0 バイトになっていないか（例: director.jpg）。
