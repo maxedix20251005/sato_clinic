@@ -878,6 +878,7 @@ section {
 .footer-link {
    font-size: 15px;
    margin-bottom: 10px;
+   display: block;
 }
 
 .footer-lang {

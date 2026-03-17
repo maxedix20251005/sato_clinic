@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WEB問診票 - 佐藤医院</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="site-header-top">
+            <div class="container site-header-top-inner">
+                <div class="header-logo-frame frame">
+                    <img src="../image/Logo.png" alt="佐藤医院ロゴ">
+                </div>
+                <div class="header-hours">
+                    <div class="header-hours-tags">
+                        <span class="chip">診察</span>
+                        <span class="chip">午前</span>
+                        <span class="chip">午後</span>
+                    </div>
+                    <div>
+                        <div class="header-hours-text">月、火、木、金、土（休診：木日祝）</div>
+                        <div class="header-hours-text">09:00-12:00</div>
+                        <div class="header-hours-text">14:00-19:00</div>
+                    </div>
+                </div>
+                <div class="header-cta-area">
+                    <div class="header-cta-buttons">
+                        <a href="booking.html" class="btn-pill btn-pill-header">WEB予約</a>
+                        <a href="../index.html#access" class="btn-pill btn-pill-header">アクセス／お問い合わせ</a>
+                    </div>
+                    <a href="tel:0000000000" class="header-phone">
+                        <div class="header-phone-icon">
+                            <img src="../image/handset_blue.png" alt="Handset">
+                        </div>
+                        <span>00-0000-0000</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav class="site-nav" aria-label="Global navigation">
+            <div class="container site-nav-inner">
+                <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" type="button">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-label">メニュー</span>
+                </button>
+                <div class="nav-links" id="nav-links">
+                    <a href="../index.html">ホーム</a>
+                    <a href="news.html">おしらせ</a>
+                    <a href="services.html">診察内容</a>
+                    <a href="about.html">当院について</a>
+                    <a href="policy.html">理念・方針</a>
+                    <a href="booking.html">WEB予約</a>
+                    <a href="questionnaire.html">WEB問診票</a>
+                    <a href="../index.html#access">アクセス／お問い合わせ</a>
+                </div>
+            </div>
+            <div class="nav-overlay" aria-hidden="true"></div>
+        </nav>
+        <div class="nav-spacer" aria-hidden="true"></div>
+    </header>
+
+    <main>
+        <section class="reserve-section" id="web-questionnaire">
+            <div class="container main-container">
+                <h2 class="section-title">WEB問診票</h2>
+                <div class="reserve-form-container">
+                    <p>受診前の確認事項をご入力ください。内容は診療にのみ利用し、個人情報は厳重に管理します。</p>
+                    <form class="reserve-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="q-name">お名前 <span class="required">*</span></label>
+                            <input type="text" id="q-name" name="q-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="q-birthday">生年月日 <span class="required">*</span></label>
+                            <input type="date" id="q-birthday" name="q-birthday" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="q-phone">電話番号 <span class="required">*</span></label>
+                            <input type="tel" id="q-phone" name="q-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="q-email">メールアドレス</label>
+                            <input type="email" id="q-email" name="q-email">
+                        </div>
+                        <div class="form-group">
+                            <label for="q-chief">主訴（気になる症状） <span class="required">*</span></label>
+                            <textarea id="q-chief" name="q-chief" rows="3" placeholder="例）咳が続く、発熱、頭痛など" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="q-onset">症状が始まった時期</label>
+                            <input type="text" id="q-onset" name="q-onset" placeholder="例）3日前から、1週間前から">
+                        </div>
+                        <div class="form-group">
+                            <label>発熱はありますか？</label>
+                            <div class="time-status-row">
+                                <label><input type="radio" name="q-fever" value="yes"> はい</label>
+                                <label><input type="radio" name="q-fever" value="no"> いいえ</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="q-temp">現在の体温（わかれば）</label>
+                            <input type="text" id="q-temp" name="q-temp" placeholder="例）37.8℃">
+                        </div>
+                        <div class="form-group">
+                            <label for="q-med">服用中の薬・サプリ</label>
+                            <textarea id="q-med" name="q-med" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="q-allergy">アレルギー歴</label>
+                            <textarea id="q-allergy" name="q-allergy" rows="2" placeholder="薬・食べ物・ラテックスなど"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>妊娠の可能性はありますか？</label>
+                            <div class="time-status-row">
+                                <label><input type="radio" name="q-pregnant" value="yes"> はい</label>
+                                <label><input type="radio" name="q-pregnant" value="no"> いいえ</label>
+                                <label><input type="radio" name="q-pregnant" value="na"> 該当しない</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="q-other">その他伝えておきたいこと</label>
+                            <textarea id="q-other" name="q-other" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label><input type="checkbox" name="q-consent" required> 記載内容が診療に利用されることに同意します。</label>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-pill btn-primary">送信する</button>
+                            <button type="reset" class="btn-pill btn-secondary">リセット</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-links">
+                <div>
+                    <div class="footer-column-title">ご案内</div>
+                    <a href="sitemap.html" class="footer-link">サイトマップ</a>
+                    <a href="privacy.html" class="footer-link">プライバシーポリシー</a>
+                    <a href="site-policy.html" class="footer-link">サイトポリシー</a>
+                </div>
+
+                <div>
+                    <div class="footer-column-title">当院について</div>
+                    <a href="../index.html#greeting" class="footer-link">院長挨拶</a>
+                    <a href="../index.html#staff" class="footer-link">医師・スタッフ</a>
+                    <a href="../index.html#services" class="footer-link">診察内容</a>
+                </div>
+
+                <div>
+                    <div class="footer-column-title">ご予約はこちらから</div>
+                    <a href="booking.html" class="footer-link">WEB予約</a>
+                    <a href="questionnaire.html" class="footer-link">WEB問診票</a>
+                    <a href="../index.html#access" class="footer-link">アクセス／お問い合わせ</a>
+                </div>
+
+                <div class="footer-lang">
+                    <div class="footer-lang-selector">
+                        <span>日本語</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            Copyright © 佐藤医院 All rights reserved<br />
+            Produced by 20251005
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const siteNav = document.querySelector(".site-nav");
+            const headerTop = document.querySelector(".site-header-top");
+            function updateStickyNav() {
+                if (!siteNav || !headerTop) return;
+                const trigger = headerTop.getBoundingClientRect().bottom + window.scrollY;
+                const shouldFix = window.scrollY >= trigger;
+                siteNav.classList.toggle("fixed", shouldFix);
+            }
+            window.addEventListener("scroll", updateStickyNav, { passive: true });
+            window.addEventListener("resize", updateStickyNav);
+            updateStickyNav();
+
+            const forms = document.querySelectorAll(".reserve-form");
+            forms.forEach(function (form) {
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    alert("送信を受け付けました。確認のご連絡をお待ちください。");
+                    form.reset();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
