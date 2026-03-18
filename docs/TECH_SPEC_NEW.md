@@ -4,7 +4,8 @@
 - Static HTML + CSS + vanilla JS (no build) / 静的HTML/CSS/JSのみ
 - Font: Noto Sans JP via Google Fonts / Noto Sans JP
 - Assets: `image/` (PNG/JPG) / 画像は `image/`
-- Pages: `index.html`, `subpages/booking.html` (WEB予約), `subpages/questionnaire.html` (WEB問診票), `subpages/news.html` (おしらせ), `subpages/services.html` (診察内容), `subpages/about.html` (当院について), `subpages/policy.html` (理念・方針), `subpages/sitemap.html` (サイトマップ)
+- Pages: `index.html`, `subpages/booking.html` (WEB予約), `subpages/questionnaire.html` (WEB問診票), `subpages/news.html` (おしらせ), `subpages/services.html` (診察内容), `subpages/about.html` (当院について), `subpages/policy.html` (理念・方針), `subpages/privacy.html` (プライバシー), `subpages/site-policy.html` (サイトポリシー), `subpages/sitemap.html` (サイトマップ)
+- JS modules: `scripts/components.js`（ヘッダー/フッター/グロナビ注入）, `scripts/lang.js`（言語切替・永続化）, `scripts/main.js`（UI動作・予約カレンダー・戻るボタン等）
 
 ## Layout & Breakpoints / レイアウト
 - Containers: `min(1180px, 100% - 32px)`
@@ -17,22 +18,28 @@
 - Focus: `--focus-ring 2px solid #1c85d6`
 
 ## Components / コンポーネント
-- Navigation: desktop inline links; mobile hamburger + overlay + body lock
+- Header/Footer/Global Nav: JSで共通テンプレート挿入。`data-page`でカレントをハイライト。noscript時は簡易版HTMLを各ページに埋め込み。
+- Language switcher: フッター右下のドロップダウン。JA/ENを切替し、localStorageで保持。全ページに適用。
+- Navigation: desktop inline links; mobile hamburger + overlay + body lock; scrollでフローティング固定。
 - Hero: copy + image, dual CTAs, dismissible alert
 - Buttons: `.btn-pill` base; `.btn-primary` / `.btn-secondary` variants
-- Hours section: semantic HTML table (JA/EN) + time status/reserve card
+- Hours section: semantic HTML table (JA/EN) + time status chip (診療中/Closed) that toggles by current JST
 - News accordion: `aria-expanded`, `hidden`, +/- icon toggle
 - News archive list
-- Reservation form (booking)
+- Reservation availability UI (booking): 月表示カレンダー（当月＋2か月、過去不可）＋曜日ヘッダー＋空き状況○△×。日付選択で右カラムの時間帯スロットが展開し、○/△のみ選択可。選択中の日時は薄いグリーンでハイライト。
+- Reservation form: 希望日時フィールドは選択専用で非活性表示＋hidden値送信。氏名・電話*・メール・症状・要望。送信/リセットはデモアラート。
 - Questionnaire form (questionnaire)
 - Cards for services/about/policy/staff/greeting
 - Access block: map iframe + actions
+- Back-to-top button: 右下固定、スクロールで表示、`icon_go-to-top.png` 使用
 
 ## Accessibility / アクセシビリティ
 - `lang="ja"`, focus-visible outlines, high-contrast buttons
 - Accordions/nav toggle use `aria-expanded`; alert closable
 - Hours table uses `<th scope>` headers, bilingual labels via `.lang-toggle`, and mobile stacking with day labels rendered from data attributes
 - Mobile nav overlay prevents background scroll
+- カレンダー/時間帯はボタン要素でフォーカス操作可。選択状態のコントラスト確保。
+- noscriptフォールバックを明示し、JS無効時も主要ナビと通知を表示
 
 ## Performance / パフォーマンス
 - Pure static; minimal JS after DOMContentLoaded
@@ -40,16 +47,15 @@
 
 ## Behavior / 挙動
 - Global navigation is initially between header and hero; when scrolling past the header it fixes to top with semi-transparent background.
-- ヘッダーとヒーローの間から始まり、スクロールで上部固定＋半透明背景に変化。
+- Language selection persists via localStorage and is applied across all pages.
+- 診察ステータスはJSTの曜日・時間帯により「診察中 / Closed」を自動表示。
 
 ## Page Structure Update / ページ構成の更新
 - 個別ページを `subpages/` 配下へ移動し、トップページからリンク。
 - WEB問診票を専用ページ `subpages/questionnaire.html` に分離。
-- サイトマップページ `subpages/sitemap.html` を追加し、全リンクを一覧化。
+- サイトマップページ `subpages/sitemap.html` を追加し、全リンクをツリー表示。
 - フッターのリンクをサイトマップ・問診票・予約に更新。
+- プライバシーポリシー専用ページ subpages/privacy.html とサイトポリシー専用ページ subpages/site-policy.html を追加し、フッターからリンク。プライバシーの重複クッキー節は削除。
 
 ## Encoding / エンコード
 - All HTML/MD are managed as UTF-8 (BOMなし); 文字化け防止のため保存時はUTF-8を指定。
-- Added dedicated privacy page subpages/privacy.html and pointed footer links to it. / プライバシーポリシー専用ページ subpages/privacy.html を追加し、フッターリンクを差し替え。
-- Added standalone site policy page subpages/site-policy.html and updated footer links. / サイトポリシー専用ページ subpages/site-policy.html を追加し、フッターリンクを更新。
-- Privacy page trimmed to remove cookie section duplicated in site policy. / サイトポリシーと重複していたクッキー項目をプライバシーポリシーから削除。

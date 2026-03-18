@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,170 +10,185 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <!-- ======================== HEADER ======================== -->
-    <header>
-        <div class="site-header-top">
-            <div class="container site-header-top-inner">
-                <div class="header-logo-frame frame">
-                    <img src="../image/Logo.png" alt="佐藤医院ロゴ">
-                </div>
-                <div class="header-hours">
-                    <div class="header-hours-tags">
-                        <span class="chip lang-toggle lang-ja">診察</span><span class="chip lang-toggle lang-en">Open</span>
-                        <span class="chip lang-toggle lang-ja">午前</span><span class="chip lang-toggle lang-en">AM</span>
-                        <span class="chip lang-toggle lang-ja">午後</span><span class="chip lang-toggle lang-en">PM</span>
-                    </div>
-                    <div>
-                        <div class="header-hours-text lang-toggle lang-ja">月、火、木、金、土（休診：木日祝）</div>
-                        <div class="header-hours-text lang-toggle lang-en">Mon, Tue, Thu, Fri, Sat (Closed Wed/Sun/Holidays)</div>
-                        <div class="header-hours-text">09:00-12:00</div>
-                        <div class="header-hours-text">14:00-19:00</div>
-                    </div>
-                </div>
-
-                <div class="header-cta-area">
-                    <div class="header-cta-buttons">
-                        <a href="#reserve" class="btn-pill btn-pill-header"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Book Online</span></a>
-                        <a href="../index.html#access" class="btn-pill btn-pill-header"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
-                    </div>
-
-                    <a href="tel:0000000000" class="header-phone">
-                        <div class="header-phone-icon"><img src="../image/handset_blue.png" alt="Handset"></div>
-                        <span>00-0000-0000</span>
-                    </a>
-                </div>
+    <noscript>
+        <div class=\"noscript-header\">
+            <div class=\"noscript-brand\">佐藤医院 / Sato Clinic</div>
+            <div class="noscript-note">JavaScript を有効にすると、より快適にご利用いただけます。<br>For the best experience, please enable
+                JavaScript.</div>
+            <div class=\"noscript-nav\">
+                <a href=\"../index.html\">ホーム</a>
+                <a href=\"../subpages/news.html\">おしらせ</a>
+                <a href=\"../subpages/services.html\">診察内容</a>
+                <a href=\"../subpages/booking.html\">WEB予約</a>
+                <a href=\"../subpages/questionnaire.html\">WEB問診票</a>
+                <a href=\"../index.html#access\">アクセス</a>
             </div>
         </div>
-
-        <nav class="site-nav" aria-label="Global navigation">
-            <div class="container site-nav-inner">
-                <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" type="button">
-                    <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-label lang-toggle lang-ja">メニュー</span><span class="nav-toggle-label lang-toggle lang-en">Menu</span>
-                </button>
-                                <div class="nav-links" id="nav-links">
-                    <a href="../index.html"><span class="lang-toggle lang-ja">ホーム</span><span class="lang-toggle lang-en">Home</span></a>
-                    <a href="news.html"><span class="lang-toggle lang-ja">おしらせ</span><span class="lang-toggle lang-en">News</span></a>
-                    <a href="services.html"><span class="lang-toggle lang-ja">診察内容</span><span class="lang-toggle lang-en">Services</span></a>
-                    <a href="about.html"><span class="lang-toggle lang-ja">当院について</span><span class="lang-toggle lang-en">About</span></a>
-                    <a href="policy.html"><span class="lang-toggle lang-ja">理念・方針</span><span class="lang-toggle lang-en">Philosophy</span></a>
-                    <a href="../index.html#time"><span class="lang-toggle lang-ja">診察時間</span><span class="lang-toggle lang-en">Hours</span></a>
-                    <a href="../index.html#access"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
-                </div>
-            </div>
-            <div class="nav-overlay" aria-hidden="true"></div>
-        </nav>
-        <div class="nav-spacer" aria-hidden="true"></div>
-    </header>
-
+    </noscript><site-header></site-header>
     <!-- ======================== MAIN ======================== -->
     <main>
         <section class="reserve-section" id="reserve">
             <div class="container main-container">
-                <h2 class="section-title"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Online Booking</span></h2>
+                <h2 class="section-title"><span class="lang-toggle lang-ja">WEB予約</span><span
+                        class="lang-toggle lang-en">Online Booking</span></h2>
                 <div class="reserve-form-container">
-                    <p><span class="lang-toggle lang-ja">以下のフォームに必要事項をご入力ください。予約受付後、確認の電話をいたします。</span><span class="lang-toggle lang-en">Please fill out the form below. We will call you to confirm after receiving your request.</span></p>
+                    <div id="booking-availability" class="booking-availability">
+                        <div class="booking-availability-header">
+                            <div class="booking-availability-title"><span
+                                    class="lang-toggle lang-ja">予約日時をお選びください</span><span
+                                    class="lang-toggle lang-en">Select your preferred date & time</span></div>
+                            <div class="booking-availability-legend">
+                                <span class="legend legend-open">〇 <span class="lang-toggle lang-ja">空きあり</span><span
+                                        class="lang-toggle lang-en">Available</span></span>
+                                <span class="legend legend-limited">△ <span
+                                        class="lang-toggle lang-ja">残りわずか</span><span
+                                        class="lang-toggle lang-en">Limited</span></span>
+                                <span class="legend legend-full">× <span class="lang-toggle lang-ja">満席/休診</span><span
+                                        class="lang-toggle lang-en">Unavailable</span></span>
+                            </div>
+                        </div>
+                        <div class="booking-availability-body">
+                            <div class="calendar-panel">
+                                <div class="calendar-header">
+                                    <button type="button" class="calendar-nav" data-dir="-1"
+                                        aria-label="Previous month">＜</button>
+                                    <div class="calendar-month-label"></div>
+                                    <button type="button" class="calendar-nav" data-dir="1"
+                                        aria-label="Next month">＞</button>
+                                </div>
+                                <div class="calendar-weekdays" aria-hidden="true">
+                                    <div>Mon</div>
+                                    <div>Tue</div>
+                                    <div>Wed</div>
+                                    <div>Thu</div>
+                                    <div>Fri</div>
+                                    <div>Sat</div>
+                                    <div>Sun</div>
+                                </div>
+                                <div class="calendar-days" aria-label="予約可能日一覧"></div>
+                            </div>
+                            <div class="time-slots">
+                                <div class="time-slots-title"><span class="lang-toggle lang-ja">時間帯</span><span
+                                        class="lang-toggle lang-en">Time slots</span></div>
+                                <div class="time-slots-list" aria-label="予約可能時間"></div>
+                                <div class="time-slots-hint"><span class="lang-toggle lang-ja">〇 または △
+                                        の時間帯を選択してください</span><span class="lang-toggle lang-en">Choose a time marked ○ or
+                                        △</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p><span class="lang-toggle lang-ja">以下のフォームに必要事項をご入力ください。予約受付後、確認の電話をいたします。</span><span
+                            class="lang-toggle lang-en">Please fill out the form below. We will call you to confirm
+                            after receiving your request.</span></p>
                     <form class="reserve-form" action="#" method="post">
-                        <div class="form-group">
-                            <label for="name"><span class="lang-toggle lang-ja">お名前</span><span class="lang-toggle lang-en">Full Name</span> <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" required>
+                        <div class="form-group form-inline">
+                            <div class="form-field-half">
+                                <label for="date"><span class="lang-toggle lang-ja">希望日</span><span
+                                        class="lang-toggle lang-en">Preferred Date/Time</span> <span
+                                        class="required">*</span></label>
+                                <input type="date" id="date" name="date_display" required disabled
+                                    class="disabled-field">
+                                <input type="hidden" id="date-value" name="date">
+                                <small class="input-note"><span
+                                        class="lang-toggle lang-ja">上のカレンダーから選択してください</span><span
+                                        class="lang-toggle lang-en">Please select from the calendar above</span></small>
+                            </div>
+                            <div class="form-field-half">
+                                <label for="time"><span class="lang-toggle lang-ja">希望時間</span><span
+                                        class="lang-toggle lang-en">Preferred Time</span> <span
+                                        class="required">*</span></label>
+                                <select id="time" name="time_display" required disabled class="disabled-field">
+                                    <option class="lang-toggle lang-ja" value="">上のカレンダーから選択</option>
+                                    <option class="lang-toggle lang-en" value="">Select from calendar</option>
+                                </select>
+                                <input type="hidden" id="time-value" name="time">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="phone"><span class="lang-toggle lang-ja">電話番号</span><span class="lang-toggle lang-en">Phone</span> <span class="required">*</span></label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <label for="name"><span class="lang-toggle lang-ja">お名前</span><span
+                                    class="lang-toggle lang-en">Full Name</span> <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required autocomplete="name">
                         </div>
                         <div class="form-group">
-                            <label for="email"><span class="lang-toggle lang-ja">メールアドレス</span><span class="lang-toggle lang-en">Email</span></label>
-                            <input type="email" id="email" name="email">
+                            <label for="phone"><span class="lang-toggle lang-ja">電話番号</span><span
+                                    class="lang-toggle lang-en">Phone</span> <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required inputmode="tel"
+                                pattern="^\\+?[0-9\\-]{10,20}$" autocomplete="tel"
+                                title="先頭のみ+可。それ以外は数字。入力中に自動でハイフンが入ります / Optional leading +, digits only, hyphens are auto-formatted.">
+                            <small class="input-note"><span class="lang-toggle lang-ja">例: 090-1234-5678 /
+                                    +81-90-1234-5678</span><span class="lang-toggle lang-en">e.g., 090-1234-5678 or
+                                    +81-90-1234-5678</span></small>
                         </div>
                         <div class="form-group">
-                            <label for="date"><span class="lang-toggle lang-ja">希望日</span><span class="lang-toggle lang-en">Preferred Date</span> <span class="required">*</span></label>
-                            <input type="date" id="date" name="date" required>
+                            <label for="email"><span class="lang-toggle lang-ja">メールアドレス</span><span
+                                    class="lang-toggle lang-en">Email</span></label>
+                            <input type="email" id="email" name="email" required
+                                pattern="^\S+@\S+\.\S+$"
+                                title="メールアドレス形式で入力してください / Please enter a valid email address">
                         </div>
                         <div class="form-group">
-                            <label for="time"><span class="lang-toggle lang-ja">希望時間</span><span class="lang-toggle lang-en">Preferred Time</span> <span class="required">*</span></label>
-                            <select id="time" name="time" required>
-                                <option class="lang-toggle lang-ja" value="">選択してください</option>
-                                <option class="lang-toggle lang-en" value="">Select</option>
-                                <option value="09:00">09:00</option>
-                                <option value="09:30">09:30</option>
-                                <option value="10:00">10:00</option>
-                                <option value="10:30">10:30</option>
-                                <option value="11:00">11:00</option>
-                                <option value="11:30">11:30</option>
-                                <option value="14:00">14:00</option>
-                                <option value="14:30">14:30</option>
-                                <option value="15:00">15:00</option>
-                                <option value="15:30">15:30</option>
-                                <option value="16:00">16:00</option>
-                                <option value="16:30">16:30</option>
-                                <option value="17:00">17:00</option>
-                                <option value="17:30">17:30</option>
-                                <option value="18:00">18:00</option>
-                            </select>
+                            <label for="symptoms"><span class="lang-toggle lang-ja">症状・相談内容</span><span
+                                    class="lang-toggle lang-en">Symptoms / Concern</span></label>
+                            <textarea id="symptoms" name="symptoms" rows="4" data-placeholder-ja="症状や相談内容をご記入ください"
+                                data-placeholder-en="Please describe your symptoms or concern"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="symptoms"><span class="lang-toggle lang-ja">症状・相談内容</span><span class="lang-toggle lang-en">Symptoms / Concern</span></label>
-                            <textarea id="symptoms" name="symptoms" rows="4" data-placeholder-ja="症状や相談内容をご記入ください" data-placeholder-en="Please describe your symptoms or concern"></textarea>
+                            <label for="notes"><span class="lang-toggle lang-ja">その他ご要望</span><span
+                                    class="lang-toggle lang-en">Other Requests</span></label>
+                            <textarea id="notes" name="notes" rows="2" data-placeholder-ja="その他ご要望があればご記入ください"
+                                data-placeholder-en="If you have any other requests, let us know"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="notes"><span class="lang-toggle lang-ja">その他ご要望</span><span class="lang-toggle lang-en">Other Requests</span></label>
-                            <textarea id="notes" name="notes" rows="2" data-placeholder-ja="その他ご要望があればご記入ください" data-placeholder-en="If you have any other requests, let us know"></textarea>
+                            <label class="checkbox">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <span class="lang-toggle lang-ja">内容を確認し、送信に同意します</span><span class="lang-toggle lang-en">I have reviewed the details and agree to submit</span>
+                            </label>
                         </div>
                         <div class="form-actions">
-                            <button type="submit" class="btn-pill btn-primary"><span class="lang-toggle lang-ja">予約する</span><span class="lang-toggle lang-en">Submit Request</span></button>
-                            <button type="reset" class="btn-pill btn-secondary"><span class="lang-toggle lang-ja">リセット</span><span class="lang-toggle lang-en">Reset</span></button>
+                            <button type="submit" class="btn-pill btn-primary" id="submit-btn" disabled><span
+                                    class="lang-toggle lang-ja">予約する</span><span class="lang-toggle lang-en">Submit
+                                    Request</span></button>
+                            <button type="reset" class="btn-pill btn-secondary"><span
+                                    class="lang-toggle lang-ja">リセット</span><span
+                                    class="lang-toggle lang-en">Reset</span></button>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
     </main>
-
     <!-- ======================== FOOTER ======================== -->
-    <footer class="site-footer">
-        <div class="footer-top">
-            <div class="container footer-links">
-                <div>
-                    <div class="footer-column-title"><span class="lang-toggle lang-ja">ご案内</span><span class="lang-toggle lang-en">Info</span></div>
-                    <a href="sitemap.html" class="footer-link"><span class="lang-toggle lang-ja">サイトマップ</span><span class="lang-toggle lang-en">Sitemap</span></a>
-                    <a href="privacy.html" class="footer-link"><span class="lang-toggle lang-ja">プライバシーポリシー</span><span class="lang-toggle lang-en">Privacy Policy</span></a>
-                    <a href="site-policy.html" class="footer-link"><span class="lang-toggle lang-ja">サイトポリシー</span><span class="lang-toggle lang-en">Site Policy</span></a>
-                </div>
-
-                <div>
-                    <div class="footer-column-title"><span class="lang-toggle lang-ja">当院について</span><span class="lang-toggle lang-en">About Clinic</span></div>
-                    <a href="../index.html#greeting" class="footer-link"><span class="lang-toggle lang-ja">院長挨拶</span><span class="lang-toggle lang-en">Director's Message</span></a>
-                    <a href="../index.html#staff" class="footer-link"><span class="lang-toggle lang-ja">医師・スタッフ</span><span class="lang-toggle lang-en">Our Team</span></a>
-                    <a href="../index.html#services" class="footer-link"><span class="lang-toggle lang-ja">診察内容</span><span class="lang-toggle lang-en">Services</span></a>
-                </div>
-
-                <div>
-                    <div class="footer-column-title"><span class="lang-toggle lang-ja">ご予約はこちらから</span><span class="lang-toggle lang-en">Reservations</span></div>
-                    <a href="booking.html" class="footer-link"><span class="lang-toggle lang-ja">WEB予約</span><span class="lang-toggle lang-en">Book Online</span></a>
-                    <a href="questionnaire.html" class="footer-link"><span class="lang-toggle lang-ja">WEB問診票</span><span class="lang-toggle lang-en">Intake Form</span></a>
-                    <a href="../index.html#access" class="footer-link"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
-                </div>
-
-                <div class="footer-lang">
-                    <div class="footer-lang-selector">
-                        <select aria-label="Language" class="footer-lang-select">
-                            <option value="ja">日本語</option>
-                            <option value="en">English</option>
-                        </select>
-                    </div>
-                </div>
+    <noscript>
+        <div class=\"noscript-footer\">
+            <div class=\"noscript-nav\">
+                <a href=\"../subpages/sitemap.html\">サイトマップ</a>
+                <a href=\"../subpages/privacy.html\">プライバシーポリシー</a>
+                <a href=\"../subpages/site-policy.html\">サイトポリシー</a>
             </div>
+            <div class=\"noscript-copy\">c 佐藤医院</div>
         </div>
-
-        <div class="footer-bottom">
-            Copyright © 佐藤医院 All rights reserved<br />
-            Produced by 20251005
-        </div>
-    </footer>
+    </noscript><site-footer></site-footer>
+    <script src="../scripts/components.js"></script>
     <script src="../scripts/main.js"></script>
     <script src="../scripts/lang.js"></script>
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
