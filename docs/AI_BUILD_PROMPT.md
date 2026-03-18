@@ -5,7 +5,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 
 ## File Map / ファイル構成
 - `index.html`（トップ）: hero, 診察時間(HTMLテーブル＋ステータスカード, JA/EN切替), おしらせ(アコーディオン)、院長挨拶、診察内容概要、当院について、理念・方針、スタッフ、アクセス/お問い合わせ、フッター
-- `subpages/booking.html` : WEB予約フォーム（カレンダー＋時間帯スロットで空き状況○△×表示。選択した日時をフォームに自動セット）
+ - `subpages/booking.html` : WEB予約フォーム（カレンダー＋時間帯スロットで空き状況○△×表示。選択した日時をフォームに自動セットし、Formspreeへ送信）
 - `subpages/questionnaire.html` : WEB問診票フォーム
 - `subpages/news.html` : おしらせ一覧
 - `subpages/services.html` : 診察内容詳細
@@ -18,6 +18,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 - `scripts/components.js` : ヘッダー/フッター/グローバルナビの共通コンポーネント挿入
 - `scripts/lang.js` : JA/ENトグルと言語状態のローカルストレージ保持
 - `scripts/main.js` : 挙動（アコーディオン、アラート、モバイルナビ、予約カレンダー、Back-to-top 等）
+  - Formspree連携: `FORM_ENDPOINT` を設定し、予約内容を POST。件名は `【佐藤医院】WEB予約を受け付けました（予約番号: XXXX）`。`_replyto` に利用者メール、`site/page` メタを送信。
 - `image/` : Logo.png, hero/section用画像, director.jpg, staff写真, serviceアイコン, handsetアイコン, `icon_go-to-top.png`
 
 ## Visual System / ビジュアル
@@ -33,6 +34,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 - Hero alert: 閉じるボタンで非表示
 - Mobile nav: ハンバーガーで開閉、オーバーレイ＆bodyロック、リンク/overlayクリックで閉じる
 - Forms: 送信時はアラート表示→リセット（デモ動作）
+  - 実送信: Formspree経由のメール通知。無料プランのためメール本文先頭のリード文は固定（カスタマイズ不可）。CAPTCHAは未使用（reCAPTCHA未実装のため）。
 - Hours table: `<th scope>` で曜日/時間を構造化し、`.lang-toggle` で日英表示を切替。SPではカード風にスタックし、曜日ラベルを自動表示。
 - Back-to-top ボタンを右下フロート表示、スクロールで出現、クリックで先頭へ。
 - noscript フォールバック: JS無効時はヘッダー/ナビ/フッターの簡易版と「JavaScriptを有効にしてください」文言を表示。
@@ -49,6 +51,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 ## Forms / フォーム
 - WEB予約（booking.html）: 予約カレンダーで日付＋時間帯を選択し空き状況○△×を表示。選択済み日時はフォーム上部にグレーアウト表示（編集不可）し、hidden inputで送信。氏名*・電話*・メール・症状/相談・その他要望、送信/リセット。
 - WEB問診票（questionnaire.html）: 氏名*・生年月日*・電話*・メール・主訴*・発症時期・発熱有無・体温・服用薬・アレルギー・妊娠可能性・その他・同意チェック*、送信/リセット
+  - 送信: Formspree に POST。件名 `【佐藤医院】WEB問診票を受け付けました（受付番号: XXXX）`、`_replyto` で利用者メールを返信先にセット。電話は自動ハイフン整形。
 
 ## Policies / ポリシー
 - プライバシー: 個人情報の取得・利用目的・第三者提供・委託・安全管理・開示等・お問い合わせ・改定（クッキー項目はサイトポリシー側に集約）

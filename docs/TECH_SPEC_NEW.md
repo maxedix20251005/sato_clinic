@@ -27,8 +27,9 @@
 - News accordion: `aria-expanded`, `hidden`, +/- icon toggle
 - News archive list
 - Reservation availability UI (booking): 月表示カレンダー（当月＋2か月、過去不可）＋曜日ヘッダー＋空き状況○△×。日付選択で右カラムの時間帯スロットが展開し、○/△のみ選択可。選択中の日時は薄いグリーンでハイライト。
-- Reservation form: 希望日時フィールドは選択専用で非活性表示＋hidden値送信。氏名・電話*・メール・症状・要望。送信/リセットはデモアラート。
+- Reservation form: 希望日時フィールドは選択専用で非活性表示＋hidden値送信。氏名・電話*（自動ハイフン整形）・メール*・症状・要望。Formspree に POST し、件名 `【佐藤医院】WEB予約を受け付けました（予約番号: XXXX）` で通知。payload に `_replyto` を含め返信先を利用者メールに。Formspree 無料プランのため本文リードは固定テンプレートで変更不可。reCAPTCHA 未組み込みのため Formspree 側 CAPTCHA はオフ運用。
 - Questionnaire form (questionnaire)
+- Questionnaire form: フィールドは氏名・生年月日・電話（自動ハイフン整形）・メール・主訴・発症時期・発熱有無・体温・服用薬・アレルギー・妊娠可能性・その他・同意。Formspree に POST し、件名 `【佐藤医院】WEB問診票を受け付けました（受付番号: XXXX）` で通知。payload に `_replyto` を含め返信先を利用者メールに。
 - Cards for services/about/policy/staff/greeting
 - Access block: map iframe + actions
 - Back-to-top button: 右下固定、スクロールで表示、`icon_go-to-top.png` 使用

@@ -100,12 +100,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (err) err.textContent = '';
   };
   const randomCode = () => Math.random().toString(36).slice(2, 8).toUpperCase();
+  const FORM_ENDPOINT = 'https://formspree.io/f/xvzwdpbl'; // ← Formspreeのエンドポイントに差し替えてください
   const showToast = (message) => {
     const toast = document.getElementById('toast');
     if (!toast) return;
     toast.textContent = message;
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 3200);
+  };
+  const sendReservationEmail = async (payload) => {
+    if (!FORM_ENDPOINT || FORM_ENDPOINT.includes('xxxxxxxx')) {
+      console.warn('Form endpoint not configured.');
+      return false;
+    }
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return true;
+    } catch (e) {
+      console.error('Form submit failed', e);
+      return false;
+    }
   };
   const attachFieldValidation = (form) => {
     const fields = form.querySelectorAll('input:not([type="hidden"]), select, textarea');
@@ -132,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     fields.forEach((field) => {
-      const isPhone = field.id === 'phone';
+      const isPhone = field.id === 'phone' || field.id === 'q-phone';
 
       const runValidation = () => {
         if (isPhone) {
@@ -164,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const updateSubmitState = (form) => {
-    const submit = form.querySelector('#submit-btn');
+    const submit = form.querySelector('button[type="submit"]');
     if (!submit) return;
     const hiddenDate = form.querySelector('#date-value');
     const hiddenTime = form.querySelector('#time-value');
@@ -180,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reserve-form').forEach((form) => {
     attachFieldValidation(form);
     updateSubmitState(form);
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       const hiddenDate = form.querySelector('#date-value');
       const hiddenTime = form.querySelector('#time-value');
       const availability = document.getElementById('booking-availability');
@@ -203,24 +225,67 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       e.preventDefault();
+      const submitBtn = form.querySelector('#submit-btn');
+      if (submitBtn) submitBtn.disabled = true;
+      const isBooking = !!form.querySelector('#date-value');
       const code = randomCode();
-      const dateVal = hiddenDate?.value || '';
-      const timeVal = hiddenTime?.value || '';
-      const nameVal = form.querySelector('#name')?.value || '';
-      const phoneVal = form.querySelector('#phone')?.value || '';
-      const emailVal = form.querySelector('#email')?.value || '';
-      const symptomsVal = form.querySelector('#symptoms')?.value || '';
-      const notesVal = form.querySelector('#notes')?.value || '';
-      const bodyJa = `ご予約ありがとうございます。\n予約番号: ${code}\nご希望日時: ${dateVal} ${timeVal}\nお名前: ${nameVal}\n電話: ${phoneVal}\nメール: ${emailVal}\n症状・相談: ${symptomsVal}\nその他: ${notesVal}`;
-      const mailto = `mailto:${encodeURIComponent(emailVal)}?subject=${encodeURIComponent('【佐藤医院】予約受付のお知らせ ('+code+')')}&body=${encodeURIComponent(bodyJa)}`;
-      window.location.href = mailto;
-      showToast(`予約を受け付けました (${code})`);
+      let payload = {};
+      if (isBooking) {
+        const nameVal = form.querySelector('#name')?.value || '';
+        const phoneVal = form.querySelector('#phone')?.value || '';
+        const emailVal = form.querySelector('#email')?.value || '';
+        const symptomsVal = form.querySelector('#symptoms')?.value || '';
+        const notesVal = form.querySelector('#notes')?.value || '';
+        payload = {
+          code,
+          date: hiddenDate?.value || '',
+          time: hiddenTime?.value || '',
+          name: nameVal,
+          phone: phoneVal,
+          email: emailVal,
+          symptoms: symptomsVal,
+          notes: notesVal,
+          site: 'Sato Clinic',
+          page: 'booking.html',
+          _replyto: emailVal,
+          _subject: `【佐藤医院】WEB予約を受け付けました（予約番号: ${code}）`,
+        };
+      } else {
+        const getVal = (id) => form.querySelector(`#${id}`)?.value || '';
+        const emailVal = getVal('q-email');
+        payload = {
+          code,
+          name: getVal('q-name'),
+          birthday: getVal('q-birthday'),
+          phone: getVal('q-phone'),
+          email: emailVal,
+          chief_complaint: getVal('q-chief'),
+          onset: getVal('q-onset'),
+          fever: form.querySelector('input[name="q-fever"]:checked')?.value || '',
+          temp: getVal('q-temp'),
+          meds: getVal('q-med'),
+          allergy: getVal('q-allergy'),
+          pregnancy: form.querySelector('input[name="q-pregnant"]:checked')?.value || '',
+          other: getVal('q-other'),
+          site: 'Sato Clinic',
+          page: 'questionnaire.html',
+          _replyto: emailVal,
+          _subject: `【佐藤医院】WEB問診票を受け付けました（受付番号: ${code}）`,
+        };
+      }
+      const ok = await sendReservationEmail(payload);
+      if (ok) {
+        showToast(`予約を受け付けました (${code})`);
+      } else {
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+      }
       form.reset();
       form.querySelectorAll('.field-error').forEach((el) => (el.textContent = ''));
       form.querySelectorAll('.form-group').forEach((g) => g.classList.remove('invalid'));
       const selectedSummary = document.getElementById('selected-summary');
       if (selectedSummary) selectedSummary.textContent = '';
       updateSubmitState(form);
+      if (submitBtn) submitBtn.disabled = false;
     });
   });
 
@@ -290,31 +355,31 @@ document.addEventListener('DOMContentLoaded', () => {
       return new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
     };
 
-    const slotsTemplate = ['09:00','10:00','11:00','14:00','15:00','16:00','17:00','18:00'];
-    const closedWeekdays = [0,4]; // Sun, Thu
+    const slotsTemplate = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+    const closedWeekdays = [0, 4]; // Sun, Thu
 
     const availability = new Map();
 
-    const keyForMonth = (year, month) => `${year}-${String(month+1).padStart(2,'0')}`;
-    const daysInMonth = (y,m) => new Date(y, m+1, 0).getDate();
+    const keyForMonth = (year, month) => `${year}-${String(month + 1).padStart(2, '0')}`;
+    const daysInMonth = (y, m) => new Date(y, m + 1, 0).getDate();
 
     const buildMonthData = (y, m) => {
-      const key = keyForMonth(y,m);
+      const key = keyForMonth(y, m);
       if (availability.has(key)) return availability.get(key);
       const data = {};
-      const dim = daysInMonth(y,m);
-      for (let d=1; d<=dim; d++) {
-        const iso = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const dim = daysInMonth(y, m);
+      for (let d = 1; d <= dim; d++) {
+        const iso = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
         const day = new Date(iso).getDay();
         if (closedWeekdays.includes(day)) { data[iso] = {}; continue; }
-        slotsTemplate.forEach((t)=>{
+        slotsTemplate.forEach((t) => {
           const rnd = Math.random();
           const stat = rnd > 0.9 ? 'x' : rnd > 0.7 ? 'm' : 'o';
-          if (!data[iso]) data[iso]={};
-          data[iso][t]=stat;
+          if (!data[iso]) data[iso] = {};
+          data[iso][t] = stat;
         });
       }
-      availability.set(key,data);
+      availability.set(key, data);
       return data;
     };
 
@@ -325,16 +390,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const vals = Object.entries(slotsObj || {});
       if (!vals.length) return 'x';
       const now = nowJst();
-      const todayIso = now.toISOString().slice(0,10);
-      const currentMinutes = now.getHours()*60 + now.getMinutes();
-      let hasOpen=false, hasLimited=false;
-      vals.forEach(([time,stat])=>{
+      const todayIso = now.toISOString().slice(0, 10);
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      let hasOpen = false, hasLimited = false;
+      vals.forEach(([time, stat]) => {
         let effective = stat;
         if (iso === todayIso) {
-          const [h,m] = time.split(':').map(Number);
-          if (h*60+m <= currentMinutes) effective = 'x';
+          const [h, m] = time.split(':').map(Number);
+          if (h * 60 + m <= currentMinutes) effective = 'x';
         }
-        if (effective==='o') hasOpen=true; else if (effective==='m') hasLimited=true;
+        if (effective === 'o') hasOpen = true; else if (effective === 'm') hasLimited = true;
       });
       if (hasOpen) return 'o';
       if (hasLimited) return 'm';
@@ -345,35 +410,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderCalendar = () => {
       const base = nowJst();
-      const viewDate = new Date(base.getFullYear(), base.getMonth()+monthOffset, 1);
+      const viewDate = new Date(base.getFullYear(), base.getMonth() + monthOffset, 1);
       const y = viewDate.getFullYear();
       const m = viewDate.getMonth();
-      const monthData = buildMonthData(y,m);
-      const dim = daysInMonth(y,m);
+      const monthData = buildMonthData(y, m);
+      const dim = daysInMonth(y, m);
       const today = nowJst();
-      const todayIso = today.toISOString().slice(0,10);
+      const todayIso = today.toISOString().slice(0, 10);
 
-      if (monthLabel) monthLabel.textContent = `${y} / ${m+1}`;
-      navButtons.forEach(btn=>{
+      if (monthLabel) monthLabel.textContent = `${y} / ${m + 1}`;
+      navButtons.forEach(btn => {
         const dir = Number(btn.dataset.dir);
         const nextOffset = monthOffset + dir;
         btn.disabled = nextOffset < 0 || nextOffset > 2;
       });
 
-      calendarEl.innerHTML='';
-      const firstDay = new Date(`${y}-${String(m+1).padStart(2,'0')}-01`).getDay();
+      calendarEl.innerHTML = '';
+      const firstDay = new Date(`${y}-${String(m + 1).padStart(2, '0')}-01`).getDay();
       const offset = (firstDay + 6) % 7; // Mon start
-      for (let i=0; i<offset; i++) {
+      for (let i = 0; i < offset; i++) {
         const empty = document.createElement('div');
         empty.className = 'calendar-day empty';
         calendarEl.appendChild(empty);
       }
-      for (let d=1; d<=dim; d++) {
-        const iso = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      for (let d = 1; d <= dim; d++) {
+        const iso = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
         const status = summarizeDay(monthData[iso], iso);
         const isPast = new Date(iso) < new Date(todayIso);
         const btn = document.createElement('button');
-        btn.type='button';
+        btn.type = 'button';
         btn.className = `calendar-day ${statusClass(status)}`;
         btn.dataset.date = iso;
         btn.innerHTML = `<div class="day-label">${d}</div><div class="day-mark">${statusMark(status)}</div>`;
@@ -385,21 +450,21 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderSlots = (iso, slotsObj) => {
-      slotsEl.innerHTML='';
+      slotsEl.innerHTML = '';
       const now = nowJst();
-      const todayIso = now.toISOString().slice(0,10);
-      const currentMinutes = now.getHours()*60+now.getMinutes();
-      Object.entries(slotsObj || {}).forEach(([time,stat])=>{
+      const todayIso = now.toISOString().slice(0, 10);
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      Object.entries(slotsObj || {}).forEach(([time, stat]) => {
         let effective = stat;
-        if (iso===todayIso) {
-          const [h,m] = time.split(':').map(Number);
-          if (h*60+m <= currentMinutes) effective='x';
+        if (iso === todayIso) {
+          const [h, m] = time.split(':').map(Number);
+          if (h * 60 + m <= currentMinutes) effective = 'x';
         }
         const btn = document.createElement('button');
-        btn.type='button';
+        btn.type = 'button';
         btn.className = `slot ${statusClass(effective)}`;
         btn.textContent = `${time} ${statusMark(effective)}`;
-        btn.disabled = effective==='x';
+        btn.disabled = effective === 'x';
         btn.addEventListener('click', () => selectSlot(iso, time));
         slotsEl.appendChild(btn);
       });
@@ -424,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (dateInput) dateInput.value = iso;
       if (hiddenDate) hiddenDate.value = iso;
       if (timeSelect) {
-        timeSelect.innerHTML='';
+        timeSelect.innerHTML = '';
         const opt = document.createElement('option');
         opt.value = time;
         opt.textContent = time;
@@ -449,30 +514,30 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!slotsLabel) return;
       if (!selectedDay) { slotsLabel.textContent = ''; return; }
       const d = new Date(selectedDay);
-      const label = `${d.getMonth()+1}/${d.getDate()}`;
+      const label = `${d.getMonth() + 1}/${d.getDate()}`;
       slotsLabel.textContent = selectedSlot ? `${label} - ${selectedSlot}` : `${label}`;
     };
 
     const highlightSelectedDay = () => {
-      calendarEl.querySelectorAll('.calendar-day').forEach((el)=>{
+      calendarEl.querySelectorAll('.calendar-day').forEach((el) => {
         el.classList.toggle('selected', selectedDay && el.dataset.date === selectedDay);
       });
     };
 
     const highlightSelectedSlot = () => {
-      slotsEl.querySelectorAll('.slot').forEach((el)=>{
+      slotsEl.querySelectorAll('.slot').forEach((el) => {
         el.classList.toggle('selected', selectedSlot && el.textContent.startsWith(selectedSlot));
       });
     };
 
-    navButtons.forEach((btn)=>{
-      btn.addEventListener('click', ()=>{
+    navButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
         const dir = Number(btn.dataset.dir);
         const next = monthOffset + dir;
         if (next < 0 || next > 2) return;
         monthOffset = next;
         renderCalendar();
-        slotsEl.innerHTML='';
+        slotsEl.innerHTML = '';
         if (slotsPanel) slotsPanel.classList.remove('open');
         selectedDay = null; selectedSlot = null; updateSlotsLabel(); highlightSelectedDay();
       });
@@ -507,7 +572,3 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   initBackToTop();
 });
-
-
-
-

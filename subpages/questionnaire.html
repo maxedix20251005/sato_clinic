@@ -34,7 +34,7 @@
                     <form class="reserve-form" action="#" method="post">
                         <div class="form-group">
                             <label for="q-name"><span class="lang-toggle lang-ja">お名前</span><span class="lang-toggle lang-en">Full Name</span> <span class="required">*</span></label>
-                            <input type="text" id="q-name" name="q-name" required>
+                            <input type="text" id="q-name" name="q-name" required autocomplete="name">
                         </div>
                         <div class="form-group">
                             <label for="q-birthday"><span class="lang-toggle lang-ja">生年月日</span><span class="lang-toggle lang-en">Date of Birth</span> <span class="required">*</span></label>
@@ -42,11 +42,11 @@
                         </div>
                         <div class="form-group">
                             <label for="q-phone"><span class="lang-toggle lang-ja">電話番号</span><span class="lang-toggle lang-en">Phone</span> <span class="required">*</span></label>
-                            <input type="tel" id="q-phone" name="q-phone" required>
+                            <input type="tel" id="q-phone" name="q-phone" required inputmode="tel" pattern="^\+?[0-9\-]{10,20}$" autocomplete="tel" title="先頭のみ+可。数字とハイフンで10〜20桁">
                         </div>
                         <div class="form-group">
                             <label for="q-email"><span class="lang-toggle lang-ja">メールアドレス</span><span class="lang-toggle lang-en">Email</span></label>
-                            <input type="email" id="q-email" name="q-email">
+                            <input type="email" id="q-email" name="q-email" pattern="^\S+@\S+\.\S+$" title="メールアドレス形式で入力してください / Please enter a valid email address">
                         </div>
                         <div class="form-group">
                             <label for="q-chief"><span class="lang-toggle lang-ja">主訴（気になる症状）</span><span class="lang-toggle lang-en">Main Concern / Symptoms</span> <span class="required">*</span></label>
@@ -91,7 +91,7 @@
                             <label><input type="checkbox" name="q-consent" required> <span class="lang-toggle lang-ja">記載内容が診療に利用されることに同意します。</span><span class="lang-toggle lang-en">I agree this information will be used for my medical care.</span></label>
                         </div>
                         <div class="form-actions">
-                            <button type="submit" class="btn-pill btn-primary"><span class="lang-toggle lang-ja">送信する</span><span class="lang-toggle lang-en">Submit</span></button>
+                            <button type="submit" class="btn-pill btn-primary" disabled><span class="lang-toggle lang-ja">送信する</span><span class="lang-toggle lang-en">Submit</span></button>
                             <button type="reset" class="btn-pill btn-secondary"><span class="lang-toggle lang-ja">リセット</span><span class="lang-toggle lang-en">Reset</span></button>
                         </div>
                     </form>
@@ -114,6 +114,7 @@
   <script src="../scripts/main.js"></script>
   <script src="../scripts/lang.js"></script></body>
 </html>
+
 
 
 

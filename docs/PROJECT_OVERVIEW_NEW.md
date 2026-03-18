@@ -16,8 +16,8 @@ Create a welcoming, trustworthy clinic homepage that makes online booking obviou
 - 院長挨拶・診察内容・当院について・理念・スタッフ紹介
 - アクセス／お問い合わせ（地図・連絡先）
 - シンプルなフッター
-- WEB予約ページ (subpages/booking.html): 予約カレンダー＋時間帯スロットで空き状況○△×を表示し、選択した日時をフォームに自動反映
-- WEB問診票ページ (subpages/questionnaire.html): 事前問診フォーム
+- WEB予約ページ (subpages/booking.html): 予約カレンダー＋時間帯スロットで空き状況○△×を表示し、選択した日時をフォームに自動反映。Formspree に送信し、登録メールへ通知（件名: `【佐藤医院】WEB予約を受け付けました（予約番号: XXXX）`）。本文のリード文は Formspree 無料プランの固定テンプレートで変更不可。
+- WEB問診票ページ (subpages/questionnaire.html): 事前問診フォーム（電話は自動ハイフン整形）。Formspree に送信し、件名 `【佐藤医院】WEB問診票を受け付けました（受付番号: XXXX）` で通知。`_replyto` で返信先に利用者メールを指定。
 - ニュースページ (subpages/news.html): 過去のおしらせ一覧
 - 診察内容ページ (subpages/services.html): サービス詳細
 - 当院についてページ (subpages/about.html): 医院詳細と画像
@@ -33,6 +33,7 @@ Create a welcoming, trustworthy clinic homepage that makes online booking obviou
 - 言語選択（JA/EN）が全ページに引き継がれ、localStorageで保持
 - 予約カレンダーはキーボード操作と選択ハイライトに対応
 - Back-to-top ボタンで長いページでも移動が容易
+- メール送信: Formspree 無料プランを使用。reCAPTCHA を未組み込みのため Formspree 側 CAPTCHA はオフ運用。リード文は固定、件名は `_subject` でカスタム。
 
 ## Navigation behavior
 - Global navigation starts between header and hero; when scrolling past the header it becomes fixed to the top with a semi-transparent background.
