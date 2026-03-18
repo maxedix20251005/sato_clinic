@@ -604,6 +604,9 @@ section {
 .status-open {
    background: #2ea44f;
 }
+.status-closed {
+   background: #9aa1a6;
+}
 
 .time-text {
    font-size: 16px;
