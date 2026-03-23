@@ -4,13 +4,15 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 静的な日本語クリニックサイトを、以下の構成とルールで再構築してください。
 
 ## File Map / ファイル構成
-- `index.html`（トップ）: hero, 診察時間(HTMLテーブル＋ステータスカード, JA/EN切替), おしらせ(アコーディオン)、院長挨拶、診察内容概要、当院について、理念・方針、スタッフ、アクセス/お問い合わせ、フッター
+- `index.html`（トップ）: hero, 診察時間(HTMLテーブル＋ステータスカード, JA/EN切替), おしらせ(タイトルリンク5件)、院長挨拶、診察内容概要、当院について、理念・方針、スタッフ、アクセス/お問い合わせ、フッター
  - `subpages/booking.html` : WEB予約フォーム（カレンダー＋時間帯スロットで空き状況○△×表示。選択した日時をフォームに自動セットし、Formspreeへ送信）
 - `subpages/questionnaire.html` : WEB問診票フォーム
 - `subpages/news.html` : おしらせ一覧
 - `subpages/services.html` : 診察内容詳細
 - `subpages/about.html` : 当院について詳細
 - `subpages/policy.html` : 医院の理念・方針
+- `subpages/access.html` : 診療時間・所在地（診療科目、交通案内、地図、連絡先）
+- `subpages/faq.html` : よくあるご質問
 - `subpages/privacy.html` : プライバシーポリシー
 - `subpages/site-policy.html` : サイトポリシー
 - `subpages/sitemap.html` : サイトマップ（ツリー表示）
@@ -30,7 +32,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 
 ## Interaction / インタラクション
 - Language dropdown (JA/EN) in footer; 言語選択は全ページ共通でローカルストレージに保持し、文言を切替。
-- News accordion: `aria-expanded`, `hidden`, +/− トグル
+- TOP News list: タイトルリンク5件を表示し、詳細本文は `subpages/news.html#news-*` で閲覧
 - Hero alert: 閉じるボタンで非表示
 - Mobile nav: ハンバーガーで開閉、オーバーレイ＆bodyロック、リンク/overlayクリックで閉じる
 - Forms: 送信時はアラート表示→リセット（デモ動作）
@@ -41,7 +43,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 
 ## Sections & Navigation / セクションとナビ
 - ヘッダー・フッター・グローバルナビは共通テンプレートを JS で挿入（`data-`属性で現在ページをハイライト）。
-- Top nav links to `subpages/...`（個別ページ）とトップ内アンカー（#time, #news, #greeting, #services, #about, #policy, #staff, #access）
+- Top nav links to `subpages/...`（個別ページ）とトップ内アンカー（#news, #greeting, #services, #about, #policy, #staff, #access）
 - フッター3カラム:
   - ご案内: サイトマップ(`subpages/sitemap.html` or `sitemap.html`), プライバシーポリシー, サイトポリシー
   - 当院について: 院長挨拶(#greeting), 医師・スタッフ(#staff), 診察内容(#services)

@@ -278,6 +278,29 @@ button:disabled {
    transition: height 0.2s ease;
 }
 
+.breadcrumb-wrap {
+   background: #f8fbff;
+   border-bottom: 1px solid var(--border-gray);
+}
+
+.breadcrumb-inner {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   min-height: 40px;
+   font-size: 14px;
+   color: var(--text-gray);
+}
+
+.breadcrumb-inner a {
+   color: var(--blue-main);
+}
+
+.breadcrumb-current {
+   color: var(--text-main);
+   font-weight: 700;
+}
+
 .site-nav.fixed+.nav-spacer {
    height: var(--nav-height);
 }

@@ -108,8 +108,40 @@
   class SiteHeader extends HTMLElement {
     connectedCallback() {
       this.innerHTML = headerHTML;
+      this.insertBreadcrumb();
       this.highlightCurrentNav();
       this.dispatchReady();
+    }
+    insertBreadcrumb() {
+      if (!location.pathname.includes('/subpages/')) return;
+      const file = (location.pathname.split('/').pop() || '').toLowerCase();
+      const labels = {
+        'news.html': { ja: 'おしらせ', en: 'News' },
+        'services.html': { ja: '診察内容', en: 'Services' },
+        'about.html': { ja: '当院について', en: 'About' },
+        'access.html': { ja: '診療時間・所在地', en: 'Hours & Access' },
+        'faq.html': { ja: 'よくあるご質問', en: 'FAQ' },
+        'policy.html': { ja: '理念・方針', en: 'Philosophy' },
+        'booking.html': { ja: 'WEB予約', en: 'Booking' },
+        'questionnaire.html': { ja: 'WEB問診票', en: 'Questionnaire' },
+        'privacy.html': { ja: 'プライバシーポリシー', en: 'Privacy Policy' },
+        'site-policy.html': { ja: 'サイトポリシー', en: 'Site Policy' },
+        'sitemap.html': { ja: 'サイトマップ', en: 'Sitemap' },
+      };
+      const label = labels[file];
+      if (!label || document.querySelector('.breadcrumb-wrap')) return;
+
+      const crumb = document.createElement('nav');
+      crumb.className = 'breadcrumb-wrap';
+      crumb.setAttribute('aria-label', 'Breadcrumb');
+      crumb.innerHTML = `
+        <div class="container breadcrumb-inner">
+          <a href="../index.html"><span class="lang-toggle lang-ja">ホーム</span><span class="lang-toggle lang-en">Home</span></a>
+          <span class="breadcrumb-sep" aria-hidden="true">></span>
+          <span class="breadcrumb-current"><span class="lang-toggle lang-ja">${label.ja}</span><span class="lang-toggle lang-en">${label.en}</span></span>
+        </div>
+      `;
+      this.insertAdjacentElement('afterend', crumb);
     }
     highlightCurrentNav() {
       const file = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
