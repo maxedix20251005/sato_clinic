@@ -14,19 +14,22 @@
 <body>
   <!-- ======================== HEADER ======================== -->
   <noscript>
-  <div class=\"noscript-header\">
-    <div class=\"noscript-brand\">佐藤医院 / Sato Clinic</div>
-    <div class="noscript-note">JavaScript を有効にすると、より快適にご利用いただけます。<br>For the best experience, please enable JavaScript.</div>
-    <div class=\"noscript-nav\">
-      <a href=\"./index.html\">ホーム</a>
-      <a href=\"./subpages/news.html\">おしらせ</a>
-      <a href=\"./subpages/services.html\">診察内容</a>
-      <a href=\"./subpages/booking.html\">WEB予約</a>
-      <a href=\"./subpages/questionnaire.html\">WEB問診票</a>
-      <a href=\"./index.html#access\">アクセス</a>
+    <div class=\"noscript-header\">
+      <div class=\"noscript-brand\">佐藤医院 / Sato Clinic</div>
+      <div class="noscript-note">JavaScript を有効にすると、より快適にご利用いただけます。<br>For the best experience, please enable
+        JavaScript.</div>
+      <div class=\"noscript-nav\">
+        <a href=\"./index.html\">ホーム</a>
+        <a href=\"./subpages/news.html\">おしらせ</a>
+        <a href=\"./subpages/services.html\">診察内容</a>
+        <a href=\"./subpages/access.html\">診療時間・所在地</a>
+        <a href=\"./subpages/faq.html\">よくあるご質問</a>
+        <a href=\"./subpages/booking.html\">WEB予約</a>
+        <a href=\"./subpages/questionnaire.html\">WEB問診票</a>
+        <a href=\"./index.html#access\">アクセス</a>
+      </div>
     </div>
-  </div>
-</noscript><site-header></site-header>
+  </noscript><site-header></site-header>
 
   <!-- ======================== MAIN ======================== -->
   <main>
@@ -53,18 +56,6 @@
             </div>
           </div>
           <div class="hero-image"></div>
-        </div>
-
-        <div class="hero-alert" role="status">
-          <div class="hero-alert-title"><span class="lang-toggle lang-ja">重要なお知らせ</span><span
-              class="lang-toggle lang-en">Important Notice</span></div>
-          <div class="hero-alert-body">
-            <span
-              class="hero-alert-marquee lang-toggle lang-ja">年末年始の休診日は、12月29日(金)～1月4日(木)です。年始は1月5日(金)より通常診療を再開いたします。</span>
-            <span class="hero-alert-marquee lang-toggle lang-en">We will be closed Dec 29 (Fri) – Jan 4 (Thu). Regular
-              hours resume on Jan 5 (Fri).</span>
-          </div>
-          <button class="hero-alert-close" type="button" aria-label="close notice">×</button>
         </div>
       </div>
     </section>
@@ -140,6 +131,9 @@
                 <a href="subpages/booking.html" class="btn-pill btn-primary"><span
                     class="lang-toggle lang-ja">WEB予約はこちらから</span><span class="lang-toggle lang-en">Book
                     Online</span></a>
+                <a href="subpages/access.html" class="btn-pill btn-secondary"><span
+                    class="lang-toggle lang-ja">診療時間・所在地を詳しく見る</span><span class="lang-toggle lang-en">See Hours &
+                    Access</span></a>
               </div>
             </div>
           </div>
@@ -151,81 +145,31 @@
       <div class="container main-container">
         <h2 class="section-title"><span class="lang-toggle lang-ja">おしらせ</span><span
             class="lang-toggle lang-en">News</span></h2>
+        <div class="hero-alert" role="status">
+          <div class="hero-alert-title"><span class="lang-toggle lang-ja">重要なお知らせ</span><span
+              class="lang-toggle lang-en">Important Notice</span></div>
+          <div class="hero-alert-body">
+            <span
+              class="hero-alert-marquee lang-toggle lang-ja">年末年始の休診日は、12月29日(金)～1月4日(木)です。年始は1月5日(金)より通常診療を再開いたします。</span>
+            <span class="hero-alert-marquee lang-toggle lang-en">We will be closed Dec 29 (Fri) – Jan 4 (Thu). Regular
+              hours resume on Jan 5 (Fri).</span>
+          </div>
+          <button class="hero-alert-close" type="button" aria-label="close notice">×</button>
+        </div>
         <div class="news-wrapper">
           <div>
-            <div class="news-list">
-              <div class="news-item">
-                <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-1">
-                  <div class="news-item-title"><span class="lang-toggle lang-ja">インフルエンザ予防接種について</span><span
-                      class="lang-toggle lang-en">Influenza Vaccinations</span></div>
-                  <div class="news-item-icon" aria-hidden="true">＋</div>
-                </button>
-                <div class="news-item-content" id="news-panel-1" hidden>
-                  <p><span
-                      class="lang-toggle lang-ja">インフルエンザ予防接種を開始しました。予約制ですのでお電話または受付でご予約ください。混み合いますのでお早めに。</span><span
-                      class="lang-toggle lang-en">Flu shots are now available. Please reserve by phone or at reception.
-                      Slots fill quickly—book early.</span></p>
-                </div>
-              </div>
-
-              <div class="news-item">
-                <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-2">
-                  <div class="news-item-title"><span class="lang-toggle lang-ja">年末年始の休診について</span><span
-                      class="lang-toggle lang-en">Year-End / New Year Schedule</span></div>
-                  <div class="news-item-icon" aria-hidden="true">＋</div>
-                </button>
-                <div class="news-item-content" id="news-panel-2" hidden>
-                  <p><span
-                      class="lang-toggle lang-ja">12月29日(金)～1月4日(木)は休診、1月5日(金)から通常診療です。ご不便をおかけしますがご了承ください。</span><span
-                      class="lang-toggle lang-en">Closed Dec 29 (Fri) – Jan 4 (Thu). Regular hours resume Jan 5 (Fri).
-                      Thank you for understanding.</span></p>
-                </div>
-              </div>
-
-              <div class="news-item">
-                <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-3">
-                  <div class="news-item-title"><span class="lang-toggle lang-ja">健康診断のご案内</span><span
-                      class="lang-toggle lang-en">Health Checkups</span></div>
-                  <div class="news-item-icon" aria-hidden="true">＋</div>
-                </button>
-                <div class="news-item-content" id="news-panel-3" hidden>
-                  <p><span
-                      class="lang-toggle lang-ja">定期健康診断を実施中です。早期発見・予防のためにぜひご利用ください。内容や費用はお電話でお問い合わせください。</span><span
-                      class="lang-toggle lang-en">Routine checkups are available. Use them for early detection and
-                      prevention. Call us for details and pricing.</span></p>
-                </div>
-              </div>
-
-              <div class="news-item">
-                <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-4">
-                  <div class="news-item-title"><span class="lang-toggle lang-ja">新型コロナウイルス対策について</span><span
-                      class="lang-toggle lang-en">COVID-19 Measures</span></div>
-                  <div class="news-item-icon" aria-hidden="true">＋</div>
-                </button>
-                <div class="news-item-content" id="news-panel-4" hidden>
-                  <p><span class="lang-toggle lang-ja">ご来院時はマスクと手指消毒にご協力ください。発熱・風邪症状のある方は事前にお電話いただくとスムーズです。</span><span
-                      class="lang-toggle lang-en">Please wear a mask and sanitize your hands. If you have fever or cold
-                      symptoms, call us beforehand for smoother guidance.</span></p>
-                </div>
-              </div>
-
-              <div class="news-item">
-                <button class="news-item-header" type="button" aria-expanded="false" aria-controls="news-panel-5">
-                  <div class="news-item-title"><span class="lang-toggle lang-ja">オンライン診療の導入について</span><span
-                      class="lang-toggle lang-en">Online Consultations</span></div>
-                  <div class="news-item-icon" aria-hidden="true">＋</div>
-                </button>
-                <div class="news-item-content" id="news-panel-5" hidden>
-                  <p><span
-                      class="lang-toggle lang-ja">オンライン診療を一部導入しました。通院が難しい方や遠方の方にご利用いただけます。ご希望の方はスタッフへお知らせください。</span><span
-                      class="lang-toggle lang-en">We now offer limited online visits for patients who find it hard to
-                      come in or live far away. Let our staff know if you'd like to use this service.</span></p>
-                </div>
-              </div>
-            </div>
+            <ul class="news-list-simple">
+              <li><a href="subpages/news.html#news-1"><span class="lang-toggle lang-ja">インフルエンザ予防接種について</span><span class="lang-toggle lang-en">Influenza Vaccinations</span></a></li>
+              <li><a href="subpages/news.html#news-2"><span class="lang-toggle lang-ja">年末年始の休診について</span><span class="lang-toggle lang-en">Year-End / New Year Schedule</span></a></li>
+              <li><a href="subpages/news.html#news-3"><span class="lang-toggle lang-ja">健康診断のご案内</span><span class="lang-toggle lang-en">Health Checkups</span></a></li>
+              <li><a href="subpages/news.html#news-4"><span class="lang-toggle lang-ja">新型コロナウイルス対策について</span><span class="lang-toggle lang-en">COVID-19 Measures</span></a></li>
+              <li><a href="subpages/news.html#news-5"><span class="lang-toggle lang-ja">オンライン診療の導入について</span><span class="lang-toggle lang-en">Online Consultations</span></a></li>
+            </ul>
             <div style="margin-top: 16px">
               <a href="subpages/news.html" class="btn-pill"><span class="lang-toggle lang-ja">過去のニュース</span><span
                   class="lang-toggle lang-en">News Archive</span></a>
+              <a href="subpages/faq.html" class="btn-pill btn-secondary"><span
+                  class="lang-toggle lang-ja">よくあるご質問</span><span class="lang-toggle lang-en">FAQ</span></a>
             </div>
           </div>
           <div class="news-side-box">
@@ -245,12 +189,10 @@
           </div>
           <div>
             <div class="greeting-text-box">
-              <span class="lang-toggle lang-ja">こんにちは。佐藤内科医院の院⾧、佐藤太郎と申します。 当院のホームページをご覧いただき、ありがとうございます。
-                佐藤内科医院では、「地域に根ざした医療」をモットーに、患者様一人ひとりに寄り添った医療を提供することを目指しております。
-                日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、地域の皆様の健康を支える役割を担っていきたいと考えております。
-                私たちは、患者様の不安を少しでも軽減し、安心して診療を受けていただけるよう、わかりやすい説明と丁寧な対応を心掛けております。
-                また、近隣の医療機関とも連携し、必要に応じて高度医療へのアクセスもサポートいたします。 どんな小さな不調でも、どうぞお気軽にご相談ください。
-                これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。 どうぞよろしくお願いいたします。</span>
+              <span class="lang-toggle lang-ja">こんにちは。佐藤内科医院の院長、佐藤太郎と申します。当院のホームページをご覧いただき、ありがとうございます。
+                佐藤内科医院では、「地域に根ざした医療」をモットーに、患者様一人ひとりに寄り添った医療を提供することを目指しております。日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、地域の皆様の健康を支える役割を担っていきたいと考えております。
+                私たちは、患者様の不安を少しでも軽減し、安心して診療を受けていただけるよう、わかりやすい説明と丁寧な対応を心掛けております。また、近隣の医療機関とも連携し、必要に応じて高度医療へのアクセスもサポートいたします。どんな小さな不調でも、どうぞお気軽にご相談ください。
+                これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。どうぞよろしくお願いいたします。</span>
               <span class="lang-toggle lang-en">Welcome, and thank you for visiting our website. I am Taro Sato,
                 Director of Sato Clinic. Guided by the motto of community‑rooted medicine, we stay close to each
                 patient. From daily health management and prevention of lifestyle diseases to specialized diagnosis and
@@ -260,7 +202,7 @@
                 minor symptoms. We will continue to put your health first and work as a team to remain a trusted clinic
                 for everyone in the area.</span>
               <div class="greeting-sign">
-                <span class="lang-toggle lang-ja">佐藤医院<br>院長 佐藤太郎</span>
+                <span class="lang-toggle lang-ja">佐藤内科医院<br>院長 佐藤太郎</span>
                 <span class="lang-toggle lang-en">Sato Clinic<br>Director Taro Sato</span>
               </div>
             </div>
@@ -500,22 +442,20 @@
 
   <!-- ======================== FOOTER ======================== -->
   <noscript>
-  <div class=\"noscript-footer\">
-    <div class=\"noscript-nav\">
-      <a href=\"./subpages/sitemap.html\">サイトマップ</a>
-      <a href=\"./subpages/privacy.html\">プライバシーポリシー</a>
-      <a href=\"./subpages/site-policy.html\">サイトポリシー</a>
+    <div class=\"noscript-footer\">
+      <div class=\"noscript-nav\">
+        <a href=\"./subpages/access.html\">診療時間・所在地</a>
+        <a href=\"./subpages/faq.html\">よくあるご質問</a>
+        <a href=\"./subpages/sitemap.html\">サイトマップ</a>
+        <a href=\"./subpages/privacy.html\">プライバシーポリシー</a>
+        <a href=\"./subpages/site-policy.html\">サイトポリシー</a>
+      </div>
+      <div class=\"noscript-copy\">© 佐藤医院</div>
     </div>
-    <div class=\"noscript-copy\">© 佐藤医院</div>
-  </div>
-</noscript><site-footer></site-footer>
+  </noscript><site-footer></site-footer>
   <script src="scripts/main.js"></script>
   <script src="scripts/lang.js"></script>
   <script src="./scripts/components.js"></script>
-  <script src="./scripts/main.js"></script>
-  <script src="./scripts/lang.js"></script></body>
+</body>
 
 </html>
-
-
-

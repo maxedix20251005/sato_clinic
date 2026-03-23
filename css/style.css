@@ -311,6 +311,11 @@ button:disabled {
    background: var(--green-light);
 }
 
+.nav-links a.is-active {
+   background: var(--blue-main);
+   color: #fff;
+}
+
 .nav-toggle {
    display: none;
    background: #fff;
@@ -398,6 +403,7 @@ button:disabled {
 .hero-alert {
    position: relative;
    margin-top: 18px;
+   margin-bottom: 15px;
    padding: 12px 48px 12px 14px;
    border-radius: var(--radius-lg);
    /* background: #fff; */
@@ -956,6 +962,38 @@ button:disabled {
    justify-content: center;
 }
 
+.news-list-simple {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   border-radius: var(--radius-lg);
+   border: 1px solid var(--border-gray);
+   overflow: hidden;
+   background: #fff;
+   box-shadow: var(--shadow-md);
+}
+
+.news-list-simple li {
+   border-top: 1px solid var(--border-gray);
+}
+
+.news-list-simple li:first-child {
+   border-top: none;
+}
+
+.news-list-simple a {
+   display: block;
+   padding: 10px 14px;
+   font-size: 16px;
+   font-weight: 700;
+   color: var(--text-main);
+}
+
+.news-list-simple a:hover,
+.news-list-simple a:focus-visible {
+   background: var(--green-light);
+}
+
 /* ========================
    9) GREETING
    ======================== */
@@ -1465,6 +1503,19 @@ body.lang-en .lang-toggle.lang-ja { display: none; }
    border-radius: var(--radius-lg);
    padding: 32px;
    box-shadow: var(--shadow-md);
+}
+
+.booking-page .reserve-form-container {
+   max-width: 980px;
+}
+
+.booking-page .booking-availability-body {
+   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+   gap: 20px;
+}
+
+.booking-page .calendar-days {
+   grid-template-columns: repeat(7, minmax(52px, 1fr));
 }
 
 .reserve-form {
