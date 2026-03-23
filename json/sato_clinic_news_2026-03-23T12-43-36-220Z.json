@@ -1,0 +1,61 @@
+{
+  "version": 2,
+  "generated_at": "2026-03-23T12:43:36.214Z",
+  "items": [
+    {
+      "id": "news-1",
+      "date_ja": "2024年12月1日",
+      "date_en": "Dec 1, 2024",
+      "title_ja": "年末年始の休診について",
+      "title_en": "Year-End / New Year Schedule",
+      "body_ja": "年末年始の休診日は、12月29日（金）〜1月4日（木） となります。年始は1月5日（金）より通常診療を再開いたします。皆様にはご不便をおかけしますが、何卒ご了承くださいますようお願いいたします。",
+      "body_en": "We will be closed from Dec 29 to Jan 4. Regular consultations resume on Jan 5.",
+      "created_at": "2026-03-23T12:38:26.363Z",
+      "updated_at": "2026-03-23T12:38:26.363Z"
+    },
+    {
+      "id": "news-2",
+      "date_ja": "2024年10月1日",
+      "date_en": "Oct 1, 2024",
+      "title_ja": "インフルエンザ予防接種について",
+      "title_en": "Influenza Vaccinations",
+      "body_ja": "今年もインフルエンザの予防接種を開始いたしました。予約制となっておりますので、お電話または受付にてご予約をお願いいたします。例年、予約が集中しやすいため、早めのご予約をおすすめいたします。",
+      "body_en": "Flu vaccinations are now available this season. Please make a reservation by phone or at reception.",
+      "created_at": "2026-03-23T12:39:26.363Z",
+      "updated_at": "2026-03-23T12:39:26.363Z"
+    },
+    {
+      "id": "news-3",
+      "date_ja": "2024年9月15日",
+      "date_en": "Sep 15, 2024",
+      "title_ja": "健康診断のご案内",
+      "title_en": "Health Checkups",
+      "body_ja": "今年も健康診断を実施しております。定期的な健康チェックは、病気の早期発見・予防にとても重要です。各種健康診断メニューをご用意しておりますので、ご希望の方はお電話にてお申し込みください。",
+      "body_en": "We are offering annual health checkups. Regular checks are important for early detection and prevention.",
+      "created_at": "2026-03-23T12:40:26.363Z",
+      "updated_at": "2026-03-23T12:40:26.363Z"
+    },
+    {
+      "id": "news-4",
+      "date_ja": "2024年3月1日",
+      "date_en": "Mar 1, 2024",
+      "title_ja": "オンライン診療の導入について",
+      "title_en": "Online Consultations",
+      "body_ja": "2024年より、オンライン診療を一部導入いたしました。通院が難しい方や、遠方にお住まいの方にご利用いただけます。ご希望の方は、当院スタッフまでお問い合わせください。 皆様の健康をサポートできるよう、スタッフ一同努めてまいります。何かご不明な点がございましたら、お気軽にお問い合わせください。",
+      "body_en": "We have introduced partial online consultations from 2024 for patients with difficulty visiting the clinic.",
+      "created_at": "2026-03-23T12:41:26.363Z",
+      "updated_at": "2026-03-23T12:41:26.363Z"
+    },
+    {
+      "id": "news-5",
+      "date_ja": "2024年1月10日",
+      "date_en": "Jan 10, 2024",
+      "title_ja": "新型コロナウイルス対策について",
+      "title_en": "COVID-19 Measures",
+      "body_ja": "当院では引き続き、新型コロナウイルス感染症対策を徹底しております。ご来院の際には、マスクの着用、手指消毒にご協力をお願いいたします。また、発熱や風邪症状のある方は、事前にお電話でご相談いただけるとスムーズにご案内が可能です。",
+      "body_en": "We continue strict COVID-19 measures. Please wear a mask and sanitize your hands when visiting.",
+      "created_at": "2026-03-23T12:42:26.363Z",
+      "updated_at": "2026-03-23T12:42:26.363Z"
+    }
+  ]
+}

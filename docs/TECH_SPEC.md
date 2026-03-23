@@ -4,7 +4,7 @@
 - Static HTML + CSS + vanilla JS (no build) / 静的HTML/CSS/JSのみ
 - Font: Noto Sans JP via Google Fonts / Noto Sans JP
 - Assets: `image/` (PNG/JPG) / 画像は `image/`
-- Pages: `index.html`, `booking.html` (WEB予約), `news.html` (ニュース), `services.html` (診察内容), `about.html` (当院について), `policy.html` (理念・方針)
+- Pages: `index.html`, `booking.html` (WEB予約), `news.html` (ニュース), `services.html` (診察内容), `about.html` (当院について + 理念・方針詳細)
 
 ## Layout & Breakpoints / レイアウト
 - Containers: `min(1180px, 100% - 32px)`

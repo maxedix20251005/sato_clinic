@@ -25,6 +25,18 @@
 
   applyLang(saved);
 
+  const currentLang = () => {
+    if (document.body?.classList.contains('lang-en')) return 'en';
+    if (document.body?.classList.contains('lang-ja')) return 'ja';
+    try { return localStorage.getItem(LS_KEY) || 'ja'; }
+    catch { return 'ja'; }
+  };
+
+  // Header/Footer are injected after this script runs, so re-sync selector value.
+  window.addEventListener('layout-ready', () => {
+    applyLang(currentLang());
+  });
+
   document.addEventListener('change', (e) => {
     const t = e.target;
     if (t && t.classList && t.classList.contains('footer-lang-select')) {

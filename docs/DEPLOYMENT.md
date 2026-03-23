@@ -2,7 +2,7 @@
 
 ## Local Preview / ローカル確認
 - ブラウザで `index.html` を開く（ビルド不要）。
-- サブページは `subpages/booking.html`, `questionnaire.html`, `news.html`, `services.html`, `about.html`, `policy.html`, `privacy.html`, `site-policy.html`, `sitemap.html` を直接開いて確認。
+- サブページは `subpages/booking.html`, `questionnaire.html`, `news.html`, `services.html`, `about.html`, `access.html`, `faq.html`, `privacy.html`, `site-policy.html`, `sitemap.html`, `news-admin.html` を直接開いて確認。
 - 簡易サーバー例: `python3 -m http.server 8000` → `http://localhost:8000`。
 
 ## Production Hosting / 本番ホスティング

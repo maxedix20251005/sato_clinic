@@ -1,0 +1,110 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>おしらせ更新管理 / News Admin - 佐藤医院</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <noscript>
+      <div class="noscript-header">
+        <div class="noscript-brand">佐藤医院 / Sato Clinic</div>
+        <div class="noscript-note">JavaScript を有効にすると、より快適にご利用いただけます。<br>For the best experience, please enable JavaScript.</div>
+      </div>
+    </noscript><site-header></site-header>
+
+    <main>
+        <section class="reserve-section">
+            <div class="container main-container">
+                <h2 class="section-title"><span class="lang-toggle lang-ja">おしらせ更新管理</span><span class="lang-toggle lang-en">News Update Admin</span></h2>
+                <div class="admin-note-box">
+                    <p><span class="lang-toggle lang-ja">この画面は院内運用向けです。データはブラウザの IndexedDB に保存されます（端末ローカル）。</span><span class="lang-toggle lang-en">This page is for internal use. Data is saved to this browser's IndexedDB (local device).</span></p>
+                    <p><span class="lang-toggle lang-ja">一覧から1件ずつ編集できます。最終反映は JSON をエクスポートし、補助スクリプトで HTML へ適用してください。</span><span class="lang-toggle lang-en">Edit one item at a time from the list. For publishing, export JSON and apply it to HTML using the helper script.</span></p>
+                </div>
+
+                <div class="admin-toolbar">
+                    <button type="button" class="btn-pill btn-primary" id="add-news"><span class="lang-toggle lang-ja">新規登録</span><span class="lang-toggle lang-en">Add New</span></button>
+                    <button type="button" class="btn-pill btn-secondary" id="load-draft"><span class="lang-toggle lang-ja">下書きを読み込む</span><span class="lang-toggle lang-en">Load Draft</span></button>
+                    <button type="button" class="btn-pill btn-secondary" id="save-draft"><span class="lang-toggle lang-ja">下書きを保存</span><span class="lang-toggle lang-en">Save Draft</span></button>
+                    <button type="button" class="btn-pill btn-secondary" id="export-json"><span class="lang-toggle lang-ja">JSONをエクスポート</span><span class="lang-toggle lang-en">Export JSON</span></button>
+                    <label class="btn-pill btn-secondary admin-import-btn" for="import-json"><span class="lang-toggle lang-ja">JSONをインポート</span><span class="lang-toggle lang-en">Import JSON</span></label>
+                    <input id="import-json" type="file" accept="application/json" class="admin-file-input">
+                    <button type="button" class="btn-pill btn-secondary" id="clear-draft"><span class="lang-toggle lang-ja">下書きを削除</span><span class="lang-toggle lang-en">Clear Draft</span></button>
+                </div>
+
+                <div id="admin-message" class="admin-message" role="status" aria-live="polite"></div>
+
+                <div class="admin-list-panel">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th><button type="button" class="admin-sort-btn" data-sort-key="date"><span class="lang-toggle lang-ja">日付</span><span class="lang-toggle lang-en">Date</span></button></th>
+                                <th><button type="button" class="admin-sort-btn" data-sort-key="title_ja"><span class="lang-toggle lang-ja">タイトル（JA）</span><span class="lang-toggle lang-en">Title (JA)</span></button></th>
+                                <th><button type="button" class="admin-sort-btn" data-sort-key="title_en"><span class="lang-toggle lang-ja">タイトル（EN）</span><span class="lang-toggle lang-en">Title (EN)</span></button></th>
+                                <th><button type="button" class="admin-sort-btn" data-sort-key="updated_at"><span class="lang-toggle lang-ja">更新日時</span><span class="lang-toggle lang-en">Updated</span></button></th>
+                                <th><span class="lang-toggle lang-ja">操作</span><span class="lang-toggle lang-en">Actions</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="news-table-body"></tbody>
+                    </table>
+                </div>
+
+                <section class="admin-editor-panel">
+                    <h3 class="about-archive-title" id="editor-title"><span class="lang-toggle lang-ja">おしらせ編集</span><span class="lang-toggle lang-en">Edit News</span></h3>
+                    <form id="news-editor-form" class="admin-editor-form">
+                        <input type="hidden" id="edit-id" name="id">
+                        <div class="admin-grid">
+                            <div class="form-group">
+                                <label for="edit-date-ja"><span class="lang-toggle lang-ja">日付（JA）</span><span class="lang-toggle lang-en">Date (JA)</span></label>
+                                <input type="text" id="edit-date-ja" name="date_ja" placeholder="2026年1月10日" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-date-en"><span class="lang-toggle lang-ja">日付（EN）</span><span class="lang-toggle lang-en">Date (EN)</span></label>
+                                <input type="text" id="edit-date-en" name="date_en" placeholder="Jan 10, 2026" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-title-ja"><span class="lang-toggle lang-ja">タイトル（JA）</span><span class="lang-toggle lang-en">Title (JA)</span></label>
+                            <input type="text" id="edit-title-ja" name="title_ja" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-title-en"><span class="lang-toggle lang-ja">タイトル（EN）</span><span class="lang-toggle lang-en">Title (EN)</span></label>
+                            <input type="text" id="edit-title-en" name="title_en" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-body-ja"><span class="lang-toggle lang-ja">本文（JA）</span><span class="lang-toggle lang-en">Body (JA)</span></label>
+                            <textarea id="edit-body-ja" name="body_ja" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-body-en"><span class="lang-toggle lang-ja">本文（EN）</span><span class="lang-toggle lang-en">Body (EN)</span></label>
+                            <textarea id="edit-body-en" name="body_en" rows="4" required></textarea>
+                        </div>
+                        <div class="admin-editor-actions">
+                            <button type="submit" class="btn-pill btn-primary"><span class="lang-toggle lang-ja">保存</span><span class="lang-toggle lang-en">Save</span></button>
+                            <button type="button" class="btn-pill btn-secondary" id="cancel-edit"><span class="lang-toggle lang-ja">キャンセル</span><span class="lang-toggle lang-en">Cancel</span></button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <noscript>
+      <div class="noscript-footer">
+        <div class="noscript-nav">
+          <a href="../subpages/sitemap.html">サイトマップ</a>
+          <a href="../subpages/privacy.html">プライバシーポリシー</a>
+          <a href="../subpages/site-policy.html">サイトポリシー</a>
+        </div>
+        <div class="noscript-copy">© 佐藤医院</div>
+      </div>
+    </noscript><site-footer></site-footer>
+    <script src="../scripts/components.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/lang.js"></script>
+    <script src="../scripts/news-admin.js"></script>
+</body>
+</html>

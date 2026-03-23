@@ -46,9 +46,8 @@
           <a href="${page('news')}"><span class="lang-toggle lang-ja">おしらせ</span><span class="lang-toggle lang-en">News</span></a>
           <a href="${page('services')}"><span class="lang-toggle lang-ja">診察内容</span><span class="lang-toggle lang-en">Services</span></a>
           <a href="${page('about')}"><span class="lang-toggle lang-ja">当院について</span><span class="lang-toggle lang-en">About</span></a>
-          <a href="${page('access')}"><span class="lang-toggle lang-ja">診療時間・所在地</span><span class="lang-toggle lang-en">Hours & Access</span></a>
+          <a href="${page('access')}"><span class="lang-toggle lang-ja">診察時間・所在地</span><span class="lang-toggle lang-en">Hours & Access</span></a>
           <a href="${page('faq')}"><span class="lang-toggle lang-ja">よくあるご質問</span><span class="lang-toggle lang-en">FAQ</span></a>
-          <a href="${page('policy')}"><span class="lang-toggle lang-ja">理念・方針</span><span class="lang-toggle lang-en">Philosophy</span></a>
           <a href="${p === '..' ? '../index.html#access' : '#access'}"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
         </div>
       </div>
@@ -62,7 +61,7 @@
       <div class="container footer-links">
         <div>
           <div class="footer-column-title"><span class="lang-toggle lang-ja">ご案内</span><span class="lang-toggle lang-en">Info</span></div>
-          <a href="${page('access')}" class="footer-link"><span class="lang-toggle lang-ja">診療時間・所在地</span><span class="lang-toggle lang-en">Hours & Access</span></a>
+          <a href="${page('access')}" class="footer-link"><span class="lang-toggle lang-ja">診察時間・所在地</span><span class="lang-toggle lang-en">Hours & Access</span></a>
           <a href="${page('faq')}" class="footer-link"><span class="lang-toggle lang-ja">よくあるご質問</span><span class="lang-toggle lang-en">FAQ</span></a>
           <a href="${page('sitemap')}" class="footer-link"><span class="lang-toggle lang-ja">サイトマップ</span><span class="lang-toggle lang-en">Sitemap</span></a>
           <a href="${page('privacy')}" class="footer-link"><span class="lang-toggle lang-ja">プライバシーポリシー</span><span class="lang-toggle lang-en">Privacy Policy</span></a>
@@ -81,7 +80,8 @@
           <a href="${p === '..' ? '../index.html#access' : '#access'}" class="footer-link"><span class="lang-toggle lang-ja">アクセス／お問い合わせ</span><span class="lang-toggle lang-en">Access / Contact</span></a>
         </div>
         <div>
-          <div class="footer-column-title"><span class="lang-toggle lang-ja">診療時間・連絡先</span><span class="lang-toggle lang-en">Hours & Contact</span></div>
+          <div class="footer-column-title"><span class="lang-toggle lang-ja">診察時間・連絡先</span><span class="lang-toggle lang-en">Hours & Contact</span></div>
+          <div class="footer-link"><span class="lang-toggle lang-ja">診察時間：9時〜12時 / 14時〜19時</span><span class="lang-toggle lang-en">Consultation: 9:00-12:00 / 14:00-19:00</span></div>
           <div class="footer-link"><span class="lang-toggle lang-ja">受付時間：9時〜12時 / 13時〜18時</span><span class="lang-toggle lang-en">Reception: 9:00-12:00 / 13:00-18:00</span></div>
           <div class="footer-link"><span class="lang-toggle lang-ja">休診日：木曜・土曜午後・日曜</span><span class="lang-toggle lang-en">Closed: Thu, Sat PM, Sun</span></div>
           <div class="footer-link"><span class="lang-toggle lang-ja">〒123-4567 東京都台東区上野0丁目0-0</span><span class="lang-toggle lang-en">0-0 Ueno 0-chome, Taito-ku, Tokyo 123-4567</span></div>
@@ -119,9 +119,8 @@
         'news.html': { ja: 'おしらせ', en: 'News' },
         'services.html': { ja: '診察内容', en: 'Services' },
         'about.html': { ja: '当院について', en: 'About' },
-        'access.html': { ja: '診療時間・所在地', en: 'Hours & Access' },
+        'access.html': { ja: '診察時間・所在地', en: 'Hours & Access' },
         'faq.html': { ja: 'よくあるご質問', en: 'FAQ' },
-        'policy.html': { ja: '理念・方針', en: 'Philosophy' },
         'booking.html': { ja: 'WEB予約', en: 'Booking' },
         'questionnaire.html': { ja: 'WEB問診票', en: 'Questionnaire' },
         'privacy.html': { ja: 'プライバシーポリシー', en: 'Privacy Policy' },
@@ -152,7 +151,6 @@
         'about.html': ['about.html'],
         'access.html': ['access.html'],
         'faq.html': ['faq.html'],
-        'policy.html': ['policy.html'],
         'booking.html': ['booking.html'],
         'questionnaire.html': ['questionnaire.html'],
       };

@@ -20,7 +20,7 @@ Create a welcoming, trustworthy clinic homepage that makes online booking obviou
 - ニュースページ (news.html): 過去のニュースリスト
 - 診察内容ページ (services.html): サービス詳細リスト
 - 当院についてページ (about.html): 医院詳細と画像
-- 理念・方針ページ (policy.html): 医院の理念・方針詳細
+- 理念・方針詳細: `subpages/about.html#clinic-policy` に統合
 
 ## UX Goals / UX目標
 - Clear primary action, consistent buttons / 主要アクションの明確化と統一ボタン
