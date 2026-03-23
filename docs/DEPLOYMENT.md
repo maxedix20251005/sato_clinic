@@ -14,11 +14,14 @@
 ## Verification Checklist / 動作確認
 - レイアウト: デスクトップ/モバイル(>=360px)で崩れない。
 - ナビ: ハンバーガー開閉、オーバーレイで背面スクロール抑止、リンクタップで閉じる。
-- おしらせアコーディオン: キーボードで開閉可、`aria-expanded`/`hidden` 反映。
 - ヒーローアラート: 閉じるボタンで隠せる。
 - フォーム: `booking.html` と `questionnaire.html` でラベル/必須表示があること、送信時アラート→リセット（デモ動作）。
 - フッターリンク: サイトマップ・プライバシー・サイトポリシー・WEB予約・WEB問診票が正しく遷移。
 - マップ: アクセスセクションの iframe が表示されること。
+- おしらせ運用:
+  - `subpages/news-admin.html` でJSONをエクスポートできる。
+  - `pwsh -File scripts/apply-news-json.ps1 -JsonPath <json-file> -DryRun` が成功する。
+  - 本反映後、`index.html` は最新5件、`subpages/news.html` は全件日付降順で表示される。
 - 文字コード: すべて UTF-8 (BOMなし) で保存されていること。
 
 ## Notes / 補足
