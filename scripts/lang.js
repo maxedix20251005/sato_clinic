@@ -18,12 +18,18 @@
     try { localStorage.setItem(LS_KEY, lang); } catch (e) { /* ignore */ }
   };
 
+  const isTopPage = (() => {
+    const p = String(window.location.pathname || '');
+    return p === '/' || p.endsWith('/index.html') || p.endsWith('index.html');
+  })();
+
   const saved = (() => {
     try { return localStorage.getItem(LS_KEY) || 'ja'; }
     catch { return 'ja'; }
   })();
 
-  applyLang(saved);
+  // Keep top page default in Japanese even if a previous EN selection was saved.
+  applyLang(isTopPage ? 'ja' : saved);
 
   const currentLang = () => {
     if (document.body?.classList.contains('lang-en')) return 'en';

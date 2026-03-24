@@ -144,6 +144,15 @@ button:disabled {
    color: #fff;
 }
 
+.btn-danger {
+   background: #b42318;
+   color: #fff;
+}
+
+.btn-danger:hover {
+   background: #8f1d14;
+}
+
 .btn-pill-header {
    padding: 4px 20px;
    font-size: 14px;
@@ -2045,6 +2054,58 @@ body.lang-en .lang-toggle.lang-ja { display: none; }
 
 .admin-editor-actions {
   display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.admin-modal[hidden] {
+  display: none;
+}
+
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2200;
+}
+
+.admin-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 18, 32, 0.62);
+}
+
+.admin-modal-dialog {
+  position: relative;
+  width: min(640px, calc(100% - 32px));
+  margin: 80px auto 0;
+  background: #fff;
+  border: 2px solid #b42318;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: 18px;
+}
+
+.admin-modal-dialog h3 {
+  margin: 0 0 10px;
+  color: #8f1d14;
+}
+
+.admin-modal-dialog p {
+  margin: 0 0 14px;
+}
+
+.admin-modal-check {
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.admin-modal-actions {
+  display: flex;
+  justify-content: flex-end;
   gap: 8px;
   flex-wrap: wrap;
 }

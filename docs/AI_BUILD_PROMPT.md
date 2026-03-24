@@ -15,12 +15,12 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 - `subpages/privacy.html` : プライバシーポリシー
 - `subpages/site-policy.html` : サイトポリシー
 - `subpages/sitemap.html` : サイトマップ（ツリー表示）
-- `subpages/news-admin.html` : おしらせ更新管理（IndexedDB下書き保存＋JSON出力/読込）
+- `subpages/news-admin.html` : おしらせ更新管理（IndexedDB保存、保存後に同ブラウザでTOP/一覧へ反映）
 - `css/style.css` : トークン/レイアウト/コンポーネント/レスポンシブ
 - `scripts/components.js` : ヘッダー/フッター/グローバルナビの共通コンポーネント挿入
 - `scripts/lang.js` : JA/ENトグルと言語状態のローカルストレージ保持
 - `scripts/main.js` : 挙動（アコーディオン、アラート、モバイルナビ、予約カレンダー、Back-to-top 等）
- - `scripts/news-admin.js` : おしらせ管理画面のIndexedDB保存、JSONエクスポート/インポート
+ - `scripts/news-admin.js` : おしらせ管理画面のIndexedDB保存
   - Formspree連携: `FORM_ENDPOINT` を設定し、予約内容を POST。件名は `【佐藤医院】WEB予約を受け付けました（予約番号: XXXX）`。`_replyto` に利用者メール、`site/page` メタを送信。
 - `image/` : Logo.png, hero/section用画像, director.jpg, staff写真, serviceアイコン, handsetアイコン, `icon_go-to-top.png`
 
@@ -33,7 +33,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 
 ## Interaction / インタラクション
 - Language dropdown (JA/EN) in footer; 言語選択は全ページ共通でローカルストレージに保持し、文言を切替。
-- TOP News list: 最新5件のタイトルリンクを表示（5件未満は全件表示）。詳細本文は `subpages/news.html#news-*` で閲覧
+- TOP News list: `scripts/news-live.js` が IndexedDB から最新5件を描画（5件未満は全件表示）。詳細本文は `subpages/news.html#news-*` で閲覧
 - Hero alert: 閉じるボタンで非表示
 - Mobile nav: ハンバーガーで開閉、オーバーレイ＆bodyロック、リンク/overlayクリックで閉じる
 - Forms: 送信時はアラート表示→リセット（デモ動作）
@@ -69,3 +69,4 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 
 ## Hosting / ホスティング
 - ビルドなしの静的サイト。`index.html` をブラウザで開けば動作すること。
+

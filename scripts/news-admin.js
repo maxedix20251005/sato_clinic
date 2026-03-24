@@ -3,6 +3,7 @@
   const DB_VERSION = 1;
   const STORE = 'drafts';
   const KEY = 'news_all';
+  const LS_FALLBACK_KEY = 'satoClinicNewsAdmin_news_all';
 
   const DEFAULT_ITEMS = [
     {
@@ -63,6 +64,10 @@
   const btnClear = document.getElementById('clear-draft');
   const btnCancel = document.getElementById('cancel-edit');
   const fileInput = document.getElementById('import-json');
+  const clearAllModal = document.getElementById('clear-all-modal');
+  const clearAllConfirm = document.getElementById('clear-all-confirm');
+  const clearAllRun = document.getElementById('clear-all-run');
+  const clearAllCancel = document.getElementById('clear-all-cancel');
 
   if (!tableBody || !message || !form) return;
 
@@ -76,6 +81,45 @@
   const showMessage = (text, isError = false) => {
     message.textContent = text;
     message.classList.toggle('is-error', isError);
+  };
+
+  const jumpToMessage = () => {
+    const msg = document.getElementById('admin-message');
+    if (!msg) return;
+    if (window.location.hash !== '#admin-message') {
+      history.replaceState(null, '', '#admin-message');
+    }
+    msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+  const jumpToEditor = () => {
+    const editor = document.getElementById('editor-title');
+    if (!editor) return;
+    if (window.location.hash !== '#editor-title') {
+      history.replaceState(null, '', '#editor-title');
+    }
+    editor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const syncClearAllActionState = () => {
+    if (!clearAllRun) return;
+    clearAllRun.disabled = !Boolean(clearAllConfirm?.checked);
+  };
+
+  const openClearAllModal = () => {
+    if (!clearAllModal) return false;
+    clearAllModal.hidden = false;
+    document.body.classList.add('modal-open');
+    if (clearAllConfirm) clearAllConfirm.checked = false;
+    syncClearAllActionState();
+    clearAllCancel?.focus();
+    return true;
+  };
+
+  const closeClearAllModal = () => {
+    if (!clearAllModal) return;
+    clearAllModal.hidden = true;
+    document.body.classList.remove('modal-open');
   };
 
   const nowIso = () => new Date().toISOString();
@@ -126,21 +170,49 @@
       req.onerror = () => reject(req.error);
     });
 
-  const withStore = async (mode, run) => {
+  const loadDraftFromIndexedDb = async () => {
     const db = await openDb();
-    return new Promise((resolve, reject) => {
-      const tx = db.transaction(STORE, mode);
-      const store = tx.objectStore(STORE);
-      const result = run(store);
-      tx.oncomplete = () => {
-        db.close();
-        resolve(result);
-      };
-      tx.onerror = () => {
-        db.close();
-        reject(tx.error);
-      };
-    });
+    try {
+      return await new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE, 'readonly');
+        const store = tx.objectStore(STORE);
+        const req = store.get(KEY);
+        req.onsuccess = () => resolve(req.result || null);
+        req.onerror = () => reject(req.error);
+      });
+    } finally {
+      db.close();
+    }
+  };
+
+  const saveDraftToIndexedDb = async (payload) => {
+    const db = await openDb();
+    try {
+      return await new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE, 'readwrite');
+        const store = tx.objectStore(STORE);
+        store.put(payload, KEY);
+        tx.oncomplete = () => resolve(true);
+        tx.onerror = () => reject(tx.error);
+      });
+    } finally {
+      db.close();
+    }
+  };
+
+  const clearDraftFromIndexedDb = async () => {
+    const db = await openDb();
+    try {
+      return await new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE, 'readwrite');
+        const store = tx.objectStore(STORE);
+        store.delete(KEY);
+        tx.oncomplete = () => resolve(true);
+        tx.onerror = () => reject(tx.error);
+      });
+    } finally {
+      db.close();
+    }
   };
 
   const normalizeItem = (src) => {
@@ -177,16 +249,22 @@
   });
 
   const saveDraft = async () => {
-    await withStore('readwrite', (store) => store.put(exportPayload(), KEY));
+    const payload = exportPayload();
+    try {
+      await saveDraftToIndexedDb(payload);
+    } catch {
+      localStorage.setItem(LS_FALLBACK_KEY, JSON.stringify(payload));
+    }
   };
 
   const loadDraft = async () => {
-    const data = await withStore('readonly', (store) =>
-      new Promise((resolve, reject) => {
-        const req = store.get(KEY);
-        req.onsuccess = () => resolve(req.result);
-        req.onerror = () => reject(req.error);
-      }));
+    let data = null;
+    try {
+      data = await loadDraftFromIndexedDb();
+    } catch {
+      const raw = localStorage.getItem(LS_FALLBACK_KEY);
+      data = raw ? JSON.parse(raw) : null;
+    }
     if (!data || !Array.isArray(data.items)) return null;
     return data;
   };
@@ -305,6 +383,7 @@
     setEditor(next);
     await saveDraft();
     showMessage('保存しました。下書きにも反映済みです / Saved and draft updated.');
+    jumpToMessage();
   };
 
   const onTableClick = async (event) => {
@@ -317,6 +396,7 @@
     if (action === 'edit') {
       setEditor(item);
       showMessage('一覧から選択したおしらせを編集中です / Editing selected item.');
+      jumpToEditor();
       return;
     }
     if (action === 'delete') {
@@ -398,6 +478,7 @@
     btnAdd?.addEventListener('click', () => {
       resetEditor();
       showMessage('新規入力モードです / New item mode.');
+      jumpToEditor();
     });
 
     btnCancel?.addEventListener('click', () => {
@@ -431,17 +512,55 @@
       }
     });
 
-    btnClear?.addEventListener('click', async () => {
-      const ok = confirm('下書きを全削除します。よろしいですか？ / Clear all draft data?');
-      if (!ok) return;
+    const runClearAll = async () => {
       try {
-        await withStore('readwrite', (store) => store.delete(KEY));
+        try {
+          await clearDraftFromIndexedDb();
+        } catch {
+          localStorage.removeItem(LS_FALLBACK_KEY);
+        }
         state.items = [];
         renderTable();
         resetEditor();
-        showMessage('下書きを削除しました / Draft cleared.');
+        showMessage('おしらせを全件削除しました / All news items deleted.');
+        jumpToMessage();
       } catch {
-        showMessage('下書き削除に失敗しました / Failed to clear draft.', true);
+        showMessage('全件削除に失敗しました / Failed to delete all items.', true);
+        jumpToMessage();
+      }
+    };
+
+    btnClear?.addEventListener('click', async () => {
+      if (openClearAllModal()) return;
+      const ok = confirm('おしらせを全件削除します。よろしいですか？ / Delete all news items?');
+      if (!ok) return;
+      await runClearAll();
+    });
+
+    clearAllConfirm?.addEventListener('change', syncClearAllActionState);
+
+    clearAllCancel?.addEventListener('click', () => {
+      closeClearAllModal();
+    });
+
+    clearAllModal?.querySelectorAll('[data-close-clear-modal]').forEach((el) => {
+      el.addEventListener('click', () => {
+        closeClearAllModal();
+      });
+    });
+
+    clearAllRun?.addEventListener('click', async () => {
+      if (!clearAllConfirm?.checked) {
+        syncClearAllActionState();
+        return;
+      }
+      closeClearAllModal();
+      await runClearAll();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && clearAllModal && !clearAllModal.hidden) {
+        closeClearAllModal();
       }
     });
 

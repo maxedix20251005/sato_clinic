@@ -1,4 +1,4 @@
-<html lang="ja">
+﻿<html lang="ja">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,20 +22,34 @@
                 <h2 class="section-title"><span class="lang-toggle lang-ja">おしらせ更新管理</span><span class="lang-toggle lang-en">News Update Admin</span></h2>
                 <div class="admin-note-box">
                     <p><span class="lang-toggle lang-ja">この画面は院内運用向けです。データはブラウザの IndexedDB に保存されます（端末ローカル）。</span><span class="lang-toggle lang-en">This page is for internal use. Data is saved to this browser's IndexedDB (local device).</span></p>
-                    <p><span class="lang-toggle lang-ja">一覧から1件ずつ編集できます。最終反映は JSON をエクスポートし、補助スクリプトで HTML へ適用してください。</span><span class="lang-toggle lang-en">Edit one item at a time from the list. For publishing, export JSON and apply it to HTML using the helper script.</span></p>
+                    <p><span class="lang-toggle lang-ja">一覧から1件ずつ編集して保存すると、同じブラウザで TOP とニュース一覧に反映されます（再読み込みで確認）。</span><span class="lang-toggle lang-en">When you save an item, it is reflected on TOP and News Archive in this browser (reload to confirm).</span></p>
                 </div>
 
                 <div class="admin-toolbar">
                     <button type="button" class="btn-pill btn-primary" id="add-news"><span class="lang-toggle lang-ja">新規登録</span><span class="lang-toggle lang-en">Add New</span></button>
-                    <button type="button" class="btn-pill btn-secondary" id="load-draft"><span class="lang-toggle lang-ja">下書きを読み込む</span><span class="lang-toggle lang-en">Load Draft</span></button>
-                    <button type="button" class="btn-pill btn-secondary" id="save-draft"><span class="lang-toggle lang-ja">下書きを保存</span><span class="lang-toggle lang-en">Save Draft</span></button>
-                    <button type="button" class="btn-pill btn-secondary" id="export-json"><span class="lang-toggle lang-ja">JSONをエクスポート</span><span class="lang-toggle lang-en">Export JSON</span></button>
-                    <label class="btn-pill btn-secondary admin-import-btn" for="import-json"><span class="lang-toggle lang-ja">JSONをインポート</span><span class="lang-toggle lang-en">Import JSON</span></label>
-                    <input id="import-json" type="file" accept="application/json" class="admin-file-input">
-                    <button type="button" class="btn-pill btn-secondary" id="clear-draft"><span class="lang-toggle lang-ja">下書きを削除</span><span class="lang-toggle lang-en">Clear Draft</span></button>
+                    <a class="btn-pill btn-secondary" href="../index.html"><span class="lang-toggle lang-ja">TOP確認</span><span class="lang-toggle lang-en">Open TOP</span></a>
+                    <a class="btn-pill btn-secondary" href="../subpages/news.html"><span class="lang-toggle lang-ja">一覧確認</span><span class="lang-toggle lang-en">Open News Archive</span></a>
+                    <button type="button" class="btn-pill btn-secondary" id="clear-draft"><span class="lang-toggle lang-ja">全件削除</span><span class="lang-toggle lang-en">Delete All</span></button>
                 </div>
 
                 <div id="admin-message" class="admin-message" role="status" aria-live="polite"></div>
+
+                <div id="clear-all-modal" class="admin-modal" hidden>
+                    <div class="admin-modal-backdrop" data-close-clear-modal></div>
+                    <div class="admin-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="clear-all-modal-title">
+                        <h3 id="clear-all-modal-title"><span class="lang-toggle lang-ja">注意：おしらせを全件削除します</span><span class="lang-toggle lang-en">Warning: Delete all news items</span></h3>
+                        <p><span class="lang-toggle lang-ja">この操作を実行すると、現在のブラウザに保存されているおしらせデータがすべて削除されます。元に戻せません。</span><span class="lang-toggle lang-en">This action deletes all news data saved in this browser. This cannot be undone.</span></p>
+                        <label class="checkbox admin-modal-check">
+                            <input type="checkbox" id="clear-all-confirm">
+                            <span class="lang-toggle lang-ja">内容を理解しました。おしらせを全件削除します。</span>
+                            <span class="lang-toggle lang-en">I understand. Delete all news items.</span>
+                        </label>
+                        <div class="admin-modal-actions">
+                            <button type="button" class="btn-pill btn-secondary" id="clear-all-cancel"><span class="lang-toggle lang-ja">キャンセル</span><span class="lang-toggle lang-en">Cancel</span></button>
+                            <button type="button" class="btn-pill btn-danger" id="clear-all-run" disabled><span class="lang-toggle lang-ja">削除を実行</span><span class="lang-toggle lang-en">Run Delete</span></button>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="admin-list-panel">
                     <table class="admin-table">
@@ -108,3 +122,6 @@
     <script src="../scripts/news-admin.js"></script>
 </body>
 </html>
+
+
+

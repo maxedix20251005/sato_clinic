@@ -1,54 +1,40 @@
 # News Update Workflow / おしらせ入力・更新手順
 
 ## Purpose / 目的
-- バックエンドなしの静的サイト運用で、院内担当者が「おしらせ」を更新する手順を標準化する。
-- 本手順は `docs/operation_manual_sato_clinic_v0.1.docx` の運用手順を補完する「おしらせ更新専用ガイド」として扱う。
+- バックエンドなしの静的サイト運用で、院内担当者が `news-admin.html` だけでおしらせ更新できるようにする。
+- JSONエクスポート/インポートと PowerShell 反映を必須手順から外し、運用を簡素化する。
 
 ## Scope / 対象ファイル
-- `index.html`（TOPの最新5件タイトルリンク）
-- `subpages/news.html`（おしらせ全件の詳細本文）
-- `subpages/news-admin.html`（おしらせ一覧・1件編集・JSON入出力）
-- `scripts/news-admin.js`（IndexedDB保存・JSON入出力）
-- `scripts/apply-news-json.ps1`（JSONをHTMLへ反映）
+- `subpages/news-admin.html`（一覧・1件編集）
+- `scripts/news-admin.js`（IndexedDB保存）
+- `scripts/news-live.js`（TOP/アーカイブの描画反映）
+- `index.html`（TOP最新5件表示）
+- `subpages/news.html`（全件表示）
 
 ## Update Rule / 更新ルール
-- TOPは「タイトルリンクのみ」。本文は `subpages/news.html` 側に記載する。
-- TOPは常に最新5件を表示する（5件未満の場合は存在件数のみ表示）。
-- `subpages/news.html` は全件を日付の新しい順で表示する。
-- `id` は固定5件ではなく可変運用（例: `news-1`, `news-a1b2c3d4`）。
-- 仕様書の日本語本文は改変しない。追加文面が必要な場合は承認を得る。
+- `news-admin.html` で保存したデータを IndexedDB に保持する。
+- `index.html` は IndexedDB の新しい順で最新5件を表示する。
+- `subpages/news.html` は IndexedDB の全件を新しい順で表示する。
+- `id` は可変運用（例: `news-1`, `news-a1b2c3d4`）。
+- 反映対象は同一ブラウザ・同一端末に限定される（端末間自動共有なし）。
 
 ## Operation Steps / 更新手順
 1. `subpages/news-admin.html` を開く。
-2. 一覧で対象を確認し、`新規登録` / `編集` / `削除` を行う（1件編集画面）。
-3. 必要に応じて列見出しクリックで並べ替える（例: 日付、タイトル、更新日時）。
-4. 必要に応じて「下書きを保存」を押す（IndexedDB保存）。
-5. 更新が確定したら「JSONをエクスポート」を押し、全件JSONを出力する。
-6. 反映担当がJSON内容を元に補助スクリプトを実行する。  
-   事前確認: `pwsh -File scripts/apply-news-json.ps1 -JsonPath <exported.json> -DryRun`  
-   本反映: `pwsh -File scripts/apply-news-json.ps1 -JsonPath <exported.json>`
-7. `index.html` と `subpages/news.html` を確認し、リンク遷移と表示崩れがないことを確認する。
+2. `新規登録` / `編集` / `削除` を実行する。
+   - `新規登録` / `編集` を押すと、編集フォーム見出し（`#editor-title`）へ自動スクロールする。
+   - `全件削除` は確認モーダルで実行する。チェック項目「内容を理解しました。おしらせを全件削除します。」に同意し、`削除を実行` を押したときのみ削除される。
+3. 保存（フォーム `保存` ボタン）を押す。
+   - 保存後、`#admin-message`（保存完了メッセージ）へ自動スクロールして状態を確認できる。
+4. `index.html` と `subpages/news.html` を同じブラウザで再読み込みして反映を確認する。
 
 ## Checklist / 確認項目
 - `subpages/news.html` に全件が表示され、日付順が正しい（上ほど新しい）。
 - TOPが最新5件（または件数不足時は全件）になっている。
 - TOPの各タイトルリンクから該当ニュース本文へ遷移できる。
 - 誤字・リンク切れがない。
-- 反映スクリプト実行後、`index.html` と `subpages/news.html` のタイトルが一致している。
 
 ## Notes / 補足
-- 本サイトは静的HTML運用だが、`subpages/news-admin.html` を入力補助画面として利用できる。
-- `subpages/news-admin.html` への導線は公開ナビには出さず、`subpages/sitemap.html` からアクセスする。
-- 下書き保存はブラウザローカルの IndexedDB を利用するため、端末間での自動共有はされない。
-- 初回は既存5件が初期データとして IndexedDB に投入される。
-- 将来的に本格的な管理画面化を行う場合は、JSON化 + ビルド生成フロー、またはヘッドレスCMS連携を検討する。
-
-## IndexedDB Option / IndexedDB活用案
-- `news-admin.html` では次の機能を提供する:
-1. 一覧表示（全件）
-2. 1件編集（新規追加・更新・削除）
-3. タイトル/日付/更新日時の並べ替え
-4. 下書き保存（IndexedDB）
-5. JSONインポート/エクスポート
-- IndexedDB はブラウザ/端末ローカル保存のため、複数担当者で自動共有はできない。
-- 反映は `scripts/apply-news-json.ps1` で `index.html` / `subpages/news.html` を一括生成する。
+- 本運用は IndexedDB ベースのため、別ブラウザ/別端末には反映されない。
+- `file://` で開いた際に IndexedDB が使えない環境では、`news-admin` は localStorage へフォールバックして継続動作する（同一ブラウザ内のみ）。
+- 共有運用が必要な場合は、将来的に CMS かサーバー保存へ移行する。
+- `JSONインポート/エクスポート` と `scripts/apply-news-json.ps1` は補助手段として残すが、通常運用では使用しない。

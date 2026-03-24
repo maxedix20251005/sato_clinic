@@ -24,7 +24,7 @@ Create a welcoming, trustworthy clinic homepage that makes online booking obviou
 - 理念・方針詳細: `subpages/about.html#clinic-policy` に統合
 - 診療時間・所在地ページ (subpages/access.html): 診療時間、診療科目、所在地、交通案内、地図、連絡先
 - よくあるご質問ページ (subpages/faq.html): FAQ
-- おしらせ更新管理ページ (subpages/news-admin.html): 一覧表示 + 1件編集（追加/更新/削除、並べ替え、IndexedDB下書き、JSON入出力）
+- おしらせ更新管理ページ (subpages/news-admin.html): 一覧表示 + 1件編集（追加/更新/削除、並べ替え、IndexedDB保存）。保存後は同ブラウザで TOP/ニュース一覧へ即時反映（再読み込みで確認）。
 - プライバシーポリシー (subpages/privacy.html) と サイトポリシー (subpages/site-policy.html)
 - サイトマップページ (subpages/sitemap.html): 全ページのリンクツリー
 
@@ -58,8 +58,9 @@ Create a welcoming, trustworthy clinic homepage that makes online booking obviou
 - TOPのおしらせを「タイトルリンクのみ（最新5件）」に変更し、詳細は `subpages/news.html#news-*` へ遷移。
 - スタッフ紹介のホバー説明を長文対応（文字サイズ調整＋スクロール）。
 - `subpages/access.html` / `subpages/faq.html` のJA/EN切替を有効化。
-- `subpages/news-admin.html` と `scripts/news-admin.js` を追加（JSON運用前提の更新補助）。
+- `subpages/news-admin.html` / `scripts/news-admin.js` / `scripts/news-live.js` でニュース更新を一本化（IndexedDB保存 -> TOP/ニュース一覧へ同ブラウザ即時反映）。
 - プライバシー/サイトポリシーを分離し重複を解消。全ページでバイリンガル対応完了。
 - Back-to-top ボタンを追加し、長ページでも操作性を確保。
 - 予約ページのレイアウトを調整し、カレンダーと時間帯エリアの幅バランスを改善。
 - 文字化け防止のため全ファイルを UTF-8 (BOMなし) で管理。
+
