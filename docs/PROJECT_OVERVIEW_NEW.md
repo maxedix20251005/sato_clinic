@@ -24,7 +24,7 @@ Create a welcoming, trustworthy clinic homepage that makes online booking obviou
 - 理念・方針詳細: `subpages/about.html#clinic-policy` に統合
 - 診療時間・所在地ページ (subpages/access.html): 診療時間、診療科目、所在地、交通案内、地図、連絡先
 - よくあるご質問ページ (subpages/faq.html): FAQ
-- おしらせ更新管理ページ (subpages/news-admin.html): 一覧表示 + 1件編集（追加/更新/削除、並べ替え、IndexedDB保存）。保存後は同ブラウザで TOP/ニュース一覧へ即時反映（再読み込みで確認）。
+- おしらせ更新管理ページ (subpages/news-admin.html): 一覧表示 + 1件編集（追加/更新/削除、並べ替え、IndexedDB保存）。`新規登録`/`編集` で編集フォームへ自動スクロール、`保存` 後は完了メッセージへ自動スクロール。`全件削除` は同意チェック付き確認モーダル経由でのみ実行可能。
 - プライバシーポリシー (subpages/privacy.html) と サイトポリシー (subpages/site-policy.html)
 - サイトマップページ (subpages/sitemap.html): 全ページのリンクツリー
 

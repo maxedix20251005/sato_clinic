@@ -15,7 +15,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 - `subpages/privacy.html` : プライバシーポリシー
 - `subpages/site-policy.html` : サイトポリシー
 - `subpages/sitemap.html` : サイトマップ（ツリー表示）
-- `subpages/news-admin.html` : おしらせ更新管理（IndexedDB保存、保存後に同ブラウザでTOP/一覧へ反映）
+- `subpages/news-admin.html` : おしらせ更新管理（IndexedDB保存、保存後に同ブラウザでTOP/一覧へ反映、編集/保存時の自動スクロール、全件削除は同意チェック付きモーダル）
 - `css/style.css` : トークン/レイアウト/コンポーネント/レスポンシブ
 - `scripts/components.js` : ヘッダー/フッター/グローバルナビの共通コンポーネント挿入
 - `scripts/lang.js` : JA/ENトグルと言語状態のローカルストレージ保持
@@ -36,7 +36,7 @@ You are coding a static Japanese clinic website. Recreate the site with the stru
 - TOP News list: `scripts/news-live.js` が IndexedDB から最新5件を描画（5件未満は全件表示）。詳細本文は `subpages/news.html#news-*` で閲覧
 - Hero alert: 閉じるボタンで非表示
 - Mobile nav: ハンバーガーで開閉、オーバーレイ＆bodyロック、リンク/overlayクリックで閉じる
-- Forms: 送信時はアラート表示→リセット（デモ動作）
+- Forms: クライアント側バリデーション（blur時エラー表示・必須条件充足時のみ送信ボタン有効化）を実装。
   - 実送信: Formspree経由のメール通知。無料プランのためメール本文先頭のリード文は固定（カスタマイズ不可）。CAPTCHAは未使用（reCAPTCHA未実装のため）。
 - Hours table: `<th scope>` で曜日/時間を構造化し、`.lang-toggle` で日英表示を切替。SPではカード風にスタックし、曜日ラベルを自動表示。
 - Back-to-top ボタンを右下フロート表示、スクロールで出現、クリックで先頭へ。

@@ -30,7 +30,7 @@
 - Reservation availability UI (booking): 月表示カレンダー（当月＋2か月、過去不可）＋曜日ヘッダー＋空き状況○△×。日付選択で右カラムの時間帯スロットが展開し、○/△のみ選択可。選択中の日時は薄いグリーンでハイライト。
 - Booking layout tuning: `body.booking-page` 時に `.reserve-form-container` を拡張し、カレンダー/時間帯エリアの比率を最適化。
 - Reservation form: 希望日時フィールドは選択専用で非活性表示＋hidden値送信。氏名・電話*（自動ハイフン整形）・メール*・症状・要望。Formspree に POST し、件名 `【佐藤医院】WEB予約を受け付けました（予約番号: XXXX）` で通知。payload に `_replyto` を含め返信先を利用者メールに。Formspree 無料プランのため本文リードは固定テンプレートで変更不可。reCAPTCHA 未組み込みのため Formspree 側 CAPTCHA はオフ運用。
-- News admin UI: `subpages/news-admin.html` でおしらせ全件を一覧表示し、1件編集（追加/更新/削除）で管理。列見出しクリックで並べ替え可能。保存データは IndexedDB に保持し、`scripts/news-live.js` により TOP（最新5件）と `subpages/news.html`（全件）へ同ブラウザ即時反映。`file://` 等で IndexedDB が利用不可の場合は localStorage へフォールバック。
+- News admin UI: `subpages/news-admin.html` でおしらせ全件を一覧表示し、1件編集（追加/更新/削除）で管理。列見出しクリックで並べ替え可能。`新規登録`/`編集` 押下時は `#editor-title` に自動スクロール、保存時は `#admin-message` に自動スクロール。`全件削除` は注意モーダル内の同意チェック後に `削除を実行` した場合のみ実行。保存データは IndexedDB に保持し、`scripts/news-live.js` により TOP（最新5件）と `subpages/news.html`（全件）へ同ブラウザ即時反映。`file://` 等で IndexedDB が利用不可の場合は localStorage へフォールバック。
 - `news-admin.html` は運用者向けページとして公開グローバルナビには載せず、`subpages/sitemap.html` からのみ導線を持つ。
 - Questionnaire form (questionnaire)
 - Questionnaire form: フィールドは氏名・生年月日・電話（自動ハイフン整形）・メール・主訴・発症時期・発熱有無・体温・服用薬・アレルギー・妊娠可能性・その他・同意。Formspree に POST し、件名 `【佐藤医院】WEB問診票を受け付けました（受付番号: XXXX）` で通知。payload に `_replyto` を含め返信先を利用者メールに。
